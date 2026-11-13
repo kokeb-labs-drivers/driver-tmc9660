@@ -64,7 +64,7 @@ concept HasGpioGet =
 
 /// The port declares something called `DelayUs`.
 template <typename Port>
-concept DeclaresDelayUs = requires(Port& port) { port.DelayUs(1_u32); };
+concept DeclaresDelayUs = requires(Port& port) { port.DelayUs(static_cast<uint32_t>(1)); };
 
 /// The port waits: `void DelayUs(uint32_t us) noexcept`. A narrower parameter would truncate long
 /// waits.

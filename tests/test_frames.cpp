@@ -126,8 +126,9 @@ TEST_CASE("Register frames: table layout, wide layout, UART layouts") {
 
 TEST_CASE("Partition table matches the datasheet example") {
   PartitionEntry e;
-  const char name[] = "motor_cfg";
-  for (std::size_t i = 0; i < 9U; ++i) {
+  const std::array<uint8_t, 9> name{0x6D, 0x6F, 0x74, 0x6F, 0x72,
+                                    0x5F, 0x63, 0x66, 0x67}; // motor_cfg
+  for (std::size_t i = 0; i < name.size(); ++i) {
     e.name[i] = name[i];
   }
   e.type = 2;

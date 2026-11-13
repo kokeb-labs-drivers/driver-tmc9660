@@ -242,7 +242,7 @@ Result<void> TMC9660<Port>::setDrvEn(GpioSignal s) noexcept {
 template <AnyPort Port>
 Result<detail::BlReply> TMC9660<Port>::blSpiTransfer(BlCmd cmd, uint32_t value) noexcept {
   const auto req = detail::BlSpiRequest(detail::ToUnderlying(cmd), value);
-  std::copy(req.begin(), req.end(), tx_.begin());
+  detail::CopyBytes(req, tx_);
   const Error e = spiTransfer(detail::kBlSpiLen);
   if (e != Error::Ok) {
     return Result<detail::BlReply>::Failure(e);
@@ -293,7 +293,7 @@ Error TMC9660<Port>::blExchangeUart(BlCmd cmd, uint32_t value, detail::BlReply& 
   const bool reflect = config_.quirks.crc8_reflect_output;
   const auto req =
       detail::BlUartRequest(config_.device_address, detail::ToUnderlying(cmd), value, reflect);
-  std::copy(req.begin(), req.end(), tx_.begin());
+  detail::CopyBytes(req, tx_);
   const Error e = uartExchange(detail::kBlUartLen, detail::kBlUartLen);
   if (e != Error::Ok) {
     return e;
@@ -334,7 +334,7 @@ Result<detail::BlReply> TMC9660<Port>::blExchange(BlCmd cmd, uint32_t value, boo
     return Result<detail::BlReply>::Failure(Error::UnexpectedReset);
   }
   return Result<detail::BlReply>::Failure(
-      reply.status == static_cast<uint8_t>(BlStatus::Busy) ? Error::Busy : Error::Nack);
+      (reply.status == static_cast<uint8_t>(BlStatus::Busy)) ? Error::Busy : Error::Nack);
 }
 
 // -------------------------------------------------------------------------------------------------
@@ -355,7 +355,7 @@ Error TMC9660<Port>::tmclSpiFetch(detail::TmclReply& reply) noexcept {
   for (uint32_t attempt = 0U; attempt <= config_.spi_reply_retries; ++attempt) {
     const auto rr =
         detail::TmclSpiReplyRequest(); // only the reply-request is repeated, never the command
-    std::copy(rr.begin(), rr.end(), tx_.begin());
+    detail::CopyBytes(rr, tx_);
     const Error re = spiTransfer(detail::kTmclSpiLen);
     if (re != Error::Ok) {
       return re;
@@ -384,7 +384,7 @@ Error TMC9660<Port>::tmclRawSpi(const detail::TmclCommand& c, bool probe,
                                 detail::TmclReply& reply) noexcept {
   if (probe) {
     const auto rr = detail::TmclSpiReplyRequest();
-    std::copy(rr.begin(), rr.end(), tx_.begin());
+    detail::CopyBytes(rr, tx_);
     const Error pe = spiTransfer(detail::kTmclSpiLen);
     if (pe != Error::Ok) {
       return pe;
@@ -394,7 +394,7 @@ Error TMC9660<Port>::tmclRawSpi(const detail::TmclCommand& c, bool probe,
     }
   }
   const auto req = detail::TmclSpiRequest(c, layout_);
-  std::copy(req.begin(), req.end(), tx_.begin());
+  detail::CopyBytes(req, tx_);
   const Error ce = spiTransfer(detail::kTmclSpiLen);
   if (ce != Error::Ok) {
     return ce;
@@ -409,7 +409,7 @@ Error TMC9660<Port>::tmclRawSpi(const detail::TmclCommand& c, bool probe,
 template <AnyPort Port>
 Error TMC9660<Port>::tmclRawUart(const detail::TmclCommand& c, detail::TmclReply& reply) noexcept {
   const auto req = detail::TmclUartRequest(config_.device_address, c, layout_);
-  std::copy(req.begin(), req.end(), tx_.begin());
+  detail::CopyBytes(req, tx_);
   const Error e = uartExchange(detail::kTmclUartLen, detail::kTmclUartLen);
   if (e != Error::Ok) {
     return e;
@@ -522,7 +522,7 @@ Error TMC9660<Port>::checkRegSpiReply(const detail::RegSpiReply& r) noexcept {
 template <AnyPort Port>
 Error TMC9660<Port>::regSpiDatagram(const std::array<uint8_t, detail::kRegSpiLen>& req,
                                     detail::RegSpiReply& out) noexcept {
-  std::copy(req.begin(), req.end(), tx_.begin());
+  detail::CopyBytes(req, tx_);
   const Error e = spiTransfer(detail::kRegSpiLen);
   if (e != Error::Ok) {
     return e;
@@ -578,7 +578,7 @@ Result<uint32_t> TMC9660<Port>::regUartExchange(uint8_t command, uint8_t block, 
                               req)) {
     return Result<uint32_t>::Failure(Error::InvalidArgument);
   }
-  std::copy(req.begin(), req.end(), tx_.begin());
+  detail::CopyBytes(req, tx_);
   const Error e = uartExchange(detail::kRegUartLen, detail::kRegUartLen);
   if (e != Error::Ok) {
     return Result<uint32_t>::Failure(e);
@@ -621,7 +621,7 @@ Result<void> TMC9660<Port>::regBaseline() noexcept {
     std::array<uint8_t, detail::kRegSpiLen> nop{};
     static_cast<void>(
         detail::RegSpiRequest(0U, 0U, false, 0U, config_.quirks.reg_spi_wide_offset, nop));
-    std::copy(nop.begin(), nop.end(), tx_.begin());
+    detail::CopyBytes(nop, tx_);
     const Error e = spiTransfer(detail::kRegSpiLen);
     if (e != Error::Ok) {
       return Result<void>::Failure(e);
@@ -680,7 +680,7 @@ Result<void> TMC9660<Port>::verifyIdentity() noexcept {
     if constexpr (kSpi) {
       // The reply-request that consumes FIRST_CMD, so that a later FIRST_CMD means a reset.
       const auto rr = detail::TmclSpiReplyRequest();
-      std::copy(rr.begin(), rr.end(), tx_.begin());
+      detail::CopyBytes(rr, tx_);
       const Error e = spiTransfer(detail::kTmclSpiLen);
       if (e != Error::Ok) {
         return Result<void>::Failure(e);

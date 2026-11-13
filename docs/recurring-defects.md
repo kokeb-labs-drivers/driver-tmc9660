@@ -427,7 +427,7 @@ declaration in `inc/` against definition in `src/*.ipp`.
 
 ### RD-17 Rule 7.0.6 literal argument type
 
-Rule: a constant argument has its parameter's type (`_u32` literal), and no mixed-width arithmetic on literals.
+Rule: a constant argument has its parameter's type (a `static_cast` of the constant), and no mixed-width arithmetic on literals.
 
 Seen: ntc (review1 M3), fdo2 (review1 M10), tmc5160 (review1 M7), ws2812 (review1: call sites). 4 drivers.
 Detection: `lint` (partial, planned): literal passed to a `uint32_t` or `uint8_t` parameter of a known function;
