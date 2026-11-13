@@ -1,0 +1,6534 @@
+[
+{
+"nr": 0,
+"name": "MOTOR_TYPE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"NO_MOTOR"
+],
+[
+"1",
+"DC_MOTOR"
+],
+[
+"2",
+"STEPPER_MOTOR"
+],
+[
+"3",
+"BLDC_MOTOR"
+]
+],
+"desc": "Selected motor type. PWM must be turned off to change this."
+},
+{
+"nr": 1,
+"name": "MOTOR_POLE_PAIRS",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 127,
+"allowed": null,
+"default": 1,
+"rw": "RWE",
+"enums": [],
+"desc": "Pole pair count of the motor."
+},
+{
+"nr": 2,
+"name": "MOTOR_DIRECTION",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"NOT_INVERTED"
+],
+[
+"True",
+"INVERTED"
+]
+],
+"desc": "Motor direction bit. Inverts the motor direction."
+},
+{
+"nr": 3,
+"name": "MOTOR_PWM_FREQUENCY",
+"unit": "Hz",
+"kind": "range",
+"min": 10000,
+"max": 100000,
+"allowed": null,
+"default": 25000,
+"rw": "RWE",
+"enums": [],
+"desc": "Set the frequency of the motor PWM."
+},
+{
+"nr": 4,
+"name": "COMMUTATION_MODE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 8,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8
+],
+"default": 0,
+"rw": "RW",
+"enums": [
+[
+"0",
+"SYSTEM_OFF"
+],
+[
+"1",
+"SYSTEM_OFF_LOW_SIDE_FETS_ON"
+],
+[
+"2",
+"SYSTEM_OFF_HIGH_SIDE_FETS_ON"
+],
+[
+"3",
+"FOC_OPENLOOP_VOLTAGE_MODE"
+],
+[
+"4",
+"FOC_OPENLOOP_CURRENT_MODE"
+],
+[
+"5",
+"FOC_ABN"
+],
+[
+"6",
+"FOC_HALL_SENSOR"
+],
+[
+"7",
+"RESERVED"
+],
+[
+"8",
+"FOC_SPI_ENC"
+]
+],
+"desc": "Selected FOC operation mode depending on feedback used for commutation."
+},
+{
+"nr": 5,
+"name": "OUTPUT_VOLTAGE_LIMIT",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 32767,
+"allowed": null,
+"default": 8000,
+"rw": "RWE",
+"enums": [],
+"desc": "PID UQ/UD output limit for circular limiter."
+},
+{
+"nr": 6,
+"name": "MAX_TORQUE",
+"unit": "mA",
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 2000,
+"rw": "RWE",
+"enums": [],
+"desc": "Maximum motor torque. Note: This value can be temporarily exceeded marginally due to the operation of the current regulator."
+},
+{
+"nr": 7,
+"name": "MAX_FLUX",
+"unit": "mA",
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 2000,
+"rw": "RWE",
+"enums": [],
+"desc": "Max. motor flux. Note: This value can be temporarily exceeded marginally due to the operation of the current regulator."
+},
+{
+"nr": 8,
+"name": "PWM_SWITCHING_SCHEME",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 2,
+"allowed": [
+0,
+1,
+2
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"STANDARD"
+],
+[
+"1",
+"SVPWM"
+],
+[
+"2",
+"FLAT_BOTTOM"
+]
+],
+"desc": "PWM switching scheme."
+},
+{
+"nr": 9,
+"name": "IDLE_MOTOR_PWM_BEHAVIOR",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"PWM_ON_WHEN_MOTOR_IDLE"
+],
+[
+"True",
+"PWM_OFF_WHEN_MOTOR_IDLE"
+]
+],
+"desc": "Configure if the PWM should be off (high-z) or on (all motor phases same voltage) in commutation mode \"System Off\"."
+},
+{
+"nr": 12,
+"name": "ADC_SHUNT_TYPE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 4,
+"allowed": [
+0,
+1,
+2,
+3,
+4
+],
+"default": 4,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"INLINE_UVW"
+],
+[
+"1",
+"INLINE_VW"
+],
+[
+"2",
+"INLINE_UW"
+],
+[
+"3",
+"INLINE_UV"
+],
+[
+"4",
+"BOTTOM_SHUNTS"
+]
+],
+"desc": "Shunt type used for ADC measurements."
+},
+{
+"nr": 13,
+"name": "ADC_I0_RAW",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Raw ADC measurement of the ADC I0 shunt."
+},
+{
+"nr": 14,
+"name": "ADC_I1_RAW",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Raw ADC measurement of the ADC I1 shunt."
+},
+{
+"nr": 15,
+"name": "ADC_I2_RAW",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Raw ADC measurement of the ADC I2 shunt."
+},
+{
+"nr": 16,
+"name": "ADC_I3_RAW",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Raw ADC measurement of the ADC I3 shunt."
+},
+{
+"nr": 17,
+"name": "CSA_GAIN_ADC_I0_TO_ADC_I2",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 4,
+"allowed": [
+0,
+1,
+2,
+3,
+4
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"GAIN_5X"
+],
+[
+"1",
+"GAIN_10X"
+],
+[
+"2",
+"GAIN_20X"
+],
+[
+"3",
+"GAIN_40X"
+],
+[
+"4",
+"GAIN_1X_BYPASS_CSA"
+]
+],
+"desc": "Current sense amplifier gain for ADC I0, I1 and I2."
+},
+{
+"nr": 18,
+"name": "CSA_GAIN_ADC_I3",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 4,
+"allowed": [
+0,
+1,
+2,
+3,
+4
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"GAIN_5X"
+],
+[
+"1",
+"GAIN_10X"
+],
+[
+"2",
+"GAIN_20X"
+],
+[
+"3",
+"GAIN_40X"
+],
+[
+"4",
+"GAIN_1X_BYPASS_CSA"
+]
+],
+"desc": "Current sense amplifier gain for ADC I3."
+},
+{
+"nr": 19,
+"name": "CSA_FILTER_ADC_I0_TO_ADC_I2",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"T_0_55_MICROSEC"
+],
+[
+"1",
+"T_0_75_MICROSEC"
+],
+[
+"2",
+"T_1_0_MICROSEC"
+],
+[
+"3",
+"T_1_35_MICROSEC"
+]
+],
+"desc": "Current sense amplifier filter for ADC I0, I1 and I2."
+},
+{
+"nr": 20,
+"name": "CSA_FILTER_ADC_I3",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"T_0_55_MICROSEC"
+],
+[
+"1",
+"T_0_75_MICROSEC"
+],
+[
+"2",
+"T_1_0_MICROSEC"
+],
+[
+"3",
+"T_1_35_MICROSEC"
+]
+],
+"desc": "Current sense amplifier filter for ADC I3."
+},
+{
+"nr": 21,
+"name": "CURRENT_SCALING_FACTOR",
+"unit": null,
+"kind": "range",
+"min": 1,
+"max": 65535,
+"allowed": null,
+"default": 520,
+"rw": "RWE",
+"enums": [],
+"desc": "Current scaling factor converting internal units to real- world units."
+},
+{
+"nr": 22,
+"name": "PHASE_UX1_ADC_MAPPING",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"ADC_I0"
+],
+[
+"1",
+"ADC_I1"
+],
+[
+"2",
+"ADC_I2"
+],
+[
+"3",
+"ADC_I3"
+]
+],
+"desc": "Mapping ADC to UX1."
+},
+{
+"nr": 23,
+"name": "PHASE_VX2_ADC_MAPPING",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"ADC_I0"
+],
+[
+"1",
+"ADC_I1"
+],
+[
+"2",
+"ADC_I2"
+],
+[
+"3",
+"ADC_I3"
+]
+],
+"desc": "Mapping ADC to VX2."
+},
+{
+"nr": 24,
+"name": "PHASE_WY1_ADC_MAPPING",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 2,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"ADC_I0"
+],
+[
+"1",
+"ADC_I1"
+],
+[
+"2",
+"ADC_I2"
+],
+[
+"3",
+"ADC_I3"
+]
+],
+"desc": "Mapping ADC to WY1."
+},
+{
+"nr": 25,
+"name": "PHASE_Y2_ADC_MAPPING",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 3,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"ADC_I0"
+],
+[
+"1",
+"ADC_I1"
+],
+[
+"2",
+"ADC_I2"
+],
+[
+"3",
+"ADC_I3"
+]
+],
+"desc": "Mapping ADC to Y2."
+},
+{
+"nr": 26,
+"name": "ADC_I0_SCALE",
+"unit": null,
+"kind": "range",
+"min": 1,
+"max": 32767,
+"allowed": null,
+"default": 1024,
+"rw": "RWE",
+"enums": [],
+"desc": "Scaling applied to ADC I0."
+},
+{
+"nr": 27,
+"name": "ADC_I1_SCALE",
+"unit": null,
+"kind": "range",
+"min": 1,
+"max": 32767,
+"allowed": null,
+"default": 1024,
+"rw": "RWE",
+"enums": [],
+"desc": "Scaling applied to ADC I1."
+},
+{
+"nr": 28,
+"name": "ADC_I2_SCALE",
+"unit": null,
+"kind": "range",
+"min": 1,
+"max": 32767,
+"allowed": null,
+"default": 1024,
+"rw": "RWE",
+"enums": [],
+"desc": "Scaling applied to ADC I2."
+},
+{
+"nr": 29,
+"name": "ADC_I3_SCALE",
+"unit": null,
+"kind": "range",
+"min": 1,
+"max": 32767,
+"allowed": null,
+"default": 1024,
+"rw": "RWE",
+"enums": [],
+"desc": "Scaling applied to ADC I3."
+},
+{
+"nr": 30,
+"name": "ADC_I0_INVERTED",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"NOT_INVERTED"
+],
+[
+"True",
+"INVERTED"
+]
+],
+"desc": "Invert the reading of ADC I0."
+},
+{
+"nr": 31,
+"name": "ADC_I1_INVERTED",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"NOT_INVERTED"
+],
+[
+"True",
+"INVERTED"
+]
+],
+"desc": "Invert the reading of ADC I1."
+},
+{
+"nr": 32,
+"name": "ADC_I2_INVERTED",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"NOT_INVERTED"
+],
+[
+"True",
+"INVERTED"
+]
+],
+"desc": "Invert the reading of ADC I2."
+},
+{
+"nr": 33,
+"name": "ADC_I3_INVERTED",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"NOT_INVERTED"
+],
+[
+"True",
+"INVERTED"
+]
+],
+"desc": "Invert the reading of ADC I3."
+},
+{
+"nr": 34,
+"name": "ADC_I0_OFFSET",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Offset applied to ADC I0 measurement."
+},
+{
+"nr": 35,
+"name": "ADC_I1_OFFSET",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Offset applied to ADC I1 measurement."
+},
+{
+"nr": 36,
+"name": "ADC_I2_OFFSET",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Offset applied to ADC I2 measurement."
+},
+{
+"nr": 37,
+"name": "ADC_I3_OFFSET",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Offset applied to ADC I3 measurement."
+},
+{
+"nr": 38,
+"name": "ADC_I0",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Scaled and offset compensated ADC I0 measurement."
+},
+{
+"nr": 39,
+"name": "ADC_I1",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Scaled and offset compensated ADC I1 measurement."
+},
+{
+"nr": 40,
+"name": "ADC_I2",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Scaled and offset compensated ADC I2 measurement."
+},
+{
+"nr": 41,
+"name": "ADC_I3",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Scaled and offset compensated ADC I3 measurement."
+},
+{
+"nr": 45,
+"name": "OPENLOOP_ANGLE",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Phi_e calculated by the ramper hardware. Used for commutation in openloop modes."
+},
+{
+"nr": 46,
+"name": "OPENLOOP_CURRENT",
+"unit": "mA",
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 1000,
+"rw": "RWE",
+"enums": [],
+"desc": "Openloop current applied in openloop, current mode."
+},
+{
+"nr": 47,
+"name": "OPENLOOP_VOLTAGE",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 16383,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Openloop voltage applied in openloop, voltage mode."
+},
+{
+"nr": 50,
+"name": "ACCELERATION_FF_GAIN",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 8,
+"rw": "RWE",
+"enums": [],
+"desc": "Gain applied to acceleration feedforward."
+},
+{
+"nr": 51,
+"name": "ACCELERATION_FF_SHIFT",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 6,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6
+],
+"default": 4,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"NO_SHIFT"
+],
+[
+"1",
+"SHIFT_4_BIT"
+],
+[
+"2",
+"SHIFT_8_BIT"
+],
+[
+"3",
+"SHIFT_12_BIT"
+],
+[
+"4",
+"SHIFT_16_BIT"
+],
+[
+"5",
+"SHIFT_20_BIT"
+],
+[
+"6",
+"SHIFT_24_BIT"
+]
+],
+"desc": "Shift applied to acceleration feedforward."
+},
+{
+"nr": 52,
+"name": "RAMP_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the application of acceleration and deceleration ramps."
+},
+{
+"nr": 53,
+"name": "DIRECT_VELOCITY_MODE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Specify the control loop structure for velocity mode. Directly regulating the velocity or regulating on a constantly calculated target position."
+},
+{
+"nr": 54,
+"name": "RAMP_AMAX",
+"unit": "internal",
+"kind": "range",
+"min": 1,
+"max": 8388607,
+"allowed": null,
+"default": 1000,
+"rw": "RWE",
+"enums": [],
+"desc": "Acceleration in top part of eight-point ramp."
+},
+{
+"nr": 55,
+"name": "RAMP_A1",
+"unit": "internal",
+"kind": "range",
+"min": 1,
+"max": 8388607,
+"allowed": null,
+"default": 8000,
+"rw": "RWE",
+"enums": [],
+"desc": "First acceleration in eight-point ramp."
+},
+{
+"nr": 56,
+"name": "RAMP_A2",
+"unit": "internal",
+"kind": "range",
+"min": 1,
+"max": 8388607,
+"allowed": null,
+"default": 4000,
+"rw": "RWE",
+"enums": [],
+"desc": "Second acceleration in eight-point ramp."
+},
+{
+"nr": 57,
+"name": "RAMP_DMAX",
+"unit": "internal",
+"kind": "range",
+"min": 1,
+"max": 8388607,
+"allowed": null,
+"default": 1000,
+"rw": "RWE",
+"enums": [],
+"desc": "Deceleration in top part of eight-point ramp."
+},
+{
+"nr": 58,
+"name": "RAMP_D1",
+"unit": "internal",
+"kind": "range",
+"min": 1,
+"max": 8388607,
+"allowed": null,
+"default": 8000,
+"rw": "RWE",
+"enums": [],
+"desc": "Second deceleration in eight-point ramp."
+},
+{
+"nr": 59,
+"name": "RAMP_D2",
+"unit": "internal",
+"kind": "range",
+"min": 1,
+"max": 8388607,
+"allowed": null,
+"default": 8000,
+"rw": "RWE",
+"enums": [],
+"desc": "First deceleration in eight-point ramp."
+},
+{
+"nr": 60,
+"name": "RAMP_VMAX",
+"unit": "internal",
+"kind": "range",
+"min": 0,
+"max": 134217727,
+"allowed": null,
+"default": 134217727,
+"rw": "RWE",
+"enums": [],
+"desc": "Maximum velocity of eight-point ramp."
+},
+{
+"nr": 61,
+"name": "RAMP_V1",
+"unit": "internal",
+"kind": "range",
+"min": 0,
+"max": 134217727,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Velocity threshold to switch from A1/D1 to A2/D2."
+},
+{
+"nr": 62,
+"name": "RAMP_V2",
+"unit": "internal",
+"kind": "range",
+"min": 0,
+"max": 134217727,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Velocity threshold to switch from A2/D2 to AMAX/DMAX."
+},
+{
+"nr": 63,
+"name": "RAMP_VSTART",
+"unit": "internal",
+"kind": "range",
+"min": 0,
+"max": 8388607,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Start velocity of ramp."
+},
+{
+"nr": 64,
+"name": "RAMP_VSTOP",
+"unit": "internal",
+"kind": "range",
+"min": 1,
+"max": 8388607,
+"allowed": null,
+"default": 1,
+"rw": "RWE",
+"enums": [],
+"desc": "Stop velocity of ramp. Needs to be greater than 0."
+},
+{
+"nr": 65,
+"name": "RAMP_TVMAX",
+"unit": "internal",
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Minimum time at VMAX to start deceleration."
+},
+{
+"nr": 66,
+"name": "RAMP_TZEROWAIT",
+"unit": "internal",
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Wait time at end of ramp to signal stop."
+},
+{
+"nr": 67,
+"name": "ACCELERATION_FEEDFORWARD_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the acceleration feedforward feature."
+},
+{
+"nr": 68,
+"name": "VELOCITY_FEEDFORWARD_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the velocity feedforward feature."
+},
+{
+"nr": 69,
+"name": "RAMP_VELOCITY",
+"unit": null,
+"kind": "range",
+"min": -134217727,
+"max": 134217727,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Target velocity calculated by ramp controller."
+},
+{
+"nr": 70,
+"name": "RAMP_POSITION",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Target position calculated by ramp controller."
+},
+{
+"nr": 74,
+"name": "HALL_PHI_E",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Phi_e calculated from hall feedback."
+},
+{
+"nr": 75,
+"name": "HALL_SECTOR_OFFSET",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 5,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"DEG_0"
+],
+[
+"1",
+"DEG_60"
+],
+[
+"2",
+"DEG_120"
+],
+[
+"3",
+"DEG_180"
+],
+[
+"4",
+"DEG_240"
+],
+[
+"5",
+"DEG_300"
+]
+],
+"desc": "Hall sensor 60-degree/sector offset composed of 120 offset (order) and 180 degree offset (polarity)."
+},
+{
+"nr": 76,
+"name": "HALL_FILTER_LENGTH",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 255,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Filter length of the hall sensor input signal filters."
+},
+{
+"nr": 77,
+"name": "HALL_POSITION_0_OFFSET",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Hall offset compensation for 0 degree hall position."
+},
+{
+"nr": 78,
+"name": "HALL_POSITION_60_OFFSET",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 10922,
+"rw": "RWE",
+"enums": [],
+"desc": "Hall offset compensation for 60 degree hall position."
+},
+{
+"nr": 79,
+"name": "HALL_POSITION_120_OFFSET",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 21845,
+"rw": "RWE",
+"enums": [],
+"desc": "Hall offset compensation for 120 degree hall position."
+},
+{
+"nr": 80,
+"name": "HALL_POSITION_180_OFFSET",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": -32768,
+"rw": "RWE",
+"enums": [],
+"desc": "Hall offset compensation for 180 degree hall position."
+},
+{
+"nr": 81,
+"name": "HALL_POSITION_240_OFFSET",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": -21846,
+"rw": "RWE",
+"enums": [],
+"desc": "Hall offset compensation for 240 degree hall position."
+},
+{
+"nr": 82,
+"name": "HALL_POSITION_300_OFFSET",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": -10923,
+"rw": "RWE",
+"enums": [],
+"desc": "Hall offset compensation for 300 degree hall position."
+},
+{
+"nr": 83,
+"name": "HALL_INVERT_DIRECTION",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"NOT_INVERTED"
+],
+[
+"True",
+"INVERTED"
+]
+],
+"desc": "Invert the hall angle direction."
+},
+{
+"nr": 84,
+"name": "HALL_EXTRAPOLATION_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the hall extrapolation to generate a higher resolution position signal. The extrapolation is only active at speeds higher than 60 rpm."
+},
+{
+"nr": 85,
+"name": "HALL_PHI_E_OFFSET",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Use this parameter to compensate hall sensor mounting tolerances."
+},
+{
+"nr": 89,
+"name": "ABN_1_PHI_E",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Phi_e calculated from abn feedback."
+},
+{
+"nr": 90,
+"name": "ABN_1_STEPS",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 16777215,
+"allowed": null,
+"default": 65536,
+"rw": "RWE",
+"enums": [],
+"desc": "ABN 1 encoder steps per rotation (CPR)."
+},
+{
+"nr": 91,
+"name": "ABN_1_DIRECTION",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"NOT_INVERTED"
+],
+[
+"True",
+"INVERTED"
+]
+],
+"desc": "ABN 1 encoder rotation direction."
+},
+{
+"nr": 92,
+"name": "ABN_1_INIT_METHOD",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"FORCED_PHI_E_ZERO_WITH_ACTIVE_SWING"
+],
+[
+"1",
+"FORCED_PHI_E_90_ZERO"
+],
+[
+"2",
+"USE_HALL"
+],
+[
+"3",
+"USE_N_CHANNEL_OFFSET"
+]
+],
+"desc": "Select an ABN encoder initialization method that fits best to your motor's sensors. Forces the rotor into phi_e zero using the open loop current but actively swings the rotor. Forces the rotor into phi_e 90 degree position and then into zero position using the open loop current. Turns the motor slightly in hall commutation mode until a hall signal change gives a new absolut position, which then the ABN phi_e is aligned to. Turns the motor slightly in open loop commutation mode until a N-channel is reached and gives an absolut position, which then the ABN phi_e is aligned to."
+},
+{
+"nr": 93,
+"name": "ABN_1_INIT_STATE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 0,
+"rw": "R",
+"enums": [
+[
+"0",
+"IDLE"
+],
+[
+"1",
+"BUSY"
+],
+[
+"2",
+"WAIT"
+],
+[
+"3",
+"DONE"
+]
+],
+"desc": "Actual state of ABN encoder initialization."
+},
+{
+"nr": 94,
+"name": "ABN_1_INIT_DELAY",
+"unit": "ms",
+"kind": "range",
+"min": 1000,
+"max": 10000,
+"allowed": null,
+"default": 1000,
+"rw": "RWE",
+"enums": [],
+"desc": "When one of the \"Forced phi_e\" initialization methods is used, this value defines the wait time until the phi_e ABN angle is set to zero. This parameter should be set in a way, that the motor has stopped mechanical oscillations after the specified time."
+},
+{
+"nr": 95,
+"name": "ABN_1_INIT_VELOCITY",
+"unit": null,
+"kind": "range",
+"min": -200000,
+"max": 200000,
+"allowed": null,
+"default": 5,
+"rw": "RWE",
+"enums": [],
+"desc": "Init velocity for ABN encoder initialization with N- channel offset."
+},
+{
+"nr": 96,
+"name": "ABN_1_N_CHANNEL_PHI_E_OFFSET",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Offset between phi_e zero and the ABN encoders index pulse position. This value is updated asynchronously on any ABN initialization other than the \"Use-N channel offset\" method. The value can then be used for the \"Use N-channel offset\" based initialization."
+},
+{
+"nr": 97,
+"name": "ABN_1_N_CHANNEL_INVERTED",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"ACTIVE_HIGH"
+],
+[
+"True",
+"ACTIVE_LOW"
+]
+],
+"desc": "ABN 1 encoder N-channel is inverted."
+},
+{
+"nr": 98,
+"name": "ABN_1_N_CHANNEL_FILTERING",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 4,
+"allowed": [
+0,
+1,
+2,
+3,
+4
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"FILTERING_OFF"
+],
+[
+"1",
+"N_EVENT_ON_A_HIGH_B_HIGH"
+],
+[
+"2",
+"N_EVENT_ON_A_HIGH_B_LOW"
+],
+[
+"3",
+"N_EVENT_ON_A_LOW_B_HIGH"
+],
+[
+"4",
+"N_EVENT_ON_A_LOW_B_LOW"
+]
+],
+"desc": "ABN 1 encoder N-channel filtering. Useful for imprecise encoders with the index pulses lasting multiple A/B steps."
+},
+{
+"nr": 99,
+"name": "ABN_1_CLEAR_ON_NEXT_NULL",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RW",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Clear the actual position on the next ABN 1 encoder N- channel event."
+},
+{
+"nr": 100,
+"name": "ABN_1_VALUE",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 16777215,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Raw ABN encoder internal counter value."
+},
+{
+"nr": 104,
+"name": "TARGET_TORQUE",
+"unit": "mA",
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "RW",
+"enums": [],
+"desc": "Target torque value. Write to activate torque regulation."
+},
+{
+"nr": 105,
+"name": "ACTUAL_TORQUE",
+"unit": "mA",
+"kind": "range",
+"min": -32767,
+"max": 32768,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Actual motor torque value."
+},
+{
+"nr": 106,
+"name": "TARGET_FLUX",
+"unit": "mA",
+"kind": "range",
+"min": -10000,
+"max": 10000,
+"allowed": null,
+"default": 0,
+"rw": "RW",
+"enums": [],
+"desc": "Target flux value."
+},
+{
+"nr": 107,
+"name": "ACTUAL_FLUX",
+"unit": "mA",
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Actual motor flux value."
+},
+{
+"nr": 108,
+"name": "TORQUE_OFFSET",
+"unit": "mA",
+"kind": "range",
+"min": -4700,
+"max": 4700,
+"allowed": null,
+"default": 0,
+"rw": "RW",
+"enums": [],
+"desc": "Offset applied to torque value."
+},
+{
+"nr": 109,
+"name": "TORQUE_P",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 32767,
+"allowed": null,
+"default": 50,
+"rw": "RWE",
+"enums": [],
+"desc": "P parameter for torque PI regulator. Also controls flux P parameter unless separate torque/flux loops are enabled."
+},
+{
+"nr": 110,
+"name": "TORQUE_I",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 32767,
+"allowed": null,
+"default": 100,
+"rw": "RWE",
+"enums": [],
+"desc": "I parameter for torque PI regulator. Also controls flux I parameter unless separate torque/flux loops are enabled."
+},
+{
+"nr": 111,
+"name": "FLUX_P",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 32767,
+"allowed": null,
+"default": 50,
+"rw": "RWE",
+"enums": [],
+"desc": "P parameter for flux PI regulator. Only available when separated torque/flux loops are enabled."
+},
+{
+"nr": 112,
+"name": "FLUX_I",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 32767,
+"allowed": null,
+"default": 100,
+"rw": "RWE",
+"enums": [],
+"desc": "I parameter for flux PI regulator. Only available when separated torque/flux loops are enabled."
+},
+{
+"nr": 113,
+"name": "SEPARATE_TORQUE_FLUX_PI_PARAMTERS",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"TORQUE_FLUX_PI_COMBINED"
+],
+[
+"True",
+"TORQUE_FLUX_PI_SEPARATED"
+]
+],
+"desc": "Enable to configure separate PI values for the torque and flux current control loops."
+},
+{
+"nr": 114,
+"name": "CURRENT_NORM_P",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"SHIFT_8_BIT"
+],
+[
+"1",
+"SHIFT_16_BIT"
+]
+],
+"desc": "P parameter normalization format for current PI regulator."
+},
+{
+"nr": 115,
+"name": "CURRENT_NORM_I",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"SHIFT_8_BIT"
+],
+[
+"1",
+"SHIFT_16_BIT"
+]
+],
+"desc": "I parameter normalization format for current PI regulator."
+},
+{
+"nr": 116,
+"name": "TORQUE_PI_ERROR",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Torque PI regulator error."
+},
+{
+"nr": 117,
+"name": "FLUX_PI_ERROR",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Flux PI regulator error."
+},
+{
+"nr": 118,
+"name": "TORQUE_PI_INTEGRATOR",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Integrated error of torque PI regulator."
+},
+{
+"nr": 119,
+"name": "FLUX_PI_INTEGRATOR",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Integrated error of flux PI regulator."
+},
+{
+"nr": 120,
+"name": "FLUX_OFFSET",
+"unit": "mA",
+"kind": "range",
+"min": -4700,
+"max": 4700,
+"allowed": null,
+"default": 0,
+"rw": "RW",
+"enums": [],
+"desc": "Offset applied to flux value."
+},
+{
+"nr": 123,
+"name": "VELOCITY_SENSOR_SELECTION",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 4,
+"allowed": [
+0,
+1,
+2,
+3,
+4
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"SAME_AS_COMMUTATION"
+],
+[
+"1",
+"DIGITAL_HALL"
+],
+[
+"2",
+"ABN1_ENCODER"
+],
+[
+"3",
+"ABN2_ENCODER"
+],
+[
+"4",
+"SPI_ENCODER"
+]
+],
+"desc": "Feedback source for the velocity PI regulator."
+},
+{
+"nr": 124,
+"name": "TARGET_VELOCITY",
+"unit": null,
+"kind": "range",
+"min": -134217728,
+"max": 134217727,
+"allowed": null,
+"default": 0,
+"rw": "RW",
+"enums": [],
+"desc": "Target velocity value. Write to activate velocity regulation."
+},
+{
+"nr": 125,
+"name": "ACTUAL_VELOCITY",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Actual velocity value."
+},
+{
+"nr": 126,
+"name": "VELOCITY_OFFSET",
+"unit": "rpm",
+"kind": "range",
+"min": -200000,
+"max": 200000,
+"allowed": null,
+"default": 0,
+"rw": "RW",
+"enums": [],
+"desc": "Offset applied to velocity value."
+},
+{
+"nr": 127,
+"name": "VELOCITY_P",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 32767,
+"allowed": null,
+"default": 800,
+"rw": "RWE",
+"enums": [],
+"desc": "P parameter for velocity PI regulator."
+},
+{
+"nr": 128,
+"name": "VELOCITY_I",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 32767,
+"allowed": null,
+"default": 1,
+"rw": "RWE",
+"enums": [],
+"desc": "I parameter for velocity PI regulator."
+},
+{
+"nr": 129,
+"name": "VELOCITY_NORM_P",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 2,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"NO_SHIFT"
+],
+[
+"1",
+"SHIFT_8_BIT"
+],
+[
+"2",
+"SHIFT_16_BIT"
+],
+[
+"3",
+"SHIFT_24_BIT"
+]
+],
+"desc": "P parameter normalization format for velocity PI regulator."
+},
+{
+"nr": 130,
+"name": "VELOCITY_NORM_I",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 2,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"SHIFT_8_BIT"
+],
+[
+"1",
+"SHIFT_16_BIT"
+],
+[
+"2",
+"SHIFT_24_BIT"
+],
+[
+"3",
+"SHIFT_32_BIT"
+]
+],
+"desc": "I parameter normalization format for velocity PI regulator."
+},
+{
+"nr": 131,
+"name": "VELOCITY_PI_INTEGRATOR",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Integrated error of velocity PI regulator."
+},
+{
+"nr": 132,
+"name": "VELOCITY_PI_ERROR",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Velocity PI regulator error."
+},
+{
+"nr": 133,
+"name": "VELOCITY_SCALING_FACTOR",
+"unit": null,
+"kind": "range",
+"min": 1,
+"max": 2047,
+"allowed": null,
+"default": 1,
+"rw": "RWE",
+"enums": [],
+"desc": "Scaling factor to convert internal velocity to real-world units."
+},
+{
+"nr": 134,
+"name": "STOP_ON_VELOCITY_DEVIATION",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 200000,
+"allowed": null,
+"default": 0,
+"rw": "RW",
+"enums": [],
+"desc": "Maximum of velocity deviation tolerated before stop event is triggered (if activated)."
+},
+{
+"nr": 135,
+"name": "VELOCITY_LOOP_DOWNSAMPLING",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 127,
+"allowed": null,
+"default": 5,
+"rw": "RWE",
+"enums": [],
+"desc": "Downsampling factor for velocity controller."
+},
+{
+"nr": 136,
+"name": "VELOCITY_REACHED_THRESHOLD",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 2000000000,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Deviation between target and actual velocity below which the velocity reached flag goes active and latches. If a new target velocity is set the flag is reset."
+},
+{
+"nr": 137,
+"name": "VELOCITY_METER_SWITCH_THRESHOLD",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 134217727,
+"allowed": null,
+"default": 2000,
+"rw": "RWE",
+"enums": [],
+"desc": "Velocity threshold switching from period to frequency velocity meter."
+},
+{
+"nr": 138,
+"name": "VELOCITY_METER_SWITCH_HYSTERESIS",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 500,
+"rw": "RWE",
+"enums": [],
+"desc": "Velocity hysteresis for switching back from frequency to period velocity meter."
+},
+{
+"nr": 139,
+"name": "VELOCITY_METER_MODE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 2,
+"allowed": [
+0,
+1,
+2
+],
+"default": 0,
+"rw": "R",
+"enums": [
+[
+"0",
+"PERIOD_METER"
+],
+[
+"1",
+"FREQUENCY_METER"
+],
+[
+"2",
+"SOFTWARE_METER"
+]
+],
+"desc": "Currently used velocity meter mode. Measurement of velocity by time measurement between position changes. Velocity Meter running at PWM frequency. Calculates the velocity using the difference of the angle in one clock cycle. Measurement of velocity by software."
+},
+{
+"nr": 142,
+"name": "POSITION_SENSOR_SELECTION",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 4,
+"allowed": [
+0,
+1,
+2,
+3,
+4
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"SAME_AS_COMMUTATION"
+],
+[
+"1",
+"DIGITAL_HALL"
+],
+[
+"2",
+"ABN1_ENCODER"
+],
+[
+"3",
+"ABN2_ENCODER"
+],
+[
+"4",
+"SPI_ENCODER"
+]
+],
+"desc": "Feedback source for the position PI regulator."
+},
+{
+"nr": 143,
+"name": "TARGET_POSITION",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "RW",
+"enums": [],
+"desc": "Target position value. Write to activate position regulation."
+},
+{
+"nr": 144,
+"name": "ACTUAL_POSITION",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "RW",
+"enums": [],
+"desc": "Actual position value."
+},
+{
+"nr": 145,
+"name": "POSITION_SCALING_FACTOR",
+"unit": null,
+"kind": "range",
+"min": 1024,
+"max": 65535,
+"allowed": null,
+"default": 1024,
+"rw": "RWE",
+"enums": [],
+"desc": "Scaling factor to convert internal position to real-world units."
+},
+{
+"nr": 146,
+"name": "POSITION_P",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 32767,
+"allowed": null,
+"default": 5,
+"rw": "RWE",
+"enums": [],
+"desc": "P parameter for position PI regulator."
+},
+{
+"nr": 147,
+"name": "POSITION_I",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "I parameter for position PI regulator."
+},
+{
+"nr": 148,
+"name": "POSITION_NORM_P",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"NO_SHIFT"
+],
+[
+"1",
+"SHIFT_8_BIT"
+],
+[
+"2",
+"SHIFT_16_BIT"
+],
+[
+"3",
+"SHIFT_24_BIT"
+]
+],
+"desc": "P parameter normalization format for position PI regulator."
+},
+{
+"nr": 149,
+"name": "POSITION_NORM_I",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"SHIFT_8_BIT"
+],
+[
+"1",
+"SHIFT_16_BIT"
+],
+[
+"2",
+"SHIFT_24_BIT"
+],
+[
+"3",
+"SHIFT_32_BIT"
+]
+],
+"desc": "I parameter normalization format for position PI regulator."
+},
+{
+"nr": 150,
+"name": "POSITION_PI_INTEGRATOR",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Integrated error of position PI regulator."
+},
+{
+"nr": 151,
+"name": "POSITION_PI_ERROR",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Error of position PI regulator."
+},
+{
+"nr": 152,
+"name": "STOP_ON_POSITION_DEVIATION",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Maximum of position deviation tolerated before stop event is triggered (if activated)."
+},
+{
+"nr": 153,
+"name": "POSITION_LOOP_DOWNSAMPLING",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 127,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Downsampling factor for position controller."
+},
+{
+"nr": 154,
+"name": "LATCH_POSITION",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Position switch latched."
+},
+{
+"nr": 155,
+"name": "POSITION_LIMIT_LOW",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": -2147483648,
+"rw": "RWE",
+"enums": [],
+"desc": "Position limit low."
+},
+{
+"nr": 156,
+"name": "POSITION_LIMIT_HIGH",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 2147483647,
+"rw": "RWE",
+"enums": [],
+"desc": "Position limit high."
+},
+{
+"nr": 157,
+"name": "POSITION_REACHED_THRESHOLD",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 2000000000,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Deviation between target and actual position below which the position reached flag goes active and latches. If a new target position is set the flag is reset."
+},
+{
+"nr": 161,
+"name": "REFERENCE_SWITCH_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 7,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"NO_STOP_ON_SWITCH_TRIGGERED"
+],
+[
+"1",
+"STOP_ON_L"
+],
+[
+"2",
+"STOP_ON_R"
+],
+[
+"3",
+"STOP_ON_R_AND_L"
+],
+[
+"4",
+"STOP_ON_H"
+],
+[
+"5",
+"STOP_ON_H_AND_L"
+],
+[
+"6",
+"STOP_ON_H_AND_R"
+],
+[
+"7",
+"STOP_ON_H_R_AND_L"
+]
+],
+"desc": "Bitwise enable for stopping when reference switch input is triggered. Bit 2: Stop on reference input home. Bit 1: Stop on reference input right. Bit 0: Stop on reference input left."
+},
+{
+"nr": 162,
+"name": "REFERENCE_SWITCH_POLARITY_AND_SWAP",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 15,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"NOT_SWAPPED_NOT_INVERTED"
+],
+[
+"1",
+"L_INVERTED"
+],
+[
+"2",
+"R_INVERTED"
+],
+[
+"3",
+"R_AND_L_INVERTED"
+],
+[
+"4",
+"H_INVERTED"
+],
+[
+"5",
+"H_AND_L_INVERTED"
+],
+[
+"6",
+"H_AND_R_INVERTED"
+],
+[
+"7",
+"H_R_AND_L_INVERTED"
+],
+[
+"8",
+"L_R_SWAPPED_L_INVERTED"
+],
+[
+"9",
+"L_R_SWAPPED_R_INVERTED"
+],
+[
+"10",
+"L_R_SWAPPED_R_AND_L_INVERTED"
+],
+[
+"11",
+"L_R_SWAPPED_H_INVERTED"
+],
+[
+"12",
+"L_R_SWAPPED_H_AND_L_INVERTED"
+],
+[
+"13",
+"L_R_SWAPPED"
+],
+[
+"14",
+"L_R_SWAPPED_H_AND_R_INVERTED"
+],
+[
+"15",
+"L_R_SWAPPED_H_R_AND_L_INVERTED"
+]
+],
+"desc": "Bitwise configuration of reference switch configuration. Options to swap left and right input and invert switch polarity. Bit 3: Swap left and right switch. Bit 2: Invert polarity of home switch. Bit 1: Invert polarity of right switch. Bit 0: Invert polarity of left switch."
+},
+{
+"nr": 163,
+"name": "REFERENCE_SWITCH_LATCH_SETTINGS",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 15,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"NO_TRIGGER"
+],
+[
+"1",
+"L_R_RISING_EDGE"
+],
+[
+"2",
+"L_R_FALLING_EDGE"
+],
+[
+"3",
+"L_R_BOTH_EDGES"
+],
+[
+"4",
+"H_RISING_EDGE"
+],
+[
+"5",
+"H_L_R_RISING_EDGE"
+],
+[
+"6",
+"H_RISING_L_R_FALLING_EDGE"
+],
+[
+"7",
+"H_RISING_L_R_BOTH_EDGES"
+],
+[
+"8",
+"H_FALLING_EDGE"
+],
+[
+"9",
+"H_FALLING_L_R_RISING_EDGE"
+],
+[
+"10",
+"H_L_R_FALLING_EDGE"
+],
+[
+"11",
+"H_FALLING_L_R_BOTH_EDGES"
+],
+[
+"12",
+"H_BOTH_EDGES"
+],
+[
+"13",
+"H_BOTH_L_R_RISING_EDGE"
+],
+[
+"14",
+"H_BOTH_L_R_FALLING_EDGE"
+],
+[
+"15",
+"H_L_R_BOTH_EDGES"
+]
+],
+"desc": "Bitwise configuration of reference switch latch configuration. Writing position to latch position parameter. Bit 3: Trigger latch on falling home signal. Bit 2: Trigger latch on rising home signal. Bit 1: Trigger latch on falling left and right signal. Bit 0: Trigger latch on rising left and right signal"
+},
+{
+"nr": 164,
+"name": "EVENT_STOP_SETTINGS",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 7,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"DO_HARD_STOP"
+],
+[
+"1",
+"DO_SOFT_STOP"
+],
+[
+"2",
+"STOP_ON_POS_DEVIATION"
+],
+[
+"3",
+"STOP_ON_POS_DEVIATION_SOFT_STOP"
+],
+[
+"4",
+"STOP_ON_VEL_DEVIATION"
+],
+[
+"5",
+"STOP_ON_VEL_DEVIATION_SOFT_STOP"
+],
+[
+"6",
+"STOP_ON_POS_VEL_DEVIATION"
+],
+[
+"7",
+"STOP_ON_POS_VEL_DEVIATION_SOFT_STOP"
+]
+],
+"desc": "Bitwise configuration of stop configuration. Bit 2: Stop if the velocity loop deviation is larger then the parameter \"Stop on velocity deviation\". Bit 1: Stop if the position loop deviation is larger then the parameter \"Stop on position deviation\". Bit 0: If enabled the system ramps down to zero if a stop condition rises. Doing a soft and not a hard stop."
+},
+{
+"nr": 165,
+"name": "REFERENCE_SWITCH_SEARCH_MODE",
+"unit": null,
+"kind": "set",
+"min": 1,
+"max": 8,
+"allowed": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"1",
+"LEFT_SWITCH"
+],
+[
+"2",
+"RIGHT_SWITCH_LEFT_SWITCH"
+],
+[
+"3",
+"RIGHT_SWITCH_LEFT_SWITCH_BOTH_SIDES"
+],
+[
+"4",
+"LEFT_SWITCH_BOTH_SIDES"
+],
+[
+"5",
+"HOME_SWITCH_NEG_DIR_LEFT_END_SWITCH"
+],
+[
+"6",
+"HOME_SWITCH_POS_DIR_RIGHT_END_SWITCH"
+],
+[
+"7",
+"HOME_SWITCH_NEG_DIR_IGNORE_END_SWITCH"
+],
+[
+"8",
+"HOME_SWITCH_POS_DIR_IGNORE_END_SWITCH"
+]
+],
+"desc": "Determine the reference switch search sequence. Search for left limit switch. Search for right limit switch then search for left limit switch. Search for right limit switch then approach left limit switch from both sides. Approach left limit switch from both sides. Search for home switch in negative direction, turn around if left end switch detected. Search for home switch in positive direction, turn around if right end switch detected. Search for home switch in negative direction, ignore end switch. Search for home switch in positive direction, ignore end switch."
+},
+{
+"nr": 166,
+"name": "REFERENCE_SWITCH_SEARCH_SPEED",
+"unit": null,
+"kind": "range",
+"min": -134217728,
+"max": 134217727,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Speed used for the reference switch search sequence."
+},
+{
+"nr": 167,
+"name": "REFERENCE_SWITCH_SPEED",
+"unit": null,
+"kind": "range",
+"min": -134217728,
+"max": 134217727,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Lower speed used e.g. for positioning the motor at a reference switch position."
+},
+{
+"nr": 168,
+"name": "RIGHT_LIMIT_SWITCH_POSITION",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Right limit switch position."
+},
+{
+"nr": 169,
+"name": "HOME_SWITCH_POSITION",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Home switch position."
+},
+{
+"nr": 170,
+"name": "LAST_REFERENCE_POSITION",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Last reference position."
+},
+{
+"nr": 174,
+"name": "ABN_2_STEPS",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 16777215,
+"allowed": null,
+"default": 1024,
+"rw": "RWE",
+"enums": [],
+"desc": "ABN 2 encoder steps per rotation (CPR)."
+},
+{
+"nr": 175,
+"name": "ABN_2_DIRECTION",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"NORMAL"
+],
+[
+"True",
+"INVERTED"
+]
+],
+"desc": "ABN 2 encoder rotation direction."
+},
+{
+"nr": 176,
+"name": "ABN_2_GEAR_RATIO",
+"unit": null,
+"kind": "range",
+"min": 1,
+"max": 255,
+"allowed": null,
+"default": 1,
+"rw": "RWE",
+"enums": [],
+"desc": "ABN 2 encoder gear ratio."
+},
+{
+"nr": 177,
+"name": "ABN_2_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the ABN 2 encoder. Disabling resets the counted steps."
+},
+{
+"nr": 178,
+"name": "ABN_2_VALUE",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Raw ABN2 encoder internal counter value."
+},
+{
+"nr": 181,
+"name": "SPI_ENCODE_CS_SETTLE_DELAY_TIME",
+"unit": "ns",
+"kind": "range",
+"min": 0,
+"max": 6375,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Add a delay from CS going low to first SCLK edge."
+},
+{
+"nr": 182,
+"name": "SPI_ENCODER_CS_IDLE_DELAY_TIME",
+"unit": "us",
+"kind": "range",
+"min": 0,
+"max": 102,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Extend CS idle time between SPI message frames."
+},
+{
+"nr": 183,
+"name": "SPI_ENCODER_MAIN_TRANSFER_CMD_SIZE",
+"unit": null,
+"kind": "range",
+"min": 1,
+"max": 16,
+"allowed": null,
+"default": 1,
+"rw": "RWE",
+"enums": [],
+"desc": "Size of the first SPI transfer frame."
+},
+{
+"nr": 184,
+"name": "SPI_ENCODER_SECONDARY_TRANSFER_CMD_SIZE",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 15,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Size of the optional secondary SPI transfer frame. If set to zero, no secondary SPI transfer."
+},
+{
+"nr": 185,
+"name": "SPI_ENCODER_TRANSFER_DATA_3_0",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Used to set the transmit data and read out the received data."
+},
+{
+"nr": 186,
+"name": "SPI_ENCODER_TRANSFER_DATA_7_4",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Used to set the transmit data and read out the received data."
+},
+{
+"nr": 187,
+"name": "SPI_ENCODER_TRANSFER_DATA_11_8",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Used to set the transmit data and read out the received data."
+},
+{
+"nr": 188,
+"name": "SPI_ENCODER_TRANSFER_DATA_15_12",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Used to set the transmit data and read out the received data."
+},
+{
+"nr": 189,
+"name": "SPI_ENCODER_TRANSFER",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 2,
+"allowed": [
+0,
+1,
+2
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OFF"
+],
+[
+"1",
+"TRIGGER_SINGLE_TRANSFER"
+],
+[
+"2",
+"CONTINUOUS_POSITION_COUNTER_READ"
+]
+],
+"desc": "SPI interface setting, polarity and phase."
+},
+{
+"nr": 190,
+"name": "SPI_ENCODER_POSITION_COUNTER_MASK",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Mask to be used to collect the position counter value from the continuous received data."
+},
+{
+"nr": 191,
+"name": "SPI_ENCODER_POSITION_COUNTER_SHIFT",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 127,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Right bit shift for the position counter value before mask is applied."
+},
+{
+"nr": 192,
+"name": "SPI_ENCODER_POSITION_COUNTER_VALUE",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Actual SPI encoder position value."
+},
+{
+"nr": 193,
+"name": "SPI_ENCODER_COMMUTATION_ANGLE",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Actual absolute encoder angle value."
+},
+{
+"nr": 194,
+"name": "SPI_ENCODER_INITIALIZATION_METHOD",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 2,
+"allowed": [
+0,
+1,
+2
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"FORCED_PHI_E_ZERO_WITH_ACTIVE_SWING"
+],
+[
+"1",
+"FORCED_PHI_E_90_ZERO"
+],
+[
+"2",
+"USE_OFFSET"
+]
+],
+"desc": "Select the used absolute encoder initialization mode Forces the rotor into PHI_E zero using the open loop current but actively swings the rotor. Forces the rotor into PHI_E 90 degree position and then into zero position using the open loop current."
+},
+{
+"nr": 195,
+"name": "SPI_ENCODER_DIRECTION",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"NOT_INVERTED"
+],
+[
+"True",
+"INVERTED"
+]
+],
+"desc": "SPI encoder direction."
+},
+{
+"nr": 196,
+"name": "SPI_ENCODER_OFFSET",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "This value represents the internal commutation offset. (0...max. encoder steps per rotation)."
+},
+{
+"nr": 197,
+"name": "SPI_LUT_CORRECTION_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the lookup table based encoder correction."
+},
+{
+"nr": 198,
+"name": "SPI_LUT_ADDRESS_SELECT",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 255,
+"allowed": null,
+"default": 0,
+"rw": "RW",
+"enums": [],
+"desc": "Address to read or write the lookup table."
+},
+{
+"nr": 199,
+"name": "SPI_LUT_DATA",
+"unit": null,
+"kind": "range",
+"min": -128,
+"max": 127,
+"allowed": null,
+"default": 0,
+"rw": "RW",
+"enums": [],
+"desc": "Data to read or write to a lookup table address."
+},
+{
+"nr": 201,
+"name": "SPI_LUT_COMMON_SHIFT_FACTOR",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4,
+"allowed": null,
+"default": 0,
+"rw": "RW",
+"enums": [],
+"desc": "All LUT table entries are multiplied with 2^SHIFT_FACTOR to compensate for larger erros if needed."
+},
+{
+"nr": 205,
+"name": "STEP_DIR_STEP_DIVIDER_SHIFT",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 10,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"STEP_MODE_FULL"
+],
+[
+"1",
+"STEP_MODE_HALF"
+],
+[
+"2",
+"STEP_MODE_QUARTER"
+],
+[
+"3",
+"STEP_MODE_1_8TH"
+],
+[
+"4",
+"STEP_MODE_1_16TH"
+],
+[
+"5",
+"STEP_MODE_1_32ND"
+],
+[
+"6",
+"STEP_MODE_1_64TH"
+],
+[
+"7",
+"STEP_MODE_1_128TH"
+],
+[
+"8",
+"STEP_MODE_1_256TH"
+],
+[
+"9",
+"STEP_MODE_1_512TH"
+],
+[
+"10",
+"STEP_MODE_1_1024TH"
+]
+],
+"desc": "Configure step/dir to use between 1 and 1024 microsteps per full step."
+},
+{
+"nr": 206,
+"name": "STEP_DIR_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RW",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the Step/Dir input functionality."
+},
+{
+"nr": 207,
+"name": "STEP_DIR_EXTRAPOLATION_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RW",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the Step/Dir extrapolation feature."
+},
+{
+"nr": 208,
+"name": "STEP_DIR_STEP_SIGNAL_TIMEOUT_LIMIT",
+"unit": "ms",
+"kind": "range",
+"min": 1,
+"max": 2000,
+"allowed": null,
+"default": 1000,
+"rw": "RW",
+"enums": [],
+"desc": "Step signal timeout limit."
+},
+{
+"nr": 209,
+"name": "STEP_DIR_MAXIMUM_EXTRAPOLATION_VELOCITY",
+"unit": "eRPM",
+"kind": "range",
+"min": 0,
+"max": 2147483647,
+"allowed": null,
+"default": 2147483647,
+"rw": "RW",
+"enums": [],
+"desc": "Maximum velocity up to which extrapolation is used."
+},
+{
+"nr": 212,
+"name": "BRAKE_CHOPPER_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the brake chopper functionality."
+},
+{
+"nr": 213,
+"name": "BRAKE_CHOPPER_VOLTAGE_LIMIT",
+"unit": "0.1V",
+"kind": "range",
+"min": 50,
+"max": 1000,
+"allowed": null,
+"default": 260,
+"rw": "RWE",
+"enums": [],
+"desc": "If the brake chopper is enabled and supply voltage exceeds this value, the brake chopper output is activated."
+},
+{
+"nr": 214,
+"name": "BRAKE_CHOPPER_HYSTERESIS",
+"unit": "0.1V",
+"kind": "range",
+"min": 0,
+"max": 50,
+"allowed": null,
+"default": 5,
+"rw": "RWE",
+"enums": [],
+"desc": "An activated brake chopper is deactivated if the actual supply voltage is lower than BRAKE_CHOPPER_VOLTAGE_LIMIT - BRAKE_CHOPPER_HYSTERESIS."
+},
+{
+"nr": 216,
+"name": "RELEASE_BRAKE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"BRAKE_PWM_DEACTIVATED"
+],
+[
+"True",
+"BRAKE_PWM_ACTIVATED"
+]
+],
+"desc": "Release the external brake by applying a PWM signal."
+},
+{
+"nr": 217,
+"name": "BRAKE_RELEASING_DUTY_CYCLE",
+"unit": "%",
+"kind": "range",
+"min": 0,
+"max": 99,
+"allowed": null,
+"default": 75,
+"rw": "RWE",
+"enums": [],
+"desc": "Set the duty cycle of the first PWM phase for releasing the brake."
+},
+{
+"nr": 218,
+"name": "BRAKE_HOLDING_DUTY_CYCLE",
+"unit": "%",
+"kind": "range",
+"min": 0,
+"max": 99,
+"allowed": null,
+"default": 11,
+"rw": "RWE",
+"enums": [],
+"desc": "Set the duty cycle of the second PWM phase to hold the brake."
+},
+{
+"nr": 219,
+"name": "BRAKE_RELEASING_DURATION",
+"unit": "ms",
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 80,
+"rw": "RWE",
+"enums": [],
+"desc": "Set the duration the brake PWM uses the first duty cycle."
+},
+{
+"nr": 221,
+"name": "INVERT_BRAKE_OUTPUT",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"NORMAL"
+],
+[
+"True",
+"INVERTED"
+]
+],
+"desc": "Invert the brake output."
+},
+{
+"nr": 224,
+"name": "THERMAL_WINDING_TIME_CONSTANT_1",
+"unit": "ms",
+"kind": "range",
+"min": 1000,
+"max": 60000,
+"allowed": null,
+"default": 3000,
+"rw": "RWE",
+"enums": [],
+"desc": "Thermal winding time constant for the used motor. Used for IIT monitoring. Setting a new value restarts the IIT monitoring."
+},
+{
+"nr": 225,
+"name": "IIT_LIMIT_1",
+"unit": "A^2 x ms",
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 4294967295,
+"rw": "RWE",
+"enums": [],
+"desc": "An actual IIT sum that exceeds this limit leads to trigger the IIT_1_EXCEEDED."
+},
+{
+"nr": 226,
+"name": "IIT_SUM_1",
+"unit": "A^2 x ms",
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Actual sum of the IIT monitor 1."
+},
+{
+"nr": 227,
+"name": "THERMAL_WINDING_TIME_CONSTANT_2",
+"unit": "ms",
+"kind": "range",
+"min": 1000,
+"max": 60000,
+"allowed": null,
+"default": 6000,
+"rw": "RWE",
+"enums": [],
+"desc": "Thermal winding time constant for the used motor. Used for IIT monitoring. Setting a new value restarts the IIT monitoring."
+},
+{
+"nr": 228,
+"name": "IIT_LIMIT_2",
+"unit": "A^2 x ms",
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 4294967295,
+"rw": "RWE",
+"enums": [],
+"desc": "An actual IIT sum that exceeds this limit leads to trigger the IIT_2_EXCEEDED."
+},
+{
+"nr": 229,
+"name": "IIT_SUM_2",
+"unit": "A^2 x ms",
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Actual sum of the IIT monitor 2."
+},
+{
+"nr": 230,
+"name": "RESET_IIT_SUMS",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 0,
+"allowed": null,
+"default": 0,
+"rw": "W",
+"enums": [],
+"desc": "Reset both IIT sums."
+},
+{
+"nr": 231,
+"name": "ACTUAL_TOTAL_MOTOR_CURRENT",
+"unit": "mA",
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Total current through the motor windings."
+},
+{
+"nr": 233,
+"name": "PWM_L_OUTPUT_POLARITY",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"ACTIVE_HIGH"
+],
+[
+"True",
+"ACTIVE_LOW"
+]
+],
+"desc": "PWM_L output polarity."
+},
+{
+"nr": 234,
+"name": "PWM_H_OUTPUT_POLARITY",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"ACTIVE_HIGH"
+],
+[
+"True",
+"ACTIVE_LOW"
+]
+],
+"desc": "PWM_H output polarity."
+},
+{
+"nr": 235,
+"name": "BREAK_BEFORE_MAKE_TIME_LOW_UVW",
+"unit": "8.33ns",
+"kind": "range",
+"min": 0,
+"max": 255,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Break before make time for the low side gates of the UVW phases. Applied before switching from high to low."
+},
+{
+"nr": 236,
+"name": "BREAK_BEFORE_MAKE_TIME_HIGH_UVW",
+"unit": "8.33ns",
+"kind": "range",
+"min": 0,
+"max": 255,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Break before make time for the high side gates of the UVW phases. Applied before switching from low to high."
+},
+{
+"nr": 237,
+"name": "BREAK_BEFORE_MAKE_TIME_LOW_Y2",
+"unit": "8.33ns",
+"kind": "range",
+"min": 0,
+"max": 255,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Break before make time for the low side gate of the Y2 phase. Applied before switching from high to low."
+},
+{
+"nr": 238,
+"name": "BREAK_BEFORE_MAKE_TIME_HIGH_Y2",
+"unit": "8.33ns",
+"kind": "range",
+"min": 0,
+"max": 255,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Break before make time for the high side gate of the Y2 phase. Applied before switching from low to high."
+},
+{
+"nr": 239,
+"name": "USE_ADAPTIVE_DRIVE_TIME_UVW",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "If enabled, the discharge cycle of the low- and high-side gates for the UVW phases is shortened by monitoring the gate voltages. If enabled, the value on T_DRIVE_SINK acts as an upper bound instead of a fixed time."
+},
+{
+"nr": 240,
+"name": "USE_ADAPTIVE_DRIVE_TIME_Y2",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "If enabled, the discharge cycle of the low- and high-side gates for the Y2 phase is shortened by monitoring the gate voltages. If enabled, the value on T_DRIVE_SINK acts as an upper bound instead of a fixed time."
+},
+{
+"nr": 241,
+"name": "DRIVE_TIME_SINK_UVW",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 255,
+"allowed": null,
+"default": 255,
+"rw": "RWE",
+"enums": [],
+"desc": "Discharge time for the low and high side gates of the UVW phases. During this time, the full sink current is be applied. The applied time is defined as (1s / 120MHz) x (2 x DRIVE_TIME_SINK_UVW + 3)."
+},
+{
+"nr": 242,
+"name": "DRIVE_TIME_SOURCE_UVW",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 255,
+"allowed": null,
+"default": 255,
+"rw": "RWE",
+"enums": [],
+"desc": "Charge time for the low and high side gates of the UVW phases. During this time, the full source current is applied. The applied time is defined as (1s / 120MHz) x (2 x DRIVE_TIME_SOURCE_UVW + 3)."
+},
+{
+"nr": 243,
+"name": "DRIVE_TIME_SINK_Y2",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 255,
+"allowed": null,
+"default": 255,
+"rw": "RWE",
+"enums": [],
+"desc": "Discharge time for the low and high side gates of the Y2 phase. During this time, the full sink current is applied. The applied time is defined as (1s / 120MHz) x (2 x DRIVE_TIME_SINK_Y2 + 3)."
+},
+{
+"nr": 244,
+"name": "DRIVE_TIME_SOURCE_Y2",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 255,
+"allowed": null,
+"default": 255,
+"rw": "RWE",
+"enums": [],
+"desc": "Charge time for the low and high side gates of the Y2 phase. During this time, the full source current is applied. The applied time is defined as (1s / 120MHz) x (2 x DRIVE_TIME_SOURCE_Y2 + 3)."
+},
+{
+"nr": 245,
+"name": "UVW_SINK_CURRENT",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 15,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"default": 4,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"CUR_50_MILLIAMP"
+],
+[
+"1",
+"CUR_100_MILLIAMP"
+],
+[
+"2",
+"CUR_160_MILLIAMP"
+],
+[
+"3",
+"CUR_210_MILLIAMP"
+],
+[
+"4",
+"CUR_270_MILLIAMP"
+],
+[
+"5",
+"CUR_320_MILLIAMP"
+],
+[
+"6",
+"CUR_380_MILLIAMP"
+],
+[
+"7",
+"CUR_430_MILLIAMP"
+],
+[
+"8",
+"CUR_580_MILLIAMP"
+],
+[
+"9",
+"CUR_720_MILLIAMP"
+],
+[
+"10",
+"CUR_860_MILLIAMP"
+],
+[
+"11",
+"CUR_1000_MILLIAMP"
+],
+[
+"12",
+"CUR_1250_MILLIAMP"
+],
+[
+"13",
+"CUR_1510_MILLIAMP"
+],
+[
+"14",
+"CUR_1770_MILLIAMP"
+],
+[
+"15",
+"CUR_2000_MILLIAMP"
+]
+],
+"desc": "Limit the maximum sink current for the low and high side gates of the UVW phases."
+},
+{
+"nr": 246,
+"name": "UVW_SOURCE_CURRENT",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 15,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"default": 4,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"CUR_25_MILLIAMP"
+],
+[
+"1",
+"CUR_50_MILLIAMP"
+],
+[
+"2",
+"CUR_80_MILLIAMP"
+],
+[
+"3",
+"CUR_105_MILLIAMP"
+],
+[
+"4",
+"CUR_135_MILLIAMP"
+],
+[
+"5",
+"CUR_160_MILLIAMP"
+],
+[
+"6",
+"CUR_190_MILLIAMP"
+],
+[
+"7",
+"CUR_215_MILLIAMP"
+],
+[
+"8",
+"CUR_290_MILLIAMP"
+],
+[
+"9",
+"CUR_360_MILLIAMP"
+],
+[
+"10",
+"CUR_430_MILLIAMP"
+],
+[
+"11",
+"CUR_500_MILLIAMP"
+],
+[
+"12",
+"CUR_625_MILLIAMP"
+],
+[
+"13",
+"CUR_755_MILLIAMP"
+],
+[
+"14",
+"CUR_855_MILLIAMP"
+],
+[
+"15",
+"CUR_1000_MILLIAMP"
+]
+],
+"desc": "Limit the maximum source current for the low and high side gates of the UVW phases."
+},
+{
+"nr": 247,
+"name": "Y2_SINK_CURRENT",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 15,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"default": 4,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"CUR_50_MILLIAMP"
+],
+[
+"1",
+"CUR_100_MILLIAMP"
+],
+[
+"2",
+"CUR_160_MILLIAMP"
+],
+[
+"3",
+"CUR_210_MILLIAMP"
+],
+[
+"4",
+"CUR_270_MILLIAMP"
+],
+[
+"5",
+"CUR_320_MILLIAMP"
+],
+[
+"6",
+"CUR_380_MILLIAMP"
+],
+[
+"7",
+"CUR_430_MILLIAMP"
+],
+[
+"8",
+"CUR_580_MILLIAMP"
+],
+[
+"9",
+"CUR_720_MILLIAMP"
+],
+[
+"10",
+"CUR_860_MILLIAMP"
+],
+[
+"11",
+"CUR_1000_MILLIAMP"
+],
+[
+"12",
+"CUR_1250_MILLIAMP"
+],
+[
+"13",
+"CUR_1510_MILLIAMP"
+],
+[
+"14",
+"CUR_1770_MILLIAMP"
+],
+[
+"15",
+"CUR_2000_MILLIAMP"
+]
+],
+"desc": "Limit the maximum sink current for the low and high side gates of the Y2 phase."
+},
+{
+"nr": 248,
+"name": "Y2_SOURCE_CURRENT",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 15,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"default": 4,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"CUR_25_MILLIAMP"
+],
+[
+"1",
+"CUR_50_MILLIAMP"
+],
+[
+"2",
+"CUR_80_MILLIAMP"
+],
+[
+"3",
+"CUR_105_MILLIAMP"
+],
+[
+"4",
+"CUR_135_MILLIAMP"
+],
+[
+"5",
+"CUR_160_MILLIAMP"
+],
+[
+"6",
+"CUR_190_MILLIAMP"
+],
+[
+"7",
+"CUR_215_MILLIAMP"
+],
+[
+"8",
+"CUR_290_MILLIAMP"
+],
+[
+"9",
+"CUR_360_MILLIAMP"
+],
+[
+"10",
+"CUR_430_MILLIAMP"
+],
+[
+"11",
+"CUR_500_MILLIAMP"
+],
+[
+"12",
+"CUR_625_MILLIAMP"
+],
+[
+"13",
+"CUR_755_MILLIAMP"
+],
+[
+"14",
+"CUR_855_MILLIAMP"
+],
+[
+"15",
+"CUR_1000_MILLIAMP"
+]
+],
+"desc": "Limit the maximum source current for the low and high side gates of the Y2 phase."
+},
+{
+"nr": 249,
+"name": "BOOTSTRAP_CURRENT_LIMIT",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 7,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+],
+"default": 7,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"CUR_45_MILLIAMP"
+],
+[
+"1",
+"CUR_91_MILLIAMP"
+],
+[
+"2",
+"CUR_141_MILLIAMP"
+],
+[
+"3",
+"CUR_191_MILLIAMP"
+],
+[
+"4",
+"CUR_267_MILLIAMP"
+],
+[
+"5",
+"CUR_292_MILLIAMP"
+],
+[
+"6",
+"CUR_341_MILLIAMP"
+],
+[
+"7",
+"CUR_391_MILLIAMP"
+]
+],
+"desc": "Bootstrap current limit."
+},
+{
+"nr": 250,
+"name": "UNDERVOLTAGE_PROTECTION_SUPPLY_LEVEL",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 16,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Undervoltage protection level for VS (Supply voltage). 0 disables the comparator. 1-16 are mapped to 0-15 HW values, with the comparator enabled."
+},
+{
+"nr": 251,
+"name": "UNDERVOLTAGE_PROTECTION_VDRV_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the undervoltage protection for VDRV (Driver voltage)."
+},
+{
+"nr": 252,
+"name": "UNDERVOLTAGE_PROTECTION_BST_UVW_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the undervoltage protection on the bootstrap capacitor of the UVW phases."
+},
+{
+"nr": 253,
+"name": "UNDERVOLTAGE_PROTECTION_BST_Y2_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the undervoltage protection on the bootstrap capacitor of the Y2 phase."
+},
+{
+"nr": 254,
+"name": "OVERCURRENT_PROTECTION_UVW_LOW_SIDE_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the overcurrent protection on the low side of the UVW phases."
+},
+{
+"nr": 255,
+"name": "OVERCURRENT_PROTECTION_UVW_HIGH_SIDE_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the overcurrent protection on the high side of the UVW phases."
+},
+{
+"nr": 256,
+"name": "OVERCURRENT_PROTECTION_Y2_LOW_SIDE_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the overcurrent protection on the low side of the Y2 phase."
+},
+{
+"nr": 257,
+"name": "OVERCURRENT_PROTECTION_Y2_HIGH_SIDE_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the overcurrent protection on the high side of the Y2 phase."
+},
+{
+"nr": 258,
+"name": "OVERCURRENT_PROTECTION_UVW_LOW_SIDE_THRESHOLD",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 15,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"V_80_OR_63_MILLIVOLT"
+],
+[
+"1",
+"V_165_OR_125_MILLIVOLT"
+],
+[
+"2",
+"V_250_OR_187_MILLIVOLT"
+],
+[
+"3",
+"V_330_OR_248_MILLIVOLT"
+],
+[
+"4",
+"V_415_OR_312_MILLIVOLT"
+],
+[
+"5",
+"V_500_OR_374_MILLIVOLT"
+],
+[
+"6",
+"V_582_OR_434_MILLIVOLT"
+],
+[
+"7",
+"V_660_OR_504_MILLIVOLT"
+],
+[
+"8",
+"V_125_OR_705_MILLIVOLT"
+],
+[
+"9",
+"V_250_OR_940_MILLIVOLT"
+],
+[
+"10",
+"V_375_OR_1180_MILLIVOLT"
+],
+[
+"11",
+"V_500_OR_1410_MILLIVOLT"
+],
+[
+"12",
+"V_625_OR_1650_MILLIVOLT"
+],
+[
+"13",
+"V_750_OR_1880_MILLIVOLT"
+],
+[
+"14",
+"V_875_OR_2110_MILLIVOLT"
+],
+[
+"15",
+"V_1000_OR_2350_MILLIVOLT"
+]
+],
+"desc": "Overcurrent protection threshold for the low side of the UVW phases (uses second list if OVERCURRENT_PROTECTION_UVW_LOW_SIDE_USE_VD S=true)."
+},
+{
+"nr": 259,
+"name": "OVERCURRENT_PROTECTION_UVW_HIGH_SIDE_THRESHOLD",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 15,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"V_63_MILLIVOLT"
+],
+[
+"1",
+"V_125_MILLIVOLT"
+],
+[
+"2",
+"V_187_MILLIVOLT"
+],
+[
+"3",
+"V_248_MILLIVOLT"
+],
+[
+"4",
+"V_312_MILLIVOLT"
+],
+[
+"5",
+"V_374_MILLIVOLT"
+],
+[
+"6",
+"V_434_MILLIVOLT"
+],
+[
+"7",
+"V_504_MILLIVOLT"
+],
+[
+"8",
+"V_705_MILLIVOLT"
+],
+[
+"9",
+"V_940_MILLIVOLT"
+],
+[
+"10",
+"V_1180_MILLIVOLT"
+],
+[
+"11",
+"V_1410_MILLIVOLT"
+],
+[
+"12",
+"V_1650_MILLIVOLT"
+],
+[
+"13",
+"V_1880_MILLIVOLT"
+],
+[
+"14",
+"V_2110_MILLIVOLT"
+],
+[
+"15",
+"V_2350_MILLIVOLT"
+]
+],
+"desc": "Overcurrent protection threshold for the high side of the UVW phases."
+},
+{
+"nr": 260,
+"name": "OVERCURRENT_PROTECTION_Y2_LOW_SIDE_THRESHOLD",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 15,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"V_80_OR_63_MILLIVOLT"
+],
+[
+"1",
+"V_165_OR_125_MILLIVOLT"
+],
+[
+"2",
+"V_250_OR_187_MILLIVOLT"
+],
+[
+"3",
+"V_330_OR_248_MILLIVOLT"
+],
+[
+"4",
+"V_415_OR_312_MILLIVOLT"
+],
+[
+"5",
+"V_500_OR_374_MILLIVOLT"
+],
+[
+"6",
+"V_582_OR_434_MILLIVOLT"
+],
+[
+"7",
+"V_660_OR_504_MILLIVOLT"
+],
+[
+"8",
+"V_125_OR_705_MILLIVOLT"
+],
+[
+"9",
+"V_250_OR_940_MILLIVOLT"
+],
+[
+"10",
+"V_375_OR_1180_MILLIVOLT"
+],
+[
+"11",
+"V_500_OR_1410_MILLIVOLT"
+],
+[
+"12",
+"V_625_OR_1650_MILLIVOLT"
+],
+[
+"13",
+"V_750_OR_1880_MILLIVOLT"
+],
+[
+"14",
+"V_875_OR_2110_MILLIVOLT"
+],
+[
+"15",
+"V_1000_OR_2350_MILLIVOLT"
+]
+],
+"desc": "Overcurrent protection threshold for the low side of the Y2 phase (uses second list if OVERCURRENT_PROTECTION_Y2_LOW_SIDE_USE_VDS= true)."
+},
+{
+"nr": 261,
+"name": "OVERCURRENT_PROTECTION_Y2_HIGH_SIDE_THRESHOLD",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 15,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"V_63_MILLIVOLT"
+],
+[
+"1",
+"V_125_MILLIVOLT"
+],
+[
+"2",
+"V_187_MILLIVOLT"
+],
+[
+"3",
+"V_248_MILLIVOLT"
+],
+[
+"4",
+"V_312_MILLIVOLT"
+],
+[
+"5",
+"V_374_MILLIVOLT"
+],
+[
+"6",
+"V_434_MILLIVOLT"
+],
+[
+"7",
+"V_504_MILLIVOLT"
+],
+[
+"8",
+"V_705_MILLIVOLT"
+],
+[
+"9",
+"V_940_MILLIVOLT"
+],
+[
+"10",
+"V_1180_MILLIVOLT"
+],
+[
+"11",
+"V_1410_MILLIVOLT"
+],
+[
+"12",
+"V_1650_MILLIVOLT"
+],
+[
+"13",
+"V_1880_MILLIVOLT"
+],
+[
+"14",
+"V_2110_MILLIVOLT"
+],
+[
+"15",
+"V_2350_MILLIVOLT"
+]
+],
+"desc": "Overcurrent protection threshold for the high side of the Y2 phase."
+},
+{
+"nr": 262,
+"name": "OVERCURRENT_PROTECTION_UVW_LOW_SIDE_BLANKING",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 7,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+],
+"default": 2,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OFF"
+],
+[
+"1",
+"T_0_25_MICROSEC"
+],
+[
+"2",
+"T_0_5_MICROSEC"
+],
+[
+"3",
+"T_1_MICROSEC"
+],
+[
+"4",
+"T_2_MICROSEC"
+],
+[
+"5",
+"T_4_MICROSEC"
+],
+[
+"6",
+"T_6_MICROSEC"
+],
+[
+"7",
+"T_8_MICROSEC"
+]
+],
+"desc": "Overcurrent protection blanking time for the low side of the UVW phases."
+},
+{
+"nr": 263,
+"name": "OVERCURRENT_PROTECTION_UVW_HIGH_SIDE_BLANKING",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 7,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+],
+"default": 2,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OFF"
+],
+[
+"1",
+"T_0_25_MICROSEC"
+],
+[
+"2",
+"T_0_5_MICROSEC"
+],
+[
+"3",
+"T_1_MICROSEC"
+],
+[
+"4",
+"T_2_MICROSEC"
+],
+[
+"5",
+"T_4_MICROSEC"
+],
+[
+"6",
+"T_6_MICROSEC"
+],
+[
+"7",
+"T_8_MICROSEC"
+]
+],
+"desc": "Overcurrent protection blanking time for the high side of the UVW phases."
+},
+{
+"nr": 264,
+"name": "OVERCURRENT_PROTECTION_Y2_LOW_SIDE_BLANKING",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 7,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+],
+"default": 2,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OFF"
+],
+[
+"1",
+"T_0_25_MICROSEC"
+],
+[
+"2",
+"T_0_5_MICROSEC"
+],
+[
+"3",
+"T_1_MICROSEC"
+],
+[
+"4",
+"T_2_MICROSEC"
+],
+[
+"5",
+"T_4_MICROSEC"
+],
+[
+"6",
+"T_6_MICROSEC"
+],
+[
+"7",
+"T_8_MICROSEC"
+]
+],
+"desc": "Overcurrent protection blanking time for the low side of the Y2 phase."
+},
+{
+"nr": 265,
+"name": "OVERCURRENT_PROTECTION_Y2_HIGH_SIDE_BLANKING",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 7,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+],
+"default": 2,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OFF"
+],
+[
+"1",
+"T_0_25_MICROSEC"
+],
+[
+"2",
+"T_0_5_MICROSEC"
+],
+[
+"3",
+"T_1_MICROSEC"
+],
+[
+"4",
+"T_2_MICROSEC"
+],
+[
+"5",
+"T_4_MICROSEC"
+],
+[
+"6",
+"T_6_MICROSEC"
+],
+[
+"7",
+"T_8_MICROSEC"
+]
+],
+"desc": "Overcurrent protection blanking time for the high side of the Y2 phase."
+},
+{
+"nr": 266,
+"name": "OVERCURRENT_PROTECTION_UVW_LOW_SIDE_DEGLITCH",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 7,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+],
+"default": 6,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OFF"
+],
+[
+"1",
+"T_0_25_MICROSEC"
+],
+[
+"2",
+"T_0_5_MICROSEC"
+],
+[
+"3",
+"T_1_MICROSEC"
+],
+[
+"4",
+"T_2_MICROSEC"
+],
+[
+"5",
+"T_4_MICROSEC"
+],
+[
+"6",
+"T_6_MICROSEC"
+],
+[
+"7",
+"T_8_MICROSEC"
+]
+],
+"desc": "Overcurrent protection deglitch time for the low side of the UVW phases."
+},
+{
+"nr": 267,
+"name": "OVERCURRENT_PROTECTION_UVW_HIGH_SIDE_DEGLITCH",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 7,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+],
+"default": 6,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OFF"
+],
+[
+"1",
+"T_0_25_MICROSEC"
+],
+[
+"2",
+"T_0_5_MICROSEC"
+],
+[
+"3",
+"T_1_MICROSEC"
+],
+[
+"4",
+"T_2_MICROSEC"
+],
+[
+"5",
+"T_4_MICROSEC"
+],
+[
+"6",
+"T_6_MICROSEC"
+],
+[
+"7",
+"T_8_MICROSEC"
+]
+],
+"desc": "Overcurrent protection deglitch time for the high side of the UVW phases."
+},
+{
+"nr": 268,
+"name": "OVERCURRENT_PROTECTION_Y2_LOW_SIDE_DEGLITCH",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 7,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+],
+"default": 6,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OFF"
+],
+[
+"1",
+"T_0_25_MICROSEC"
+],
+[
+"2",
+"T_0_5_MICROSEC"
+],
+[
+"3",
+"T_1_MICROSEC"
+],
+[
+"4",
+"T_2_MICROSEC"
+],
+[
+"5",
+"T_4_MICROSEC"
+],
+[
+"6",
+"T_6_MICROSEC"
+],
+[
+"7",
+"T_8_MICROSEC"
+]
+],
+"desc": "Overcurrent protection deglitch time for the low side of the Y2 phase."
+},
+{
+"nr": 269,
+"name": "OVERCURRENT_PROTECTION_Y2_HIGH_SIDE_DEGLITCH",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 7,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+],
+"default": 6,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OFF"
+],
+[
+"1",
+"T_0_25_MICROSEC"
+],
+[
+"2",
+"T_0_5_MICROSEC"
+],
+[
+"3",
+"T_1_MICROSEC"
+],
+[
+"4",
+"T_2_MICROSEC"
+],
+[
+"5",
+"T_4_MICROSEC"
+],
+[
+"6",
+"T_6_MICROSEC"
+],
+[
+"7",
+"T_8_MICROSEC"
+]
+],
+"desc": "Overcurrent protection deglitch time for the high side of the Y2 phase."
+},
+{
+"nr": 270,
+"name": "OVERCURRENT_PROTECTION_UVW_LOW_SIDE_USE_VDS",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Use the VDS measurement for the overcurrent protection on the low side of the UVW phases."
+},
+{
+"nr": 271,
+"name": "OVERCURRENT_PROTECTION_Y2_LOW_SIDE_USE_VDS",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Use the VDS measurement for the overcurrent protection on the low side of the Y2 phase."
+},
+{
+"nr": 272,
+"name": "VGS_SHORT_ON_PROTECTION_UVW_LOW_SIDE_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the gate-source short protection for the ON transition of the low side of the UVW phases."
+},
+{
+"nr": 273,
+"name": "VGS_SHORT_OFF_PROTECTION_UVW_LOW_SIDE_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the gate-source short protection for the OFF transition of the low side of the UVW phases."
+},
+{
+"nr": 274,
+"name": "VGS_SHORT_ON_PROTECTION_UVW_HIGH_SIDE_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the gate-source short protection for the ON transition of the high side of the UVW phases."
+},
+{
+"nr": 275,
+"name": "VGS_SHORT_OFF_PROTECTION_UVW_HIGH_SIDE_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the gate-source short protection for the OFF transition of the high side of the UVW phases."
+},
+{
+"nr": 276,
+"name": "VGS_SHORT_ON_PROTECTION_Y2_LOW_SIDE_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the gate-source short protection for the ON transition of the low side of the Y2 phase."
+},
+{
+"nr": 277,
+"name": "VGS_SHORT_OFF_PROTECTION_Y2_LOW_SIDE_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the gate-source short protection for the OFF transition of the low side of the Y2 phase."
+},
+{
+"nr": 278,
+"name": "VGS_SHORT_ON_PROTECTION_Y2_HIGH_SIDE_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the gate-source short protection for the ON transition of the high side of the Y2 phase."
+},
+{
+"nr": 279,
+"name": "VGS_SHORT_OFF_PROTECTION_Y2_HIGH_SIDE_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the gate-source short protection for the OFF transition of the high side of the Y2 phase."
+},
+{
+"nr": 280,
+"name": "VGS_SHORT_PROTECTION_UVW_BLANKING",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OFF"
+],
+[
+"1",
+"T_0_25_MICROSEC"
+],
+[
+"2",
+"T_0_5_MICROSEC"
+],
+[
+"3",
+"T_1_MICROSEC"
+]
+],
+"desc": "Gate-source short protection blanking time for the low and high sides of the UVW phases."
+},
+{
+"nr": 281,
+"name": "VGS_SHORT_PROTECTION_Y2_BLANKING",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OFF"
+],
+[
+"1",
+"T_0_25_MICROSEC"
+],
+[
+"2",
+"T_0_5_MICROSEC"
+],
+[
+"3",
+"T_1_MICROSEC"
+]
+],
+"desc": "Gate-source short protection blanking time for the low and high sides of the Y2 phase."
+},
+{
+"nr": 282,
+"name": "VGS_SHORT_PROTECTION_UVW_DEGLITCH",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 7,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OFF"
+],
+[
+"1",
+"T_0_25_MICROSEC"
+],
+[
+"2",
+"T_0_5_MICROSEC"
+],
+[
+"3",
+"T_1_MICROSEC"
+],
+[
+"4",
+"T_2_MICROSEC"
+],
+[
+"5",
+"T_4_MICROSEC"
+],
+[
+"6",
+"T_6_MICROSEC"
+],
+[
+"7",
+"T_8_MICROSEC"
+]
+],
+"desc": "Gate-source short protection deglitch time for the low and high sides of the UVW phases."
+},
+{
+"nr": 283,
+"name": "VGS_SHORT_PROTECTION_Y2_DEGLITCH",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 7,
+"allowed": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OFF"
+],
+[
+"1",
+"T_0_25_MICROSEC"
+],
+[
+"2",
+"T_0_5_MICROSEC"
+],
+[
+"3",
+"T_1_MICROSEC"
+],
+[
+"4",
+"T_2_MICROSEC"
+],
+[
+"5",
+"T_4_MICROSEC"
+],
+[
+"6",
+"T_6_MICROSEC"
+],
+[
+"7",
+"T_8_MICROSEC"
+]
+],
+"desc": "Gate-source short protection deglitch time for low and high sides of the Y2 phase."
+},
+{
+"nr": 286,
+"name": "GDRV_RETRY_BEHAVIOUR",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OPEN_CIRCUIT"
+],
+[
+"1",
+"ELECTRICAL_BRAKING"
+]
+],
+"desc": "This value defines the state the system goes to after a fault condition on a motor phase occurs. The system switches off and discharges the gates. The motor can spin freely. The system switches off and, if possible and depending on fault, enables the LS or HS gates, braking the motor electrically."
+},
+{
+"nr": 287,
+"name": "DRIVE_FAULT_BEHAVIOUR",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 3,
+"allowed": [
+0,
+1,
+2,
+3
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"0",
+"OPEN_CIRCUIT"
+],
+[
+"1",
+"ELECTRICAL_BRAKING"
+],
+[
+"2",
+"MECHANICAL_BRAKING_AND_OPEN_CIRCUIT"
+],
+[
+"3",
+"MECHANICAL_AND_ELECTRICAL_BRAKING"
+]
+],
+"desc": "This value defines the state the system goes to after a fault condition on a motor phase occurs and all retries failed. The system switches off and discharges the LS and HS gates, letting the motor spin freely. The system switches off and, if possible and depending on fault, enables the LS or HS gates, braking the motor electrically. The system switches off, discharges the LS and HS gates, and, if correctly configured, engages the mechanical brake. The system switches off, if possible and depending on fault, enables the LS or HS gates, and, if correctly configured, engages the mechanical brake."
+},
+{
+"nr": 288,
+"name": "FAULT_HANDLER_NUMBER_OF_RETRIES",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 255,
+"allowed": null,
+"default": 5,
+"rw": "RWE",
+"enums": [],
+"desc": "Maximum number of retries that are performed for every fault that is detected."
+},
+{
+"nr": 289,
+"name": "GENERAL_STATUS_FLAGS",
+"unit": null,
+"kind": null,
+"min": null,
+"max": null,
+"allowed": null,
+"default": null,
+"rw": "",
+"enums": [],
+"desc": "Actual status flags. 0x00000001: REGULATION_STOPPED 0x00000002: REGULATION_TORQUE 0x00000004: REGULATION_VELOCITY 0x00000008: REGULATION_POSITION 0x00000010: CONFIG_STORED 0x00000020: CONFIG_LOADED 0x00000040: CONFIG_READ_ONLY 0x00000080: TMCL_SCRIPT_READ_ONLY 0x00000100: BRAKE_CHOPPER_ACTIVE 0x00000200: POSITION_REACHED 0x00000400: VELOCITY_REACHED 0x00000800: ADC_OFFSET_CALIBRATED 0x00001000: RAMPER_LATCHED 0x00002000: RAMPER_EVENT_STOP_SWITCH 0x00004000: RAMPER_EVENT_STOP_DEVIATION 0x00008000: RAMPER_VELOCITY_REACHED 0x00010000: RAMPER_POSITION_REACHED 0x00020000: RAMPER_SECOND_MOVE 0x00040000: IIT_1_ACTIVE 0x00080000: IIT_2_ACTIVE 0x00100000: REFSEARCH_FINISHED 0x00200000: Y2_USED_FOR_BRAKING 0x00800000: STEPDIR_INPUT_AVAILABLE 0x01000000: RIGHT_REF_SWITCH_AVAILABLE 0x02000000: HOME_REF_SWITCH_AVAILABLE 0x04000000: LEFT_REF_SWITCH_AVAILABLE 0x08000000: ABN2_FEEDBACK_AVAILABLE 0x10000000: HALL_FEEDBACK_AVAILABLE 0x20000000: ABN1_FEEDBACK_AVAILABLE 0x40000000: SPI_FLASH_AVAILABLE 0x80000000: I2C_EEPROM_AVAILABLE"
+},
+{
+"nr": 290,
+"name": "SUPPLY_VOLTAGE",
+"unit": "0.1V",
+"kind": "range",
+"min": 0,
+"max": 1000,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "The actual supply voltage."
+},
+{
+"nr": 291,
+"name": "SUPPLY_OVERVOLTAGE_WARNING_THRESHOLD",
+"unit": "0.1V",
+"kind": "range",
+"min": 0,
+"max": 1000,
+"allowed": null,
+"default": 480,
+"rw": "RWE",
+"enums": [],
+"desc": "The supply overvoltage warning threshold."
+},
+{
+"nr": 292,
+"name": "SUPPLY_UNDERVOLTAGE_WARNING_THRESHOLD",
+"unit": "0.1V",
+"kind": "range",
+"min": 0,
+"max": 1000,
+"allowed": null,
+"default": 50,
+"rw": "RWE",
+"enums": [],
+"desc": "The supply undervoltage warning threshold."
+},
+{
+"nr": 293,
+"name": "EXTERNAL_TEMPERATURE",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "The actual temperature at the external temperature sensor."
+},
+{
+"nr": 294,
+"name": "EXTERNAL_TEMPERATURE_SHUTDOWN_THRESHOLD",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 65535,
+"rw": "RWE",
+"enums": [],
+"desc": "The temperature threshold at which the motor driver is shut down."
+},
+{
+"nr": 295,
+"name": "EXTERNAL_TEMPERATURE_WARNING_THRESHOLD",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 65535,
+"rw": "RWE",
+"enums": [],
+"desc": "The temperature threshold above which the warning flag is set."
+},
+{
+"nr": 296,
+"name": "CHIP_TEMPERATURE",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "The actual temperature of the chip."
+},
+{
+"nr": 297,
+"name": "CHIP_TEMPERATURE_SHUTDOWN_THRESHOLD",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 65535,
+"rw": "RWE",
+"enums": [],
+"desc": "The temperature threshold at which the motor driver is shut down."
+},
+{
+"nr": 298,
+"name": "CHIP_TEMPERATURE_WARNING_THRESHOLD",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 65535,
+"allowed": null,
+"default": 65535,
+"rw": "RWE",
+"enums": [],
+"desc": "The temperature threshold above which the warning flag is set."
+},
+{
+"nr": 299,
+"name": "GENERAL_ERROR_FLAGS",
+"unit": null,
+"kind": null,
+"min": null,
+"max": null,
+"allowed": null,
+"default": null,
+"rw": "",
+"enums": [],
+"desc": "Actual error flags. 0x00000001: CONFIG_ERROR 0x00000002: TMCL_SCRIPT_ERROR 0x00000004: HOMESWITCH_NOT_FOUND 0x00000020: HALL_ERROR 0x00000200: WATCHDOG_EVENT 0x00002000: EXT_TEMP_EXCEEDED 0x00004000: CHIP_TEMP_EXCEEDED 0x00010000: ITT_1_EXCEEDED 0x00020000: ITT_2_EXCEEDED 0x00040000: EXT_TEMP_WARNING 0x00080000: SUPPLY_OVERVOLTAGE_WARNING 0x00100000: SUPPLY_UNDERVOLTAGE_WARNING 0x00200000: ADC_IN_OVERVOLTAGE 0x00400000: FAULT_RETRY_HAPPEND 0x00800000: FAULT_RETRIES_FAILED 0x01000000: CHIP_TEMP_WARNING 0x04000000: HEARTBEAT_STOPPED"
+},
+{
+"nr": 300,
+"name": "GDRV_ERROR_FLAGS",
+"unit": null,
+"kind": null,
+"min": null,
+"max": null,
+"allowed": null,
+"default": null,
+"rw": "",
+"enums": [],
+"desc": "Gate driver error flags. 0x00000001: U_LOW_SIDE_OVERCURRENT 0x00000002: V_LOW_SIDE_OVERCURRENT 0x00000004: W_LOW_SIDE_OVERCURRENT 0x00000008: Y2_LOW_SIDE_OVERCURRENT 0x00000010: U_LOW_SIDE_DISCHARGE_SHORT 0x00000020: V_LOW_SIDE_DISCHARGE_SHORT 0x00000040: W_LOW_SIDE_DISCHARGE_SHORT 0x00000080: Y2_LOW_SIDE_DISCHARGE_SHORT 0x00000100: U_LOW_SIDE_CHARGE_SHORT 0x00000200: V_LOW_SIDE_CHARGE_SHORT 0x00000400: W_LOW_SIDE_CHARGE_SHORT 0x00000800: Y2_LOW_SIDE_CHARGE_SHORT 0x00001000: U_BOOTSTRAP_UNDERVOLTAGE 0x00002000: V_BOOTSTRAP_UNDERVOLTAGE 0x00004000: W_BOOTSTRAP_UNDERVOLTAGE 0x00008000: Y2_BOOTSTRAP_UNDERVOLTAGE 0x00010000: U_HIGH_SIDE_OVERCURRENT 0x00020000: V_HIGH_SIDE_OVERCURRENT 0x00040000: W_HIGH_SIDE_OVERCURRENT 0x00080000: Y2_HIGH_SIDE_OVERCURRENT 0x00100000: U_HIGH_SIDE_DISCHARGE_SHORT 0x00200000: V_HIGH_SIDE_DISCHARGE_SHORT 0x00400000: W_HIGH_SIDE_DISCHARGE_SHORT 0x00800000: Y2_HIGH_SIDE_DISCHARGE_SHORT 0x01000000: U_HIGH_SIDE_CHARGE_SHORT 0x02000000: V_HIGH_SIDE_CHARGE_SHORT 0x04000000: W_HIGH_SIDE_CHARGE_SHORT 0x08000000: Y2_HIGH_SIDE_CHARGE_SHORT 0x20000000: GDRV_UNDERVOLTAGE 0x40000000: GDRV_LOW_VOLTAGE 0x80000000: GDRV_SUPPLY_UNDERVOLTAGE"
+},
+{
+"nr": 301,
+"name": "ADC_STATUS_FLAGS",
+"unit": null,
+"kind": null,
+"min": null,
+"max": null,
+"allowed": null,
+"default": null,
+"rw": "",
+"enums": [],
+"desc": "ADC channel clipped. Flags do latch, write 1 to clear. 0x00000001: I0_CLIPPED 0x00000002: I1_CLIPPED 0x00000004: I2_CLIPPED 0x00000008: I3_CLIPPED 0x00000010: U0_CLIPPED 0x00000020: U1_CLIPPED 0x00000040: U2_CLIPPED 0x00000080: U3_CLIPPED 0x00000100: AIN0_CLIPPED 0x00000200: AIN1_CLIPPED 0x00000400: AIN2_CLIPPED 0x00000800: AIN3_CLIPPED 0x00001000: VM_CLIPPED 0x00002000: TEMP_CLIPPED"
+},
+{
+"nr": 304,
+"name": "MCC_INPUTS_RAW",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Raw inputs for ABN, hall, reference switches, driver enabled, hall filtered and ABN2 or Step/Dir."
+},
+{
+"nr": 305,
+"name": "FOC_VOLTAGE_UX",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Interim result of the FOC for phase U (X in case of motor type is a stepper motor)."
+},
+{
+"nr": 306,
+"name": "FOC_VOLTAGE_WY",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Interim result of the FOC for phase W (Y in case of motor type is a stepper motor)."
+},
+{
+"nr": 307,
+"name": "FOC_VOLTAGE_V",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Interim result of the FOC for phase V (BLDC motor only)."
+},
+{
+"nr": 308,
+"name": "FIELDWEAKENING_I",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "I parameter for field weakening controller."
+},
+{
+"nr": 310,
+"name": "FIELDWEAKENING_VOLTAGE_THRESHOLD",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 32767,
+"allowed": null,
+"default": 32767,
+"rw": "RWE",
+"enums": [],
+"desc": "Maximum motor voltage allowed for field weakening."
+},
+{
+"nr": 311,
+"name": "FOC_CURRENT_UX",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Interim measurement of the FOC for phase UX."
+},
+{
+"nr": 312,
+"name": "FOC_CURRENT_V",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Interim measurement of the FOC for phase V."
+},
+{
+"nr": 313,
+"name": "FOC_CURRENT_WY",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Interim measurement of the FOC for phase WY."
+},
+{
+"nr": 314,
+"name": "FOC_VOLTAGE_UQ",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Interim measurement of the FOC for Uq."
+},
+{
+"nr": 315,
+"name": "FOC_CURRENT_IQ",
+"unit": null,
+"kind": "range",
+"min": -32768,
+"max": 32767,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Interim measurement of the FOC for Iq."
+},
+{
+"nr": 318,
+"name": "TARGET_TORQUE_BIQUAD_FILTER_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 0,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the target torque biquad filter."
+},
+{
+"nr": 319,
+"name": "TARGET_TORQUE_BIQUAD_FILTER_ACOEFF_1",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Target torque biquad filter aCoeff_1."
+},
+{
+"nr": 320,
+"name": "TARGET_TORQUE_BIQUAD_FILTER_ACOEFF_2",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Target torque biquad filter aCoeff_2."
+},
+{
+"nr": 321,
+"name": "TARGET_TORQUE_BIQUAD_FILTER_BCOEFF_0",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 1048576,
+"rw": "RWE",
+"enums": [],
+"desc": "Target torque biquad filter bCoeff_0."
+},
+{
+"nr": 322,
+"name": "TARGET_TORQUE_BIQUAD_FILTER_BCOEFF_1",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Target torque biquad filter bCoeff_1."
+},
+{
+"nr": 323,
+"name": "TARGET_TORQUE_BIQUAD_FILTER_BCOEFF_2",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 0,
+"rw": "RWE",
+"enums": [],
+"desc": "Target torque biquad filter bCoeff_2."
+},
+{
+"nr": 324,
+"name": "ACTUAL_VELOCITY_BIQUAD_FILTER_ENABLE",
+"unit": null,
+"kind": "set",
+"min": 0,
+"max": 1,
+"allowed": [
+0,
+1
+],
+"default": 1,
+"rw": "RWE",
+"enums": [
+[
+"False",
+"DISABLED"
+],
+[
+"True",
+"ENABLED"
+]
+],
+"desc": "Enable the actual velocity biquad filter."
+},
+{
+"nr": 325,
+"name": "ACTUAL_VELOCITY_BIQUAD_FILTER_ACOEFF_1",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 1849195,
+"rw": "RWE",
+"enums": [],
+"desc": "Actual velocity biquad filter aCoeff_1."
+},
+{
+"nr": 326,
+"name": "ACTUAL_VELOCITY_BIQUAD_FILTER_ACOEFF_2",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 15961938,
+"rw": "RWE",
+"enums": [],
+"desc": "Actual velocity biquad filter aCoeff_2."
+},
+{
+"nr": 327,
+"name": "ACTUAL_VELOCITY_BIQUAD_FILTER_BCOEFF_0",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 3665,
+"rw": "RWE",
+"enums": [],
+"desc": "Actual velocity biquad filter bCoeff_0."
+},
+{
+"nr": 328,
+"name": "ACTUAL_VELOCITY_BIQUAD_FILTER_BCOEFF_1",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 7329,
+"rw": "RWE",
+"enums": [],
+"desc": "Actual velocity biquad filter bCoeff_1."
+},
+{
+"nr": 329,
+"name": "ACTUAL_VELOCITY_BIQUAD_FILTER_BCOEFF_2",
+"unit": null,
+"kind": "range",
+"min": -2147483648,
+"max": 2147483647,
+"allowed": null,
+"default": 3665,
+"rw": "RWE",
+"enums": [],
+"desc": "Actual velocity biquad filter bCoeff_2."
+},
+{
+"nr": 330,
+"name": "TORQUE_FLUX_COMBINED_TARGET_VALUES",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Raw (unscaled) torque and flux target values combined into one 32 bit value. This is only used for simplified compact measurement during tuning operations."
+},
+{
+"nr": 331,
+"name": "TORQUE_FLUX_COMBINED_ACTUAL_VALUES",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Raw (unscaled) torque and flux actual values combined into one 32 bit value. This is only used for simplified compact measurement during tuning operations."
+},
+{
+"nr": 332,
+"name": "VOLTAGE_D_Q_COMBINED_ACTUAL_VALUES",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Raw (unscaled) voltage actual values combined into one 32 bit value. This is only used for simplified compact measurement during tuning operations."
+},
+{
+"nr": 333,
+"name": "INTEGRATED_ACTUAL_TORQUE_VALUE",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Periodically summed up actual torque value. This is only used for simplified measurement with low measurement frequency during tuning operations."
+},
+{
+"nr": 334,
+"name": "INTEGRATED_ACTUAL_VELOCITY_VALUE",
+"unit": null,
+"kind": "range",
+"min": 0,
+"max": 4294967295,
+"allowed": null,
+"default": 0,
+"rw": "R",
+"enums": [],
+"desc": "Periodically summed up actual velocity value. This is only used for simplified measurement with low measurement frequency during tuning operations."
+}
+]

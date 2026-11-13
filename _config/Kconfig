@@ -1,0 +1,49 @@
+# Kconfig for the TMC9660 driver. The root CMakeLists.txt registers it with ESP-IDF
+# (idf_component_register(... KCONFIG _config/Kconfig)), so `idf.py menuconfig` shows
+# "TMC9660 servo controller". The values reach the code only through
+# inc/tmc9660_kconfig.hpp; no public driver signature uses them.
+menuconfig TMC9660
+    bool "TMC9660 servo controller"
+    default y
+    help
+      Defaults for tmc9660::KconfigDefaults(). The driver itself does not
+      need Kconfig; outside ESP-IDF the same defaults come from Config{}.
+
+if TMC9660
+
+choice TMC9660_MODE
+    prompt "Protocol the chip is in at start-up"
+    default TMC9660_MODE_PARAMETER
+    help
+      Config::mode. The chip speaks the protocol its boot configuration selects.
+
+config TMC9660_MODE_BOOTLOADER
+    bool "Bootloader"
+config TMC9660_MODE_PARAMETER
+    bool "Parameter mode (TMCL)"
+config TMC9660_MODE_REGISTER
+    bool "Register mode"
+
+endchoice
+
+config TMC9660_DEVICE_ADDRESS
+    int "UART device address (odd for TMCL and register mode)"
+    range 1 255
+    default 1
+
+config TMC9660_BOOT_TIMEOUT_MS
+    int "Wait for the chip after a reset (ms)"
+    range 10 10000
+    default 500
+    help
+      T_WAKE is 44 ms typical; the datasheet gives no maximum.
+
+config TMC9660_HARDWARE_RESET
+    bool "Pulse RSTN at start-up (needs the GpioSet hook)"
+    default n
+
+config TMC9660_NO_UART_CANARY
+    bool "Disable the reset canary of parameter mode over UART"
+    default n
+
+endif

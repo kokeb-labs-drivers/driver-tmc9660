@@ -1,0 +1,19 @@
+---
+# How this repository was made from kokeb-labs/driver-template. The template's drift check
+# (tools/scaffold.py --check-drift, CI: kokeb-labs/ci-tools ru-template-drift) scaffolds the template again
+# with these arguments and compares the files it manages. List a file under `local` only when it differs on
+# purpose, with the reason.
+template: unknown
+kind: "driver"
+name: "tmc9660"
+bus: "spi"
+namespace: "tmc9660"
+description: "C++20 driver for the TMC9660 servo controller and gate driver (bootloader, parameter mode and register mode over SPI or UART)"
+include_root: null
+org: "kokeb-labs-drivers"
+repo: "driver-tmc9660"
+author: "The driver-tmc9660 authors"
+license: "MIT"
+datasheet: "https://www.analog.com/media/en/technical-documentation/data-sheets/tmc9660.pdf"
+platforms: [host, esp32]
+local: []
