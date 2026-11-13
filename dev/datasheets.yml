@@ -1,0 +1,156 @@
+---
+# The vendor documents this driver was written against (handbook ADR-0019), and where the driver relies on them.
+# Never commit a PDF: `sha256` identifies the exact file that was used, so a reader can confirm they hold the same
+# revision. `pdf` is a stable direct link when the vendor publishes one; otherwise readers download from `url`.
+# The reference manuals print a revision and a month ("Rev 0; 02/25") but no document number, so `number` is n/a and
+# `date` is the month only. The application note prints neither a date nor a revision month; its
+# `date` is the creation date of the PDF file (2025-01-08).
+#
+# The README card, docs/datasheet.md and the "Datasheet" box on each page are generated from this file by
+# tools/docs/generators/datasheet.py (`kokeb-docs gen`). Section names and printed page numbers are the
+# documents' own.
+documents:
+  - id: ds
+    vendor: Analog Devices (Trinamic)
+    title: TMC9660 70V Smart Gate Driver with Servo (FOC) Controller in HW and Buck Converter
+    kind: Datasheet
+    number: 19-101926
+    revision: "1"
+    date: "2024-11"
+    url: https://www.analog.com/en/products/tmc9660.html
+    pdf: null
+    page_offset: 0
+    sha256: "bfa29e7710b6b6a145aae98ff714342f393d8d8c4a7d14416b9e65202c07287d"
+  - id: pm
+    vendor: Analog Devices (Trinamic)
+    title: TMC9660 Parameter Mode Reference Manual
+    kind: Datasheet
+    number: n/a
+    revision: "0"
+    date: "2025-02"
+    url: https://www.analog.com/en/products/tmc9660.html
+    pdf: null
+    page_offset: 0
+    sha256: "52f5bbc9f860c378ba9adedf76f78c22b5c1da0e643218599af3bb0abbd85a5e"
+  - id: rm
+    vendor: Analog Devices (Trinamic)
+    title: TMC9660 Register Mode Reference Manual
+    kind: Datasheet
+    number: n/a
+    revision: "0"
+    date: "2025-04"
+    url: https://www.analog.com/en/products/tmc9660.html
+    pdf: null
+    page_offset: 0
+    sha256: "47d8da381b6bd8dbdcda9d941cc8affa8265d70ec361cc52f39bfb00a0c0665b"
+  - id: an
+    vendor: Analog Devices (Trinamic)
+    title: TMC9660 Configuration and Bootstrapping
+    kind: Datasheet
+    number: AN-2601
+    revision: "0"
+    date: 2025-01-08
+    url: https://www.analog.com/en/products/tmc9660.html
+    pdf: null
+    page_offset: 0
+    sha256: "0fb66a609303e11896be6fbc05972b9dd4884b17f72d5e58c65915dc748d6c2f"
+
+# One row per thing the driver takes from a document: the documents' own section names and printed page
+# numbers, the driver API that implements it, and the docs pages that explain it (file names in docs/).
+topics:
+  - topic: Package, pins and power-up pin functions
+    doc: ds
+    section: Pin Configurations; Pin Descriptions
+    page: 11
+    driver: "`CtrlPin`, `Config::mode`"
+    docs: [hardware, quickstart]
+  - topic: Application modes
+    doc: ds
+    section: Application Modes
+    page: 16
+    driver: "`Mode`, `GetMode()`, `Error::WrongMode`"
+    docs: [architecture, parameter-mode, register-mode]
+  - topic: Supply ranges and the hibernation mode
+    doc: ds
+    section: Power Supply - Electrical Characteristics
+    page: 17
+    driver: "`CtrlPin::Wake`, `PowerDown()`"
+    docs: [hardware, safety]
+  - topic: Pin functions at power-up and the UART and SPI of the bootloader
+    doc: ds
+    section: General-Purpose Input/Output Description
+    page: 19
+    driver: "`SpiPort`, `UartPort`, `Transfer()`, `Exchange()`"
+    docs: [hardware, porting]
+  - topic: UART bootloader frame and its CRC-8
+    doc: ds
+    section: Bootloader, UART Communication
+    page: 70
+    driver: "`detail::BlUartEncode()`, `Error::Crc`"
+    docs: [bootloader]
+  - topic: SPI bootloader frame and delayed reply
+    doc: ds
+    section: Bootloader, SPI Communication
+    page: 72
+    driver: "`detail::BlSpiEncode()`, `Config::spi_reply_retries`"
+    docs: [bootloader]
+  - topic: Bootloader commands and reply status codes
+    doc: ds
+    section: Bootloader, Commands
+    page: 76
+    driver: "`BlGetInfo()`, `BlRead32()`, `BlWrite32()`, `BlEraseFlashSector()`, `BlStartApplication()`"
+    docs: [bootloader, api-guide]
+  - topic: Boot configuration list, LDO and bootstrap configuration
+    doc: ds
+    section: Bootloader, Configuration
+    page: 83
+    driver: "`BootConfig`, `BootField`, `BlWriteConfig()`"
+    docs: [bootloader, safety, configuration]
+  - topic: Clock, reset, DRV_EN, WAKE and FAULTN
+    doc: ds
+    section: Clock and Control Description
+    page: 63
+    driver: "`CtrlPin`, `Config::hardware_reset`, `Service()`"
+    docs: [hardware, safety, troubleshooting]
+  - topic: Protections and the fault pin
+    doc: ds
+    section: Protections Description
+    page: 56
+    driver: "`GateDriverStart()`, `Error::DeviceFault`"
+    docs: [safety, register-mode]
+  - topic: Errata (OTP_BURN workaround, SPI slave MISO)
+    doc: ds
+    section: Errata
+    page: 99
+    driver: "`BlWrite32()` (OTP never written), `ReturnToBootloader()`"
+    docs: [bootloader, safety]
+  - topic: TMCL frames over UART and SPI
+    doc: pm
+    section: Communication Interfaces
+    page: 8
+    driver: "`SetParam()`, `GetParam()`, `detail::TmclSpiEncode()`"
+    docs: [parameter-mode]
+  - topic: Parameter table
+    doc: pm
+    section: Table 57, Full list of parameters
+    page: 102
+    driver: "`inc/tmc9660_params.hpp`, `FindParam()`"
+    docs: [parameter-mode, datasheet]
+  - topic: Register map
+    doc: rm
+    section: Register Map
+    page: 57
+    driver: "`inc/tmc9660_registers.hpp`, `FindRegister()`"
+    docs: [register-mode, datasheet]
+  - topic: Register-mode SPI and UART datagrams
+    doc: rm
+    section: Communication interfaces
+    page: 8
+    driver: "`ReadReg()`, `WriteReg()`, `UpdateReg()`"
+    docs: [register-mode]
+  - topic: Bootstrapping with the UblTools software
+    doc: an
+    section: Bootstrapping the TMC9660 IC using UblTools
+    page: 1
+    driver: "`BlWriteConfig()`, `BlStartApplication()`"
+    docs: [bootloader]

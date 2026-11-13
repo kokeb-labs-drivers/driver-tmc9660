@@ -1,0 +1,4 @@
+---
+# Deviation records of this repository against MISRA C++:2023 (handbook docs/standards/misra.md), read by the
+# MISRA workflow (ci-misra.yml). None yet: the code has no deviation of its own.
+deviations: []

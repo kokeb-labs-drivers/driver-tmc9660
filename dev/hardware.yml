@@ -1,0 +1,205 @@
+---
+# The chip's hardware in one file: package, pins, the driver hook of each pin, the blocks inside and the reference
+# circuit. `kokeb-docs figures` draws the pinout, the package outline, the block diagram and the circuit from it,
+# `kokeb-docs gen` writes the chip card of the README and the tables of docs/hardware.md,
+# `kokeb-docs hardware --check` validates it and `kokeb-docs hardware --kicad-netlist OUT --circuit ID` exports a
+# circuit for a schematic or PCB tool. Every fact cites the datasheet in docs/datasheets.yml (document `ds`).
+# The outline gives the body size only: the datasheet prints the package outline number, not the drawing.
+schema: 1
+chip: TMC9660
+
+refs:
+  pinout: {doc: ds, section: "Pin Configurations", page: 11}
+  pins: {doc: ds, section: "Pin Descriptions", page: 12}
+  gpio: {doc: ds, section: "General-Purpose Input/Output Description", page: 19}
+  modes: {doc: ds, section: "Application Modes", page: 16}
+  supply: {doc: ds, section: "Power Supply - Electrical Characteristics", page: 17}
+  package: {doc: ds, section: "Package Information", page: 10}
+  ctl: {doc: ds, section: "Clock and Control Description", page: 63}
+  boot: {doc: ds, section: "Bootloader", page: 68}
+  order: {doc: ds, section: "Ordering Information", page: 98}
+  blocks: {doc: ds, section: "Functional Diagrams", page: 15}
+  prot: {doc: ds, section: "Protections Description", page: 56}
+
+package:
+  type: TQFN-64
+  pins: 64
+  exposed_pad: true
+  ref: pinout
+  outline: {length_mm: 9.0, width_mm: 9.0, pitch_mm: 0.5, ref: package}
+
+supply:
+  - {name: VSA, min_v: 7.7, max_v: 80.0, ref: supply}
+  - {name: VS, min_v: 7.7, max_v: 70.0, ref: supply}
+  - {name: VCC_IO, min_v: 2.5, max_v: 5.0, ref: supply}
+
+hooks:
+  - {id: transfer, call: "Transfer()", kind: spi, source: inc/tmc9660_spi_interface.hpp, symbol: Transfer}
+  - {id: exchange, call: "Exchange()", kind: uart, source: inc/tmc9660_uart_interface.hpp, symbol: Exchange}
+  - {id: reset, call: "GpioSet(CtrlPin::Reset)", kind: gpio-out, source: inc/tmc9660_types.hpp, symbol: Reset}
+  - {id: drv_en, call: "GpioSet(CtrlPin::DrvEn)", kind: gpio-out, source: inc/tmc9660_types.hpp, symbol: DrvEn}
+  - {id: wake, call: "GpioSet(CtrlPin::Wake)", kind: gpio-out, source: inc/tmc9660_types.hpp, symbol: Wake}
+  - {id: faultn, call: "GpioGet(CtrlPin::Faultn)", kind: irq, source: inc/tmc9660_types.hpp, symbol: Faultn}
+
+pins:
+  - {number: 1, name: GPIO9, type: bus, domain: VCC_IO, function: "GPIO9, or SPI0_MISO after power-up (bootloader SPI, data out)", hook: transfer, unused: "Leave open (internal pull-up)", ref: pins}
+  - {number: 2, name: GPIO10, type: bus, domain: VCC_IO, function: "GPIO10, or SPI0_MOSI after power-up (bootloader SPI, data in)", hook: transfer, unused: "Leave open (internal pull-up)", ref: pins}
+  - {number: 3, name: GPIO11, type: bus, domain: VCC_IO, function: "GPIO11, or SPI0_SCK after power-up (bootloader SPI, clock in)", hook: transfer, unused: "Leave open (internal pull-up)", ref: pins}
+  - {number: 4, name: GPIO12, type: bus, domain: VCC_IO, function: "GPIO12, or SPI0_CS0 after power-up (bootloader SPI, chip select, active low)", hook: transfer, unused: "Leave open (internal pull-up)", ref: pins}
+  - {number: 5, name: GPIO13, type: digital-io, domain: VCC_IO, function: "GPIO13 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
+  - {number: 6, name: GPIO14, type: digital-io, domain: VCC_IO, function: "GPIO14 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
+  - {number: 7, name: 1V8, type: power, domain: 1V8, function: "Digital core supply input; 10 uF to GND", ref: pins}
+  - {number: 8, name: GND, type: ground, function: "Ground", ref: pins}
+  - {number: 9, name: VCC_IO, type: power, domain: VCC_IO, function: "Logic supply input, 2.5 V to 5 V (3 V or more for SPI at 10 MHz); 1 uF to GND", ref: pins}
+  - {number: 10, name: GPIO15, type: digital-io, domain: VCC_IO, function: "GPIO15 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
+  - {number: 11, name: GPIO16, type: digital-io, domain: VCC_IO, function: "GPIO16 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
+  - {number: 12, name: GPIO17, type: digital-io, domain: VCC_IO, function: "GPIO17 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
+  - {number: 13, name: GPIO18, type: digital-io, domain: VCC_IO, function: "GPIO18 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
+  - {number: 14, name: DNC1, type: nc, function: "Do not connect, internally connected (the datasheet names it DNC)", unused: "Do not connect", ref: pins}
+  - {number: 15, name: DNC2, type: nc, function: "Do not connect, internally connected, or tie to GND (the datasheet names it DNC)", unused: "Do not connect, or tie to GND", ref: pins}
+  - {number: 16, name: GNDP, type: ground, function: "Buck power ground", ref: pins}
+  - {number: 17, name: SW, type: analog, domain: VSA, function: "Buck switching output; inductor to VBUCK", ref: pins}
+  - {number: 18, name: VSA, type: power, domain: VSA, function: "Core and buck supply input, 7.7 V to 80 V; at least 0.5 uF and a 10 uF bulk capacitor to GNDP", ref: pins}
+  - {number: 19, name: WAKE, type: digital-in, domain: VSA, function: "Drive high to power up and to leave hibernation; may be shorted to VSA", hook: wake, unused: "Short to VSA, or pull down", ref: pins}
+  - {number: 20, name: FAULTN, type: open-drain, domain: VCC_IO, function: "Fault output, open drain: busy while bootstrapping, or a severe error", hook: faultn, unused: "Leave open", ref: pins}
+  - {number: 21, name: DRV_EN, type: digital-in, domain: VCC_IO, function: "Driver enable, active high, internal pull-down", hook: drv_en, ref: pins}
+  - {number: 22, name: RSTN, type: digital-in, domain: VCC_IO, function: "System reset, active low, internal pull-down", hook: reset, ref: pins}
+  - {number: 23, name: VEXT1, type: power-out, domain: VEXT1, function: "Configurable 5.0 V, 3.3 V or 2.5 V supply output for external circuits; 1.6 uF to GND", unused: "Leave open", ref: pins}
+  - {number: 24, name: VEXT2, type: power-out, domain: VEXT2, function: "Configurable 5.0 V, 3.3 V or 2.5 V supply output for external circuits; 1.6 uF to GND", unused: "Leave open", ref: pins}
+  - {number: 25, name: VBUCK, type: power, domain: VBUCK, function: "Buck output, charge pump and LDO supply input", ref: pins}
+  - {number: 26, name: CPI, type: analog, domain: VBUCK, function: "Charge pump fly capacitor, low-voltage side", ref: pins}
+  - {number: 27, name: CPO, type: analog, domain: VDRV, function: "Charge pump fly capacitor, high-voltage side", ref: pins}
+  - {number: 28, name: VDRV, type: power, domain: VDRV, function: "Charge pump output, gate driver supply; OTP programming voltage input", ref: pins}
+  - {number: 29, name: BS_Y2, type: analog, domain: VDRV, function: "Bootstrap capacitor, phase Y2 (tie to VDRV when HS_Y2 drives a low-side gate)", ref: pins}
+  - {number: 30, name: HS_Y2, type: power-out, domain: VDRV, function: "High-side gate driver output, phase Y2", ref: pins}
+  - {number: 31, name: BM_Y2, type: analog, domain: VDRV, function: "High-side source and driver return, phase Y2 (tie to GND when HS_Y2 drives a low-side gate)", ref: pins}
+  - {number: 32, name: LS_Y2, type: power-out, domain: VDRV, function: "Low-side gate driver output, phase Y2", ref: pins}
+  - {number: 33, name: CSP3, type: analog, domain: VDRV, function: "Current-sense amplifier 3, positive input; low-side driver return", ref: pins}
+  - {number: 34, name: CSN3, type: analog, domain: VDRV, function: "Current-sense amplifier 3, negative input", ref: pins}
+  - {number: 35, name: CSN2, type: analog, domain: VDRV, function: "Current-sense amplifier 2, negative input", ref: pins}
+  - {number: 36, name: CSP2, type: analog, domain: VDRV, function: "Current-sense amplifier 2, positive input; low-side driver return", ref: pins}
+  - {number: 37, name: LS_WY1, type: power-out, domain: VDRV, function: "Low-side gate driver output, phase W/Y1", ref: pins}
+  - {number: 38, name: BM_WY1, type: analog, domain: VDRV, function: "High-side source and driver return, phase W/Y1", ref: pins}
+  - {number: 39, name: HS_WY1, type: power-out, domain: VDRV, function: "High-side gate driver output, phase W/Y1", ref: pins}
+  - {number: 40, name: BS_WY1, type: analog, domain: VDRV, function: "Bootstrap capacitor, phase W/Y1", ref: pins}
+  - {number: 41, name: BS_VX2, type: analog, domain: VDRV, function: "Bootstrap capacitor, phase V/X2", ref: pins}
+  - {number: 42, name: HS_VX2, type: power-out, domain: VDRV, function: "High-side gate driver output, phase V/X2", ref: pins}
+  - {number: 43, name: BM_VX2, type: analog, domain: VDRV, function: "High-side source and driver return, phase V/X2", ref: pins}
+  - {number: 44, name: LS_VX2, type: power-out, domain: VDRV, function: "Low-side gate driver output, phase V/X2", ref: pins}
+  - {number: 45, name: CSP1, type: analog, domain: VDRV, function: "Current-sense amplifier 1, positive input; low-side driver return", ref: pins}
+  - {number: 46, name: CSN1, type: analog, domain: VDRV, function: "Current-sense amplifier 1, negative input", ref: pins}
+  - {number: 47, name: CSN0, type: analog, domain: VDRV, function: "Current-sense amplifier 0, negative input", ref: pins}
+  - {number: 48, name: CSP0, type: analog, domain: VDRV, function: "Current-sense amplifier 0, positive input; low-side driver return", ref: pins}
+  - {number: 49, name: LS_UX1, type: power-out, domain: VDRV, function: "Low-side gate driver output, phase U/X1", ref: pins}
+  - {number: 50, name: BM_UX1, type: analog, domain: VDRV, function: "High-side source and driver return, phase U/X1", ref: pins}
+  - {number: 51, name: HS_UX1, type: power-out, domain: VDRV, function: "High-side gate driver output, phase U/X1", ref: pins}
+  - {number: 52, name: BS_UX1, type: analog, domain: VDRV, function: "Bootstrap capacitor, phase U/X1", ref: pins}
+  - {number: 53, name: VS, type: power, domain: VS, function: "Gate driver supply input, 7.7 V to 70 V; at least 1 uF to GND", ref: pins}
+  - {number: 54, name: A1V8, type: power, domain: A1V8, function: "Analog core supply input; 10 uF to GND", ref: pins}
+  - {number: 55, name: GNDA, type: ground, function: "Analog ground", ref: pins}
+  - {number: 56, name: GPIO0, type: digital-io, domain: VCC_IO, function: "GPIO0 (input with pull-down at power-up)", unused: "Leave open (internal pull-down)", ref: pins}
+  - {number: 57, name: GPIO1, type: digital-io, domain: VCC_IO, function: "GPIO1 (input with pull-down at power-up)", unused: "Leave open (internal pull-down)", ref: pins}
+  - {number: 58, name: AIN0, type: analog, domain: VCC_IO, function: "Analog input 0 (high impedance at power-up)", unused: "Connect to a defined level, for example GND", ref: pins}
+  - {number: 59, name: AIN1, type: analog, domain: VCC_IO, function: "Analog input 1 (high impedance at power-up)", unused: "Connect to a defined level, for example GND", ref: pins}
+  - {number: 60, name: AIN2, type: analog, domain: VCC_IO, function: "Analog input 2 (high impedance at power-up)", unused: "Connect to a defined level, for example GND", ref: pins}
+  - {number: 61, name: AIN3, type: analog, domain: VCC_IO, function: "Analog input 3 (high impedance at power-up); parameter mode reads an external temperature sensor here", unused: "Connect to a defined level, for example GND", ref: pins}
+  - {number: 62, name: GPIO6, type: bus, domain: VCC_IO, function: "GPIO6, or UART_TX after power-up (bootloader UART, data out)", hook: exchange, unused: "Leave open (internal pull-up)", ref: pins}
+  - {number: 63, name: GPIO7, type: bus, domain: VCC_IO, function: "GPIO7, or UART_RX after power-up (bootloader UART, data in)", hook: exchange, unused: "Leave open (internal pull-up)", ref: pins}
+  - {number: 64, name: GPIO8, type: digital-io, domain: VCC_IO, function: "GPIO8 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
+  - {number: EP, name: EP, type: ground, function: "Exposed pad, connected to GND", ref: pinout}
+
+block_diagram:
+  ref: blocks
+  blocks:
+    - {id: host, label: Host interface, detail: "UART or SPI, chosen by the bootloader", at: [0, 0], tone: blue,
+       pins: [GPIO6, GPIO7, GPIO9, GPIO10, GPIO11, GPIO12]}
+    - {id: mcu, label: Processor and bootloader, detail: "RISC-V, 64 kB ROM, 48 kB SRAM, OTP", at: [1, 0]}
+    - {id: mcc, label: Motor control core, detail: "FOC, ramp generator, servo loops", at: [2, 0], tone: teal}
+    - {id: pmu, label: Power management, detail: "buck 5.8 V, two LDOs, charge pump", at: [0, 1], tone: slate,
+       pins: [VSA, SW, VBUCK, VEXT1, VEXT2, CPI, CPO]}
+    - {id: ctl, label: "Reset, wake and fault", detail: "RSTN, DRV_EN, WAKE, FAULTN", at: [1, 1], tone: slate,
+       pins: [RSTN]}
+    - {id: mu, label: Measurement unit, detail: "4 current amplifiers, 4 ADCs, AIN0 to AIN3", at: [2, 1], tone: amber,
+       pins: [CSP0, CSN0, CSP1, CSN1, AIN0, AIN1, AIN2, AIN3]}
+    - {id: fb, label: Feedback and I/O matrix, detail: "ABN, Hall, SPI encoder, switches, GPIO", at: [0, 2],
+       tone: slate, pins: [GPIO0, GPIO1, GPIO8, GPIO13, GPIO14, GPIO15, GPIO16, GPIO17, GPIO18]}
+    - {id: prot, label: Protections, detail: "overcurrent, VGS, thermal, undervoltage", at: [1, 2], tone: amber}
+    - {id: gdu, label: Gate driver unit, detail: "four half-bridge drivers, 1 A source, 2 A sink", at: [2, 2],
+       tone: blue, pins: [HS_UX1, LS_UX1, HS_VX2, LS_VX2, HS_WY1, LS_WY1, HS_Y2, LS_Y2]}
+  links:
+    - {from: host, to: mcu, label: frames, both: true}
+    - {from: mcu, to: mcc, label: registers, both: true}
+    - {from: ctl, to: mcu, label: reset}
+    - {from: pmu, to: ctl, label: supplies}
+    - {from: mu, to: mcc, label: currents}
+    - {from: fb, to: mcc, label: position}
+    - {from: prot, to: gdu, label: shutdown}
+    - {from: mcc, to: gdu, label: PWM}
+
+circuits:
+  - id: typical
+    title: Typical application
+    description: >-
+      The TMC9660 on an MCU's SPI bus with the bootloader's default pins, RSTN and DRV_EN on GPIOs the driver
+      drives through GpioSet() and FAULTN on an input read through GpioGet(). WAKE is shorted to VSA. VSA is
+      decoupled to the buck power ground GNDP (at least 0.5 uF next to the pin and a 10 uF bulk capacitor), and
+      GNDP joins GND at one point under the chip. The motor power stage (gate, bridge-centre, bootstrap and
+      current-sense pins) is wired as in the datasheet and is not drawn.
+    ref: pins
+    parts:
+      - {id: U1, kind: chip}
+      - id: U2
+        kind: mcu
+        label: MCU
+        pins:
+          - {name: SCK, label: SPI SCK}
+          - {name: MOSI, label: SPI MOSI}
+          - {name: MISO, label: SPI MISO}
+          - {name: CS, label: GPIO / CS}
+          - {name: RST, label: GPIO}
+          - {name: DRVEN, label: GPIO}
+          - {name: FLT, label: GPIO (IRQ)}
+          - VIO
+          - GND
+      - {id: C1, kind: capacitor, value: "≥ 0.5 µF", ref: pins}
+      - {id: C11, kind: capacitor, value: 10 µF, ref: pins}
+      - {id: C2, kind: capacitor, value: "≥ 1 µF", ref: pins}
+      - {id: C3, kind: capacitor, value: 1 µF, ref: pins}
+      - {id: C4, kind: capacitor, value: 10 µF, ref: pins}
+      - {id: C5, kind: capacitor, value: 10 µF, ref: pins}
+      - {id: C6, kind: capacitor, value: 8 µF, ref: supply}
+      - {id: C7, kind: capacitor, value: 4.7 µF, ref: supply}
+      - {id: C8, kind: capacitor, value: 220 nF, ref: supply}
+      - {id: C9, kind: capacitor, value: 1.6 µF, ref: pins}
+      - {id: C10, kind: capacitor, value: 1.6 µF, ref: pins}
+      - {id: L1, kind: inductor, value: 27 µH, ref: supply}
+      - {id: R1, kind: resistor, value: 10 kΩ, ref: pins,
+         unverified: "the pull-up value is a choice; the datasheet says FAULTN is open drain"}
+    nets:
+      - {name: VSA, kind: supply, nodes: [U1.VSA, U1.WAKE, C1.1, C11.1]}
+      - {name: VS, kind: supply, nodes: [U1.VS, C2.1]}
+      - {name: VCC_IO, kind: supply, nodes: [U1.VCC_IO, C3.1, R1.1, U2.VIO]}
+      - {name: 1V8, nodes: [U1.1V8, C4.1]}
+      - {name: A1V8, nodes: [U1.A1V8, C5.1]}
+      - {name: GNDP, kind: ground, nodes: [U1.GNDP, C1.2, C11.2]}
+      - {name: GND, kind: ground, nodes: [U1.GND, U1.GNDA, U1.EP, U1.AIN0, U1.AIN1, U1.AIN2, U1.AIN3,
+                                          C2.2, C3.2, C4.2, C5.2, C6.2, C7.2, C9.2, C10.2, U2.GND]}
+      - {name: SW, nodes: [U1.SW, L1.1]}
+      - {name: VBUCK, nodes: [U1.VBUCK, L1.2, C6.1]}
+      - {name: VDRV, nodes: [U1.VDRV, C7.1]}
+      - {name: CPI, nodes: [U1.CPI, C8.1]}
+      - {name: CPO, nodes: [U1.CPO, C8.2]}
+      - {name: VEXT1, nodes: [U1.VEXT1, C9.1]}
+      - {name: VEXT2, nodes: [U1.VEXT2, C10.1]}
+      - {name: SPI0_SCK, nodes: [U1.GPIO11, U2.SCK]}
+      - {name: SPI0_MOSI, nodes: [U1.GPIO10, U2.MOSI]}
+      - {name: SPI0_MISO, nodes: [U1.GPIO9, U2.MISO]}
+      - {name: SPI0_CS0, nodes: [U1.GPIO12, U2.CS]}
+      - {name: RSTN, nodes: [U1.RSTN, U2.RST]}
+      - {name: DRV_EN, nodes: [U1.DRV_EN, U2.DRVEN]}
+      - {name: FAULTN, nodes: [U1.FAULTN, R1.2, U2.FLT]}
+    # The gate driver and current-sense pins belong to the motor power stage; the other GPIO pins stay open.
+    unused: [U1.GPIO0, U1.GPIO1, U1.GPIO6, U1.GPIO7, U1.GPIO8, U1.GPIO13, U1.GPIO14, U1.GPIO15, U1.GPIO16,
+             U1.GPIO17, U1.GPIO18, U1.BS_UX1, U1.HS_UX1, U1.BM_UX1, U1.LS_UX1, U1.BS_VX2, U1.HS_VX2, U1.BM_VX2,
+             U1.LS_VX2, U1.BS_WY1, U1.HS_WY1, U1.BM_WY1, U1.LS_WY1, U1.BS_Y2, U1.HS_Y2, U1.BM_Y2, U1.LS_Y2,
+             U1.CSP0, U1.CSN0, U1.CSP1, U1.CSN1, U1.CSP2, U1.CSN2, U1.CSP3, U1.CSN3]
