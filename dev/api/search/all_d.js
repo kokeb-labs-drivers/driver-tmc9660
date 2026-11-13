@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['n_5fevent_5fon_5fa_5fhigh_5fb_5fhigh_0',['N_EVENT_ON_A_HIGH_B_HIGH',['../namespacetmc9660_1_1value_1_1abn__1__n__channel__filtering.html#a15ae5403a88993ab3de6ba17400edc33',1,'tmc9660::value::abn_1_n_channel_filtering']]],
+  ['n_5fevent_5fon_5fa_5fhigh_5fb_5flow_1',['N_EVENT_ON_A_HIGH_B_LOW',['../namespacetmc9660_1_1value_1_1abn__1__n__channel__filtering.html#aec91ea2f1b421ff1dd4ba63061fee4dc',1,'tmc9660::value::abn_1_n_channel_filtering']]],
+  ['n_5fevent_5fon_5fa_5flow_5fb_5fhigh_2',['N_EVENT_ON_A_LOW_B_HIGH',['../namespacetmc9660_1_1value_1_1abn__1__n__channel__filtering.html#a1a5adc335ecbe3fee39700ca56f10b3f',1,'tmc9660::value::abn_1_n_channel_filtering']]],
+  ['n_5fevent_5fon_5fa_5flow_5fb_5flow_3',['N_EVENT_ON_A_LOW_B_LOW',['../namespacetmc9660_1_1value_1_1abn__1__n__channel__filtering.html#a45c08f0524bbc11f6873c936dbe9dfa6',1,'tmc9660::value::abn_1_n_channel_filtering']]],
+  ['nack_4',['Nack',['../group__tmc9660__types.html#gga74b114ef8219608ad8c200cf5b57515bac16538fc669daf2632d00a74dab67dfa',1,'tmc9660']]],
+  ['name_5',['name',['../structtmc9660_1_1PartitionEntry.html#a2ff7860ad2dab5403f86c331acc8be0f',1,'tmc9660::PartitionEntry']]],
+  ['no_5fmotor_6',['NO_MOTOR',['../namespacetmc9660_1_1value_1_1motor__type.html#aa5574ef408bb78622b23072cb9192edd',1,'tmc9660::value::motor_type']]],
+  ['no_5fshift_7',['no_shift',['../namespacetmc9660_1_1value_1_1velocity__norm__p.html#af4836b5db3f241c6f845424863d0e7ea',1,'tmc9660::value::velocity_norm_p::NO_SHIFT'],['../namespacetmc9660_1_1value_1_1position__norm__p.html#ab97dca27eafea87afa4e32ccf6d5b038',1,'tmc9660::value::position_norm_p::NO_SHIFT'],['../namespacetmc9660_1_1value_1_1acceleration__ff__shift.html#aa0af110362bafe3909c8244ce1600ee0',1,'tmc9660::value::acceleration_ff_shift::NO_SHIFT']]],
+  ['no_5fstop_5fon_5fswitch_5ftriggered_8',['NO_STOP_ON_SWITCH_TRIGGERED',['../namespacetmc9660_1_1value_1_1reference__switch__enable.html#acf26fb39fb9c71b11eee849ca366225b',1,'tmc9660::value::reference_switch_enable']]],
+  ['no_5ftrigger_9',['NO_TRIGGER',['../namespacetmc9660_1_1value_1_1reference__switch__latch__settings.html#a78ae7712c2f2aa348b9cb5e53d5ae5d1',1,'tmc9660::value::reference_switch_latch_settings']]],
+  ['noop_10',['NoOp',['../group__tmc9660__types.html#gga197ce58f5245afb1baac853f19e92a3fa60832e2e4bbebccf26555b9ba658bad5',1,'tmc9660']]],
+  ['not_5fswapped_5fnot_5finverted_11',['NOT_SWAPPED_NOT_INVERTED',['../namespacetmc9660_1_1value_1_1reference__switch__polarity__and__swap.html#a8955d20820beaf41f74713780e269bac',1,'tmc9660::value::reference_switch_polarity_and_swap']]],
+  ['notinitialized_12',['NotInitialized',['../group__tmc9660__types.html#gga74b114ef8219608ad8c200cf5b57515ba9646ad3a1c3e708b4fa8b4b4270fbab6',1,'tmc9660']]],
+  ['notready_13',['NotReady',['../group__tmc9660__types.html#ggab678b4a57728c1e69d855295e61b065badd353567e8118a2b8df4e822e59084ab',1,'tmc9660']]],
+  ['npol_14',['NPol',['../namespacetmc9660_1_1fields_1_1mcc__abn__mode.html#a658d3076f0a6f5ac74d8dbec97366af4',1,'tmc9660::fields::mcc_abn_mode']]],
+  ['npolepairs_15',['NPolePairs',['../namespacetmc9660_1_1fields_1_1mcc__motor__config.html#af87fb90acf57756a8d2a1f298730ddf9',1,'tmc9660::fields::mcc_motor_config']]],
+  ['number_16',['number',['../structtmc9660_1_1GlobalInfo.html#adc78d54fa7f69ed692ce4e48ce3c3263',1,'tmc9660::GlobalInfo']]]
+];
