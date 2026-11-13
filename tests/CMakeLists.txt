@@ -179,10 +179,15 @@ foreach(src ${TMC9660_COMPILE_FAIL})
 endforeach()
 
 # --- Generated tables: inc/tmc9660_params.hpp and inc/tmc9660_registers.hpp must equal the generator's output ---
-# The generator (tools/gen_tables/) formats with the gate's clang-format; the test is skipped without one.
+# The generator (tools/gen_tables/) formats with the gate's clang-format (version 20). Without one, or with another
+# version (the CI runners have 18), it exits 77 and CTest reports the test as skipped, not failed; where clang-format
+# 20 is available it is a real check.
 find_program(TMC9660_CLANG_FORMAT NAMES clang-format-20 clang-format)
 find_package(Python3 COMPONENTS Interpreter)
 if(TMC9660_CLANG_FORMAT AND Python3_FOUND)
   add_test(NAME tmc9660_generated_tables
     COMMAND ${Python3_EXECUTABLE} ${PROJECT_SOURCE_DIR}/tools/gen_tables/gen_tables.py --check)
+  set_tests_properties(tmc9660_generated_tables PROPERTIES
+    ENVIRONMENT "CLANG_FORMAT=${TMC9660_CLANG_FORMAT}"
+    SKIP_RETURN_CODE 77)
 endif()

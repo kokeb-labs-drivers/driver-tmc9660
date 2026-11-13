@@ -98,7 +98,7 @@ ASan and UBSan. CI fuzzes for 120 s on every pull request (job `Host quality / f
 ## Mutation testing
 
 A test suite that passes proves little unless it fails when the guard it claims to test is removed.
-[`tools/mutants/mutants.py`](../tools/mutants/mutants.py) applies 167 one-edit mutants to a scratch copy of `inc/`,
+[`tools/mutants/mutants.py`](../tools/mutants/mutants.py) applies 169 one-edit mutants to a scratch copy of `inc/`,
 `src/` and `tests/`, one at a time, builds the unit tests and runs them. A mutant is killed when a test fails or a
 `static_assert` stops the build; an edit that does not compile is reported as broken and fails the run. The mutants are
 the safety guards of [Safety](safety.md) (the flag reads before enabling, the commutation-mode range, the refusals,
@@ -112,7 +112,7 @@ TMC9660_GENERATED=<dir with tmc9660_version.h> python3 tools/mutants/mutants.py 
 Seven mutants are listed as equivalent in the script with their reason, among them: removing the reserved-boot-mode
 check of `BlStartApplication()` (the configuration check refuses the same start), and two probes in front of a stop
 (`disable-reg-uart-probe`, `canary-probe-on-stop`: the repeat after a reported reset sends the same stop). The last
-full run killed 167 of 167.
+full run killed 169 of 169.
 
 ## Generated tables and formatting
 
@@ -125,8 +125,10 @@ from Table 57 of the Parameter Mode Reference Manual and from the Register Mode 
   clang-format a second time and fails if the text changes (idempotence) or a line is longer than 100 columns. The
   committed headers contain no `clang-format off` region.
 - `gen_tables.py --check` exits 1 when a committed header differs from the generator's output; CTest runs it as
-  `tmc9660_generated_tables`, so a hand edit of a generated header, a changed input without regeneration, or a
-  different formatter version fails the build.
+  `tmc9660_generated_tables`, so a hand edit of a generated header or a changed input without regeneration fails
+  the build. The tables are laid out by clang-format 20: with another version (the CI runners have 18) or none the
+  script prints `SKIPPED` and exits 77, which CTest reports as skipped, not failed; the local gate
+  (`tools/preflight.sh`, clang-format 20) runs it as a real check.
 - Rows are designated initialisers, namespaces are lower case and type aliases CamelCase, as the repository's
   clang-tidy configuration asks; each header passes clang-tidy without a blanket `NOLINT`.
 - The change from the first tables to the generated, formatted ones was checked token by token: the value tokens of

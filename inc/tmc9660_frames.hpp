@@ -370,11 +370,13 @@ struct RegUartArgs {
 namespace proof {
 inline constexpr std::array<uint8_t, 7> kRequestExample{0x55, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01};
 inline constexpr std::array<uint8_t, 7> kReplyExample{0xFF, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00};
-static_assert(Crc8(kRequestExample, false) == 0x1D_u8);
-static_assert(Crc8(kReplyExample, false) == 0xA3_u8);
-static_assert(BlUartRequest(1_u8, 0_u8, 1_u32, false)[7] == 0x1D_u8);
-static_assert(Sum8(std::array<uint8_t, 2>{0xFF, 0x02}) == 0x01_u8);
-static_assert((TmclSpiReplyRequest()[0] == 0xFF_u8) && (TmclSpiReplyRequest()[7] == 0xFF_u8));
+static_assert(Crc8(kRequestExample, false) == static_cast<uint8_t>(0x1D));
+static_assert(Crc8(kReplyExample, false) == static_cast<uint8_t>(0xA3));
+static_assert(BlUartRequest(static_cast<uint8_t>(1), static_cast<uint8_t>(0),
+                            static_cast<uint32_t>(1), false)[7] == static_cast<uint8_t>(0x1D));
+static_assert(Sum8(std::array<uint8_t, 2>{0xFF, 0x02}) == static_cast<uint8_t>(0x01));
+static_assert((TmclSpiReplyRequest()[0] == static_cast<uint8_t>(0xFF)) &&
+              (TmclSpiReplyRequest()[7] == static_cast<uint8_t>(0xFF)));
 } // namespace proof
 
 } // namespace tmc9660::detail

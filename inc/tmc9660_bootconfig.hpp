@@ -287,11 +287,13 @@ public:
 
   /**
    * @brief Equality of all words.
-   * @param other The configuration to compare with.
+   * @param lhs One configuration.
+   * @param rhs The configuration to compare with.
    * @return true when every word is equal.
    */
-  [[nodiscard]] constexpr bool operator==(const BootConfig& other) const noexcept {
-    return words_ == other.words_;
+  [[nodiscard]] friend constexpr bool operator==(const BootConfig& lhs,
+                                                 const BootConfig& rhs) noexcept {
+    return lhs.words_ == rhs.words_;
   }
 
 private:
@@ -322,10 +324,10 @@ inline constexpr std::size_t kLdoWordIndex = 0;
 
 /** @brief One entry of an external-memory partition table. */
 struct PartitionEntry {
-  std::array<char, 12> name{}; ///< UTF-8 name, unused bytes zero.
-  uint8_t type{2};             ///< 2: parameter data, 4: script data.
-  bool writable{false};        ///< Hint only: the bootloader can always write.
-  uint32_t offset{0};          ///< Start of the data; a multiple of the sector size.
+  std::array<uint8_t, 12> name{}; ///< UTF-8 name bytes, unused bytes zero.
+  uint8_t type{2};                ///< 2: parameter data, 4: script data.
+  bool writable{false};           ///< Hint only: the bootloader can always write.
+  uint32_t offset{0};             ///< Start of the data; a multiple of the sector size.
   uint32_t size{
       0}; ///< Size of the data; a multiple of the sector size (parameters: at least 0x400).
 };
@@ -374,7 +376,7 @@ constexpr void WritePartitionEntries(std::span<const PartitionEntry> entries,
   for (std::size_t i = 0U; i < entries.size(); ++i) {
     const std::size_t at = kPartitionHeaderBytes + (kPartitionEntryBytes * i);
     for (std::size_t k = 0U; k < 12U; ++k) {
-      out[at + k] = static_cast<uint8_t>(entries[i].name[k]);
+      out[at + k] = entries[i].name[k];
     }
     out[at + 12U] = static_cast<uint8_t>(entries[i].type | (entries[i].writable ? 0x80U : 0U));
     PutLe32(out, at + 16U, entries[i].offset);

@@ -1,6 +1,6 @@
 /**
  * @file tmc9660_detail.hpp
- * @brief Compile-time helpers of the TMC9660 driver: typed integer literals, exact hook matching,
+ * @brief Compile-time helpers of the TMC9660 driver: byte copy, exact hook matching,
  * typed register fields and enumeration checks.
  * @copyright Copyright (c) 2026 The driver-tmc9660 authors. SPDX-License-Identifier: MIT
  *
@@ -12,54 +12,24 @@
 #define TMC9660_DETAIL_HPP
 
 #include <concepts>
+#include <cstddef>
 #include <cstdint>
 #include <limits>
+#include <span>
 #include <type_traits>
 
 namespace tmc9660::detail {
 
 /**
- * @brief Reached only when a `_u8`, `_u16` or `_u32` literal does not fit its type: it is never
- * defined and not `constexpr`, so the constant evaluation fails and the build names it.
+ * @brief Copy `src` to the start of `dst` (the shorter of the two sizes), by index.
+ * @param src The bytes to copy.
+ * @param dst Where they go.
  */
-void LiteralOutOfRange() noexcept;
-
-/**
- * @brief An integer constant of type `uint8_t`, for an argument whose parameter is `uint8_t`
- * (MISRA C++:2023 Rule 7.0.6). `0xFF_u8` compiles; `0x100_u8` does not.
- * @param v The literal's value.
- * @return `v` as `uint8_t`.
- */
-consteval std::uint8_t operator""_u8(unsigned long long v) noexcept {
-  if (v > 0xFFULL) {
-    LiteralOutOfRange();
+constexpr void CopyBytes(std::span<const std::uint8_t> src, std::span<std::uint8_t> dst) noexcept {
+  const std::size_t n = (src.size() < dst.size()) ? src.size() : dst.size();
+  for (std::size_t k = 0U; k < n; ++k) {
+    dst[k] = src[k];
   }
-  return static_cast<std::uint8_t>(v);
-}
-
-/**
- * @brief An integer constant of type `uint16_t` (Rule 7.0.6); out of range does not compile.
- * @param v The literal's value.
- * @return `v` as `uint16_t`.
- */
-consteval std::uint16_t operator""_u16(unsigned long long v) noexcept {
-  if (v > 0xFFFFULL) {
-    LiteralOutOfRange();
-  }
-  return static_cast<std::uint16_t>(v);
-}
-
-/**
- * @brief An integer constant of type `uint32_t` (Rule 7.0.6): on targets where `uint32_t` is
- * `unsigned long`, a `U` literal is still `unsigned int`. Out of range does not compile.
- * @param v The literal's value.
- * @return `v` as `uint32_t`.
- */
-consteval std::uint32_t operator""_u32(unsigned long long v) noexcept {
-  if (v > 0xFFFF'FFFFULL) {
-    LiteralOutOfRange();
-  }
-  return static_cast<std::uint32_t>(v);
 }
 
 /**
