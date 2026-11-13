@@ -1318,103 +1318,103 @@ the firmware's flags, <code>-fno-exceptions -fno-rtti</code>, and warnings as er
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_frames.cpp"><code>tests/test_frames.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_frames.cpp"><code>tests/test_frames.cpp</code></a></td>
 <td>Every frame encoder and decoder against the documents' worked examples, and the CRC-8</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_bootloader.cpp"><code>tests/test_bootloader.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_bootloader.cpp"><code>tests/test_bootloader.cpp</code></a></td>
 <td>Bootloader over SPI and UART: info, memory, configuration write, start, erase, delayed replies, PLL</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_parameter.cpp"><code>tests/test_parameter.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_parameter.cpp"><code>tests/test_parameter.cpp</code></a></td>
 <td>Parameter mode: ranges, access, coded values, globals, scripts, resets on SPI and UART</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_register.cpp"><code>tests/test_register.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_register.cpp"><code>tests/test_register.cpp</code></a></td>
 <td>Register mode: access, masks, the energising guard, <code>GateDriverStart()</code>, the datagram counter</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_safety.cpp"><code>tests/test_safety.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_safety.cpp"><code>tests/test_safety.cpp</code></a></td>
 <td>The rules of <a href="../safety/">Safety</a>, each asserted on the chip's record of what happened to it</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_gate_driver.cpp"><code>tests/test_gate_driver.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_gate_driver.cpp"><code>tests/test_gate_driver.cpp</code></a></td>
 <td><code>GateDriverStart()</code>: the latched-evidence masks bit by bit, CHOP 1 before the enable, the bootstrap wait, a trip after the protections, every failure ends switched off</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_hardening.cpp"><code>tests/test_hardening.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_hardening.cpp"><code>tests/test_hardening.cpp</code></a></td>
 <td>Reply validation, scripts that set <code>COMMUTATION_MODE</code>, <code>WATCHDOG_EVENT</code>, bootloader SPI <code>BUSY</code> and dead lines</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_stop_paths.cpp"><code>tests/test_stop_paths.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_stop_paths.cpp"><code>tests/test_stop_paths.cpp</code></a></td>
 <td>The stop after an unseen reset on SPI and UART, parameter and register mode; the read-back; the buffers</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_idle_pwm.cpp"><code>tests/test_idle_pwm.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_idle_pwm.cpp"><code>tests/test_idle_pwm.cpp</code></a></td>
 <td><code>IDLE_MOTOR_PWM_BEHAVIOR</code> and the stop, a stop sent before the UART resync, the dirty flag over a restart, the repeat of a failed register-stop write</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_start_edges.cpp"><code>tests/test_start_edges.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_start_edges.cpp"><code>tests/test_start_edges.cpp</code></a></td>
 <td>What the start write returns unchanged, a parameter start failing inside the follow, the UART bank and address before the start write, the bounded identity wait, the recovery stop after an unseen restart into an application</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_start_follow.cpp"><code>tests/test_start_follow.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_start_follow.cpp"><code>tests/test_start_follow.cpp</code></a></td>
 <td>A start of the application whose write fails or comes late is followed, and a boot-mode write with <code>START_MOTOR_CTRL</code> already set counts as a start (A24)</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_restart_mode.cpp"><code>tests/test_restart_mode.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_restart_mode.cpp"><code>tests/test_restart_mode.cpp</code></a></td>
 <td>A failed restart keeps the proved protocol so the stop still reaches the chip; no proved protocol and no DRV_EN hook is not a silent <code>Ok</code>; register read-back, pin and probe guards</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_stop_repeat.cpp"><code>tests/test_stop_repeat.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_stop_repeat.cpp"><code>tests/test_stop_repeat.cpp</code></a></td>
 <td>The parameter-mode stop and <code>MotorStop()</code> repeated after any failure, a failed <code>EnableDrive()</code> that stops, the register stop not gated by FAULTN, a bootloader read after a reset, a failed <code>ReturnToBootloader()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_resync.cpp"><code>tests/test_resync.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_resync.cpp"><code>tests/test_resync.cpp</code></a></td>
 <td>A late UART reply never answers the next request</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_layout.cpp"><code>tests/test_layout.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_layout.cpp"><code>tests/test_layout.cpp</code></a></td>
 <td>The TMCL layout probe (A2)</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_survivors.cpp"><code>tests/test_survivors.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_survivors.cpp"><code>tests/test_survivors.cpp</code></a></td>
 <td>Bootloader SPI commands run once after a probe, every place that marks a UART line dirty, two stale replies, the reset pin, the reply retry, the boot-mode read-back, <code>PowerDown()</code>, the register baseline</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_errors.cpp"><code>tests/test_errors.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_errors.cpp"><code>tests/test_errors.cpp</code></a></td>
 <td>The base <code>Error</code> values are 0 to 9; every chip-specific value is returned by some call</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_version.cpp"><code>tests/test_version.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_version.cpp"><code>tests/test_version.cpp</code></a></td>
 <td>The version getters follow the generated header (also against a 9.8.7 probe)</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/test_kconfig.cpp"><code>tests/test_kconfig.cpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/test_kconfig.cpp"><code>tests/test_kconfig.cpp</code></a></td>
 <td><code>KconfigDefaults()</code> with and without <code>CONFIG_</code> values</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/tree/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/compile_fail"><code>tests/compile_fail/</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/tree/b0a125d222c09c35632f0803cd2e693be785a341/tests/compile_fail"><code>tests/compile_fail/</code></a></td>
 <td>14 files that must not compile, each for its <code>EXPECT:</code> diagnostic: a port on both buses, a port without <code>DelayUs()</code>, a hook with the wrong type or without <code>noexcept</code>, an invalid <code>CheckedConfig</code>, a class that is not a port</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/mock_tmc9660.hpp"><code>tests/mock_tmc9660.hpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/mock_tmc9660.hpp"><code>tests/mock_tmc9660.hpp</code></a></td>
 <td>The chip model; the bus framing is in <code>mock_tmc9660_bus.hpp</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/docs/my_port.hpp"><code>tests/docs/</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/docs/my_port.hpp"><code>tests/docs/</code></a></td>
 <td>The snippets of these pages, compiled</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/examples/host/README.md"><code>examples/host/</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/examples/host/README.md"><code>examples/host/</code></a></td>
 <td>The host example, built with the test flags and run (<code>tmc9660_host_example</code>, expects <code>done: 0 errors</code>)</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/check_install.cmake"><code>tests/check_install.cmake</code></a></td>
-<td>Installs into a scratch prefix and builds <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/install_consumer/CMakeLists.txt"><code>tests/install_consumer/</code></a> with <code>find_package(tmc9660)</code></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/check_install.cmake"><code>tests/check_install.cmake</code></a></td>
+<td>Installs into a scratch prefix and builds <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/install_consumer/CMakeLists.txt"><code>tests/install_consumer/</code></a> with <code>find_package(tmc9660)</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/check_doxygen.cmake"><code>tests/check_doxygen.cmake</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/check_doxygen.cmake"><code>tests/check_doxygen.cmake</code></a></td>
 <td>Doxygen with <code>_config/Doxyfile</code> and warnings as errors, when <code>doxygen</code> is installed</td>
 </tr>
 </tbody>
@@ -1430,7 +1430,7 @@ the code before the fix.</p>
 values: writes since the last reset, energise events with an error flag latched or DRV_EN low, <code>Boot</code> with the drive on,
 reserved-mode starts, OTP and configuration writes, all-zero frames.</p>
 <h2 id="fuzz-tests">Fuzz tests<a class="headerlink" href="#fuzz-tests" title="Permanent link">&para;</a></h2>
-<p>Everything the driver reads comes from the chip over the bus. <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/fuzz/fuzz_tmc9660.cpp"><code>tests/fuzz/fuzz_tmc9660.cpp</code></a>
+<p>Everything the driver reads comes from the chip over the bus. <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/fuzz/fuzz_tmc9660.cpp"><code>tests/fuzz/fuzz_tmc9660.cpp</code></a>
 lets libFuzzer choose a mode, a bus and a configuration, then up to 64 driver calls, and on every bus transfer what the
 bus does: pass it to the model, fail it, flip bits or replace what the chip sent. Between calls it can reset the chip,
 raise a fault or change the chip identity. After every call it checks the driver's promises and aborts, naming the
@@ -1456,13 +1456,13 @@ line, when one breaks:</p>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>./build-fuzz/tests/fuzz/fuzz_tmc9660<span class="w"> </span>-max_total_time<span class="o">=</span><span class="m">120</span><span class="w"> </span>tests/fuzz/corpus/fuzz_tmc9660
 </span></code></pre></div>
 <p>The same file also builds without libFuzzer as <code>fuzz_replay_fuzz_tmc9660</code>, and CTest replays every input in
-<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/tree/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/fuzz/corpus/fuzz_tmc9660"><code>tests/fuzz/corpus/fuzz_tmc9660/</code></a> on GCC and Clang
+<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/tree/b0a125d222c09c35632f0803cd2e693be785a341/tests/fuzz/corpus/fuzz_tmc9660"><code>tests/fuzz/corpus/fuzz_tmc9660/</code></a> on GCC and Clang
 (<code>tmc9660_fuzz_tmc9660_corpus</code>): the seeds, one per mode and bus and fault family, and every input that ever
 broke a promise (named <code>regress-*</code>), so a fixed bug stays fixed. The seeds and 7000 random inputs also ran under
 ASan and UBSan. CI fuzzes for 120 s on every pull request (job <code>Host quality / fuzz</code>).</p>
 <h2 id="mutation-testing">Mutation testing<a class="headerlink" href="#mutation-testing" title="Permanent link">&para;</a></h2>
 <p>A test suite that passes proves little unless it fails when the guard it claims to test is removed.
-<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tools/mutants/mutants.py"><code>tools/mutants/mutants.py</code></a> applies 167 one-edit mutants to a scratch copy of <code>inc/</code>,
+<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tools/mutants/mutants.py"><code>tools/mutants/mutants.py</code></a> applies 169 one-edit mutants to a scratch copy of <code>inc/</code>,
 <code>src/</code> and <code>tests/</code>, one at a time, builds the unit tests and runs them. A mutant is killed when a test fails or a
 <code>static_assert</code> stops the build; an edit that does not compile is reported as broken and fails the run. The mutants are
 the safety guards of <a href="../safety/">Safety</a> (the flag reads before enabling, the commutation-mode range, the refusals,
@@ -1473,10 +1473,10 @@ masks and guards, the datagram counter and boot bit), the argument checks, and t
 <p>Seven mutants are listed as equivalent in the script with their reason, among them: removing the reserved-boot-mode
 check of <code>BlStartApplication()</code> (the configuration check refuses the same start), and two probes in front of a stop
 (<code>disable-reg-uart-probe</code>, <code>canary-probe-on-stop</code>: the repeat after a reported reset sends the same stop). The last
-full run killed 167 of 167.</p>
+full run killed 169 of 169.</p>
 <h2 id="generated-tables-and-formatting">Generated tables and formatting<a class="headerlink" href="#generated-tables-and-formatting" title="Permanent link">&para;</a></h2>
 <p>The parameter table (289 rows) and the register table (163 rows) are generated, not typed:
-<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tools/gen_tables/gen_tables.py"><code>tools/gen_tables/gen_tables.py</code></a> reads <code>params.json</code> and <code>regs.json</code> (transcribed
+<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tools/gen_tables/gen_tables.py"><code>tools/gen_tables/gen_tables.py</code></a> reads <code>params.json</code> and <code>regs.json</code> (transcribed
 from Table 57 of the Parameter Mode Reference Manual and from the Register Mode Reference Manual) and writes
 <code>inc/tmc9660_params.hpp</code> and <code>inc/tmc9660_registers.hpp</code>, with the documents' citations and Doxygen comments.</p>
 <ul>
@@ -1484,8 +1484,10 @@ from Table 57 of the Parameter Mode Reference Manual and from the Register Mode 
   clang-format a second time and fails if the text changes (idempotence) or a line is longer than 100 columns. The
   committed headers contain no <code>clang-format off</code> region.</li>
 <li><code>gen_tables.py --check</code> exits 1 when a committed header differs from the generator's output; CTest runs it as
-  <code>tmc9660_generated_tables</code>, so a hand edit of a generated header, a changed input without regeneration, or a
-  different formatter version fails the build.</li>
+  <code>tmc9660_generated_tables</code>, so a hand edit of a generated header or a changed input without regeneration fails
+  the build. The tables are laid out by clang-format 20: with another version (the CI runners have 18) or none the
+  script prints <code>SKIPPED</code> and exits 77, which CTest reports as skipped, not failed; the local gate
+  (<code>tools/preflight.sh</code>, clang-format 20) runs it as a real check.</li>
 <li>Rows are designated initialisers, namespaces are lower case and type aliases CamelCase, as the repository's
   clang-tidy configuration asks; each header passes clang-tidy without a blanket <code>NOLINT</code>.</li>
 <li>The change from the first tables to the generated, formatted ones was checked token by token: the value tokens of
@@ -1494,7 +1496,7 @@ from Table 57 of the Parameter Mode Reference Manual and from the Register Mode 
 <h2 id="quality-gates">Quality gates<a class="headerlink" href="#quality-gates" title="Permanent link">&para;</a></h2>
 <p>The <code>Host quality</code> job measures the library code, <code>inc/</code> and <code>src/</code> only (tests and examples are left out), and
 fails when a value is over the limits of this repository's assurance level, <code>high</code> (set in
-<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/.kokeb/handbook.yml"><code>.kokeb/handbook.yml</code></a>, defined by the handbook's ADR-0020):</p>
+<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/.kokeb/handbook.yml"><code>.kokeb/handbook.yml</code></a>, defined by the handbook's ADR-0020):</p>
 <table>
 <thead>
 <tr>
@@ -1560,10 +1562,10 @@ fails when a value is over the limits of this repository's assurance level, <cod
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>cmake<span class="w"> </span>--build<span class="w"> </span>build-san<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ctest<span class="w"> </span>--test-dir<span class="w"> </span>build-san<span class="w"> </span>--output-on-failure
 </span></code></pre></div>
 <p>The fuzz gate runs locally as shown in <a href="#fuzz-tests">Fuzz tests</a>.</p>
-<p>clang-tidy 20 (<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/_config/.clang-tidy"><code>_config/.clang-tidy</code></a>: bugprone, CERT, clang-analyzer,
+<p>clang-tidy 20 (<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/_config/.clang-tidy"><code>_config/.clang-tidy</code></a>: bugprone, CERT, clang-analyzer,
 cppcoreguidelines, modernize, performance, portability and readability, each disabled check with its reason) and
 cppcheck (strict) run in the <code>C++ lint</code> and <code>Repository checks</code> jobs and fail on any finding.</p>
-<p>The <code>MISRA</code> job (<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/.github/workflows/ci-misra.yml"><code>ci-misra.yml</code></a>) runs the shared <code>ru-misra</code> workflow of
+<p>The <code>MISRA</code> job (<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/.github/workflows/ci-misra.yml"><code>ci-misra.yml</code></a>) runs the shared <code>ru-misra</code> workflow of
 ci-tools at level <code>high</code>: it traces a host build and the Cortex-M build (<code>tmc9660_optimised_build</code>) of every
 translation unit, checks them against MISRA C++:2023 and the handbook's C++20 profile (the CodeQL coding-standards
 and profile packs, plus the validated clang-tidy and cppcheck checks), and reports each finding against the
@@ -1604,12 +1606,12 @@ versions follow from <code>toolchain.json</code> of that commit. <code>Dockerfil
 <code>ESP-IDF release/v5.5 is &lt;sha&gt;</code>. Rebuild with <code>docker rmi kokeb-ci-misra:local kokeb-ci-esp32:local</code>, then run
 <code>--container</code>.</p>
 <h2 id="documentation-snippets">Documentation snippets<a class="headerlink" href="#documentation-snippets" title="Permanent link">&para;</a></h2>
-<p>Every C++ block on this site is included from <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/tests/docs/my_port.hpp"><code>tests/docs/</code></a>, which the host build
+<p>Every C++ block on this site is included from <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/tests/docs/my_port.hpp"><code>tests/docs/</code></a>, which the host build
 compiles (target <code>tmc9660_doc_snippets</code>) with the driver instantiated over the documented port. A change to
 the API that breaks a page breaks the build first. The README's example is a generated copy of the same file;
 <code>kokeb-docs check</code> fails when it drifts.</p>
 <h2 id="ci-workflows">CI workflows<a class="headerlink" href="#ci-workflows" title="Permanent link">&para;</a></h2>
-<p>Everything runs from <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/.github/workflows/ci.yml"><code>ci.yml</code></a>, which calls one workflow file per check and ends in
+<p>Everything runs from <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/.github/workflows/ci.yml"><code>ci.yml</code></a>, which calls one workflow file per check and ends in
 the <code>CI gate</code> job, the single required check (<code>CI gate / gate</code>).</p>
 <table>
 <thead>

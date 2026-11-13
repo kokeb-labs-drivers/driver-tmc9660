@@ -1155,7 +1155,7 @@ port class, call two driver functions.</p>
 <!-- /generated -->
 
 <h2 id="try-it-on-your-pc">Try it on your PC<a class="headerlink" href="#try-it-on-your-pc" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/examples/host/README.md"><code>examples/host/</code></a> runs the real driver against a simulated TMC9660, through a host
+<p><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/examples/host/README.md"><code>examples/host/</code></a> runs the real driver against a simulated TMC9660, through a host
 port. From the repository root, with CMake and a C++20 compiler:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cmake<span class="w"> </span>-S<span class="w"> </span>examples/host<span class="w"> </span>-B<span class="w"> </span>build-example
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cmake<span class="w"> </span>--build<span class="w"> </span>build-example
@@ -1171,7 +1171,7 @@ port. From the repository root, with CMake and a C++20 compiler:</p>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>drive off, DRV_EN low
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>done: 0 errors
 </span></code></pre></div>
-<p>The calls in <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/73895efb6ed3b030c7e41fde80185e3e305735cb/examples/host/main.cpp"><code>main.cpp</code></a> take the chip from its bootloader to a running drive and back to
+<p>The calls in <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/b0a125d222c09c35632f0803cd2e693be785a341/examples/host/main.cpp"><code>main.cpp</code></a> take the chip from its bootloader to a running drive and back to
 off; only the port differs on an MCU. CI builds and runs this example on every pull request.</p>
 <h2 id="1-wire-it">1. Wire it<a class="headerlink" href="#1-wire-it" title="Permanent link">&para;</a></h2>
 <p>The bootloader listens on UART and SPI at once, on the pins below. Use one bus; the driver is built for one.</p>

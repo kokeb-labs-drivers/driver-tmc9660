@@ -1789,7 +1789,7 @@ non-void function as an expression statement; mark with an explicit discard wher
 <p>Seen: fdo2 (<code>reports/fdo2-ci-misra.txt</code>: <code>checkOxygen</code>). 1 driver. Detection: <code>lint</code>: rule 13.3.3 (planned):
 declaration in <code>inc/</code> against definition in <code>src/*.ipp</code>.</p>
 <h3 id="rd-17-rule-706-literal-argument-type">RD-17 Rule 7.0.6 literal argument type<a class="headerlink" href="#rd-17-rule-706-literal-argument-type" title="Permanent link">&para;</a></h3>
-<p>Rule: a constant argument has its parameter's type (<code>_u32</code> literal), and no mixed-width arithmetic on literals.</p>
+<p>Rule: a constant argument has its parameter's type (a <code>static_cast</code> of the constant), and no mixed-width arithmetic on literals.</p>
 <p>Seen: ntc (review1 M3), fdo2 (review1 M10), tmc5160 (review1 M7), ws2812 (review1: call sites). 4 drivers.
 Detection: <code>lint</code> (partial, planned): literal passed to a <code>uint32_t</code> or <code>uint8_t</code> parameter of a known function;
 <code>review</code>
