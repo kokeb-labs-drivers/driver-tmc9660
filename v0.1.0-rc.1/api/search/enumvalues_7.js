@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['hall_5fextrapolation_5fenable_0',['HALL_EXTRAPOLATION_ENABLE',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fab88096d487d3b5fb4cb2661516cd4bda',1,'tmc9660']]],
+  ['hall_5ffilter_5flength_1',['HALL_FILTER_LENGTH',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa32492be23d5bfb589e5293697a9e35d0',1,'tmc9660']]],
+  ['hall_5finvert_5fdirection_2',['HALL_INVERT_DIRECTION',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa3f11b5567f26dae5e75efdf51aecefc6',1,'tmc9660']]],
+  ['hall_5fphi_5fe_3',['HALL_PHI_E',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fab5bbab49fb38dd737c02c7628acb5210',1,'tmc9660']]],
+  ['hall_5fphi_5fe_5foffset_4',['HALL_PHI_E_OFFSET',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa2ae6dea6604175ac7dac6602a5db6530',1,'tmc9660']]],
+  ['hall_5fposition_5f0_5foffset_5',['HALL_POSITION_0_OFFSET',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53faea205175a8e16b1afa36b007b6f8e290',1,'tmc9660']]],
+  ['hall_5fposition_5f120_5foffset_6',['HALL_POSITION_120_OFFSET',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa8b442b361ee19f2e6c91ae43bdbff793',1,'tmc9660']]],
+  ['hall_5fposition_5f180_5foffset_7',['HALL_POSITION_180_OFFSET',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53faa589e2c1f9b6f220ea5edb364d510b68',1,'tmc9660']]],
+  ['hall_5fposition_5f240_5foffset_8',['HALL_POSITION_240_OFFSET',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa432047f29a809654759f996753a76d15',1,'tmc9660']]],
+  ['hall_5fposition_5f300_5foffset_9',['HALL_POSITION_300_OFFSET',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa4e3a5550758e592d7dd4823c9425d766',1,'tmc9660']]],
+  ['hall_5fposition_5f60_5foffset_10',['HALL_POSITION_60_OFFSET',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa58bf1e344c39f73e6e9e8be2239c26b6',1,'tmc9660']]],
+  ['hall_5fsector_5foffset_11',['HALL_SECTOR_OFFSET',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa60769b4f4bc5f428b0ec02e2ac0f945c',1,'tmc9660']]],
+  ['hallenable_12',['HallEnable',['../namespacetmc9660.html#a7addec717ff651b7188df74f593e8903ac5f06a7ce038aba4499c82ec5d277d0c',1,'tmc9660']]],
+  ['hallu_13',['HallU',['../namespacetmc9660.html#a7addec717ff651b7188df74f593e8903a04bb9e61a90541b68006e066490fa382',1,'tmc9660']]],
+  ['hallv_14',['HallV',['../namespacetmc9660.html#a7addec717ff651b7188df74f593e8903a87bbad0cf43b824597c7ec58861213b1',1,'tmc9660']]],
+  ['hallw_15',['HallW',['../namespacetmc9660.html#a7addec717ff651b7188df74f593e8903aa9e61966ced2424d143d94c9c8c51fbb',1,'tmc9660']]],
+  ['home_5fswitch_5fposition_16',['HOME_SWITCH_POSITION',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa93e0e49b4bf7f534371808c2b2ae30ea',1,'tmc9660']]],
+  ['hostaddress_17',['HostAddress',['../namespacetmc9660.html#a7addec717ff651b7188df74f593e8903a7712055b936a048ad3d2c761814fb98f',1,'tmc9660']]]
+];
