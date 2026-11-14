@@ -31,6 +31,7 @@ encoders are proved against the documents' worked examples with `static_assert`.
 | A23 | Bootloader SPI Table 3: the literal byte layout | Request `command, value[4]`, reply `status, value[4]`, as the worked examples | none |
 | A24 | Bootloader: whether writing the boot-mode word starts the application on a 0-to-1 change of `START_MOTOR_CTRL` or on any write with the bit set (the datasheet, "Launching Applications", p. 76, says only that the manually triggered sequence "is run when the boot configuration register is written to"), and whether the bootloader shows the bit set after `Boot` from an auto-started application (datasheet Figures 32, 34, 35) | Any write of the word with the bit set is treated as a start: the driver follows it and falls back to the bootloader when that still answers | none |
 | A19 | UART reply time: neither manual bounds the time from the last request byte to the first reply byte | 1 ms assumed | `kTurnaroundUs` (a port reads it; the driver itself waits on the port) |
+| A25 | VCC_IO range: Table 1, Recommended Operating Conditions (datasheet p. 9), gives 2.5 V to 5 V; the Power Supply Electrical Characteristics (p. 17) give the GPIO supply range `VVCC_IO_RNG` as 2.2 V to 5.5 V and state their limits for VCC_IO from 2.2 V to 5.5 V | The electrical characteristics: the chip card, the pin table and the Hardware page say 2.2 V to 5.5 V; 2.5 V to 5 V keeps inside both | none: a board choice |
 
 ## Not verified
 

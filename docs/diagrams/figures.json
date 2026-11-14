@@ -55,6 +55,20 @@
       "inc/tmc9660_uart_interface.hpp"
     ]
   },
+  "chip-frame-tmcl-uart": {
+    "title": "TMC9660: Parameter-mode UART datagram",
+    "alt": "Parameter-mode UART datagram of the TMC9660, 72 bits, sent byte by byte, each byte least significant bit first, bit 0 first. Command: sync bit and module address (bits 0 to 7), operation (bits 8 to 15), type (bits 16 to 27), motor or bank (bits 28 to 31), data (big endian) (bits 32 to 63), checksum (bits 64 to 71); Reply: host address (bits 0 to 7), sync bit and module address (bits 8 to 15), TMCL status (bits 16 to 23), operation (bits 24 to 31), data (big endian) (bits 32 to 63), checksum (bits 64 to 71).",
+    "description": "One Parameter-mode UART datagram of the TMC9660, 72 bits in a row from bit 0 (left, sent first) to the last bit (right), each byte sent least significant bit first. Each row is one kind of frame; each coloured box a field, with its first and last bit number under it.",
+    "profile": "overview",
+    "width": 1200,
+    "source": "docs/hardware.yml",
+    "sources": [
+      "docs/hardware.yml",
+      "inc/tmc9660_spi_interface.hpp",
+      "inc/tmc9660_types.hpp",
+      "inc/tmc9660_uart_interface.hpp"
+    ]
+  },
   "chip-hero": {
     "title": "TMC9660",
     "alt": "Overview of the TMC9660, a gate driver and motor controller for BLDC, PMSM, stepper and brushed DC motors: field-oriented control, the servo loops and a ramp generator run in hardware, and a buck converter powers the chip from the motor supply. A MCU talks to it over SPI or UART; it drives MOSFET half-bridges, then Motor; it reads back Phase currents, Position sensor, Reference switches. Headline figures: 7.7 to 70 V single-supply operating range; 1 A / 2 A gate drive source and sink, up to four half-bridges; 10 MHz SPI clock, mode 3; 9 x 9 mm 64-pin TQFN body.",
@@ -100,7 +114,7 @@
   "chip-wiring-typical": {
     "title": "Wiring: Typical application",
     "alt": "Wiring of the TMC9660 for the Typical application: MCU SPI SCK to GPIO11 (Transfer()); MCU SPI MOSI to GPIO10 (Transfer()); MCU SPI MISO to GPIO9 (Transfer()); MCU GPIO / CS to GPIO12 (Transfer()); MCU GPIO to RSTN (GpioSet(CtrlPin::Reset)); MCU GPIO to DRV_EN (GpioSet(CtrlPin::DrvEn)); MCU GPIO (IRQ) to FAULTN (GpioGet(CtrlPin::Faultn)). Supplies, grounds and the support parts are listed under the drawing.",
-    "description": "The MCU on the left, the TMC9660 in the middle. Each wire is coloured by the chip pin's electrical type and carries the net name and the chip pin number above it and, under it, the driver hook that uses it (and any part on the net). The boxes underneath list the supplies, the support parts and the pins this circuit leaves unconnected.",
+    "description": "The MCU on the left, the TMC9660 in the middle. Each wire to the chip is coloured by the chip pin's electrical type and carries the net name and the chip pin number above it and, under it, the driver hooks that use it (and any part on the net). The boxes underneath list the supplies, the support parts and the pins this circuit leaves unconnected.",
     "profile": "overview",
     "width": 1200,
     "source": "docs/hardware.yml",

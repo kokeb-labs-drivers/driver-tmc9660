@@ -53,7 +53,7 @@ TQFN-64, 64 pins and an exposed pad (Pin Configurations, p. 11).
 | 6 | `GPIO14` | digital in/out (VCC_IO) | GPIO14 (input with pull-up at power-up) | - | Leave open (internal pull-up) | Pin Descriptions, p. 12 |
 | 7 | `1V8` | power (1V8) | Digital core supply input; 10 uF to GND | - | - | Pin Descriptions, p. 12 |
 | 8 | `GND` | ground | Ground | - | - | Pin Descriptions, p. 12 |
-| 9 | `VCC_IO` | power (VCC_IO) | Logic supply input, 2.5 V to 5 V (3 V or more for SPI at 10 MHz); 1 uF to GND | - | - | Pin Descriptions, p. 12 |
+| 9 | `VCC_IO` | power (VCC_IO) | Logic supply input, 2.2 V to 5.5 V (3 V or more for SPI at 10 MHz); 1 uF to GND | - | - | Power Supply - Electrical Characteristics, p. 17 |
 | 10 | `GPIO15` | digital in/out (VCC_IO) | GPIO15 (input with pull-up at power-up) | - | Leave open (internal pull-up) | Pin Descriptions, p. 12 |
 | 11 | `GPIO16` | digital in/out (VCC_IO) | GPIO16 (input with pull-up at power-up) | - | Leave open (internal pull-up) | Pin Descriptions, p. 12 |
 | 12 | `GPIO17` | digital in/out (VCC_IO) | GPIO17 (input with pull-up at power-up) | - | Leave open (internal pull-up) | Pin Descriptions, p. 12 |
@@ -234,7 +234,7 @@ The driver waits with your port's `DelayUs()`; nothing in it sleeps or spins on 
 | --- | --- | --- |
 | VSA | 7.7 V to 80 V | Core and buck supply; the WAKE pin may be shorted to it |
 | VS | 7.7 V to 70 V | Gate driver supply |
-| VCC_IO | 2.5 V to 5 V (3 V or more for SPI at 10 MHz) | Logic levels of the GPIO and of the host link |
+| VCC_IO | 2.2 V to 5.5 V (3 V or more for SPI at 10 MHz); Table 1 recommends 2.5 V to 5 V ([Ambiguities](ambiguities.md), A25) | Logic levels of the GPIO and of the host link |
 | VEXT1, VEXT2 | 5.0 V, 3.3 V or 2.5 V | Outputs, set in the boot configuration; `BlWriteConfig()` refuses to change them unless `allow_ldo_change` is set, because both move at once |
 
 Hibernation (`PowerDown()`) puts everything but the always-on block into reset; the chip restarts after the time

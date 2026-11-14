@@ -123,6 +123,19 @@ On UART the pins are GPIO6 (TX, pin 62) and GPIO7 (RX, pin 63) of the chip.
 </picture>
 <!-- /figure -->
 
+<!-- figure: chip-frame-tmcl-uart -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/diagrams/chip-frame-tmcl-uart.dark.svg">
+  <img src="docs/diagrams/chip-frame-tmcl-uart.svg"
+    alt="Parameter-mode UART datagram of the TMC9660, 72 bits, sent byte by byte, each byte least significant
+    bit first, bit 0 first. Command: sync bit and module address (bits 0 to 7), operation (bits 8 to
+    15), type (bits 16 to 27), motor or bank (bits 28 to 31), data (big endian) (bits 32 to 63),
+    checksum (bits 64 to 71); Reply: host address (bits 0 to 7), sync bit and module address (bits 8 to
+    15), TMCL status (bits 16 to 23), operation (bits 24 to 31), data (big endian) (bits 32 to 63),
+    checksum (bits 64 to 71).">
+</picture>
+<!-- /figure -->
+
 <!-- figure: chip-outline -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/diagrams/chip-outline.dark.svg">
@@ -141,7 +154,7 @@ On UART the pins are GPIO6 (TX, pin 62) and GPIO7 (RX, pin 63) of the chip.
 | **Pin pitch** | 0.5 mm | Package Information, p. 10 |
 | **Supply VSA** | 7.7 V to 80.0 V | Power Supply - Electrical Characteristics, p. 17 |
 | **Supply VS** | 7.7 V to 70.0 V | Power Supply - Electrical Characteristics, p. 17 |
-| **Supply VCC_IO** | 2.5 V to 5.0 V | Table 1. Recommended Operating Conditions, p. 9 |
+| **Supply VCC_IO** | 2.2 V to 5.5 V | Power Supply - Electrical Characteristics, p. 17 |
 
 From [`docs/hardware.yml`](docs/hardware.yml); pins, circuits and the block diagram: [Hardware](docs/hardware.md).
 <!-- /generated -->

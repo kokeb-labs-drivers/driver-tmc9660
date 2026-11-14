@@ -102,6 +102,30 @@ Drawn from:
 - [`inc/tmc9660_types.hpp`](../../inc/tmc9660_types.hpp)
 - [`inc/tmc9660_uart_interface.hpp`](../../inc/tmc9660_uart_interface.hpp)
 
+## TMC9660: Parameter-mode UART datagram
+
+<!-- figure: chip-frame-tmcl-uart -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="chip-frame-tmcl-uart.dark.svg">
+  <img src="chip-frame-tmcl-uart.svg"
+    alt="Parameter-mode UART datagram of the TMC9660, 72 bits, sent byte by byte, each byte least significant
+    bit first, bit 0 first. Command: sync bit and module address (bits 0 to 7), operation (bits 8 to
+    15), type (bits 16 to 27), motor or bank (bits 28 to 31), data (big endian) (bits 32 to 63),
+    checksum (bits 64 to 71); Reply: host address (bits 0 to 7), sync bit and module address (bits 8 to
+    15), TMCL status (bits 16 to 23), operation (bits 24 to 31), data (big endian) (bits 32 to 63),
+    checksum (bits 64 to 71).">
+</picture>
+<!-- /figure -->
+
+Hardware description: [`docs/hardware.yml`](../hardware.yml)
+
+Drawn from:
+
+- [`docs/hardware.yml`](../hardware.yml)
+- [`inc/tmc9660_spi_interface.hpp`](../../inc/tmc9660_spi_interface.hpp)
+- [`inc/tmc9660_types.hpp`](../../inc/tmc9660_types.hpp)
+- [`inc/tmc9660_uart_interface.hpp`](../../inc/tmc9660_uart_interface.hpp)
+
 ## TMC9660
 
 <!-- figure: chip-hero -->

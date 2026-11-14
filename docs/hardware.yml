@@ -33,6 +33,7 @@ refs:
   mu: {doc: ds, section: "Measurement Unit Description", page: 50}
   otp: {doc: ds, section: "Bootloader, OTP Memory", page: 76}
   pm_spi: {doc: pm, section: "Communication Interfaces, Serial-Peripheral Interface", page: 9}
+  pm_uart: {doc: pm, section: "Communication Interfaces, UART Interface, Tables 1 and 2", page: 8}
 
 package:
   type: TQFN-64
@@ -44,7 +45,7 @@ package:
 supply:
   - {name: VSA, min_v: 7.7, max_v: 80.0, ref: supply}
   - {name: VS, min_v: 7.7, max_v: 70.0, ref: supply}
-  - {name: VCC_IO, min_v: 2.5, max_v: 5.0, ref: roc}
+  - {name: VCC_IO, min_v: 2.2, max_v: 5.5, ref: supply}   # Table 1 (p. 9) recommends 2.5 V to 5 V: ambiguity A25
 
 # The chip-first README: what the chip is and does, where it is used, how the driver covers it, what one SPI
 # transfer carries. `kokeb-docs figures` draws chip-hero, chip-capabilities and chip-frame-tmcl-spi from it,
@@ -155,6 +156,33 @@ frames:
       lanes:
         - {name: MOSI, row: Command}
         - {name: MISO, row: Reply}
+  - id: tmcl-uart
+    title: Parameter-mode UART datagram
+    description: >-
+      Every command and every reply is nine bytes, and the chip answers only after a command; the sync bit is always 1
+      and sets the baud rate.
+    bits: 72
+    bit_order: lsb-first
+    ref: pm_uart
+    rows:
+      - label: Command
+        sub: UART_RXD
+        fields:
+          - {name: sync bit and module address, short: address, bits: [0, 7], tone: blue}
+          - {name: operation, bits: [8, 15], tone: amber}
+          - {name: type, bits: [16, 27], tone: blue}
+          - {name: motor or bank, short: bank, bits: [28, 31], tone: blue}
+          - {name: data (big endian), bits: [32, 63], tone: green}
+          - {name: checksum, bits: [64, 71], tone: slate}
+      - label: Reply
+        sub: UART_TXD
+        fields:
+          - {name: host address, short: host, bits: [0, 7], tone: blue}
+          - {name: sync bit and module address, short: module, bits: [8, 15], tone: blue}
+          - {name: TMCL status, short: status, bits: [16, 23], tone: violet}
+          - {name: operation, bits: [24, 31], tone: amber}
+          - {name: data (big endian), bits: [32, 63], tone: green}
+          - {name: checksum, bits: [64, 71], tone: slate}
 
 hooks:
   - {id: transfer, call: "Transfer()", kind: spi, source: inc/tmc9660_spi_interface.hpp, symbol: Transfer}
@@ -173,7 +201,7 @@ pins:
   - {number: 6, name: GPIO14, type: digital-io, domain: VCC_IO, function: "GPIO14 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
   - {number: 7, name: 1V8, type: power, domain: 1V8, function: "Digital core supply input; 10 uF to GND", ref: pins}
   - {number: 8, name: GND, type: ground, function: "Ground", ref: pins}
-  - {number: 9, name: VCC_IO, type: power, domain: VCC_IO, function: "Logic supply input, 2.5 V to 5 V (3 V or more for SPI at 10 MHz); 1 uF to GND", ref: pins}
+  - {number: 9, name: VCC_IO, type: power, domain: VCC_IO, function: "Logic supply input, 2.2 V to 5.5 V (3 V or more for SPI at 10 MHz); 1 uF to GND", ref: supply}
   - {number: 10, name: GPIO15, type: digital-io, domain: VCC_IO, function: "GPIO15 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
   - {number: 11, name: GPIO16, type: digital-io, domain: VCC_IO, function: "GPIO16 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
   - {number: 12, name: GPIO17, type: digital-io, domain: VCC_IO, function: "GPIO17 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
