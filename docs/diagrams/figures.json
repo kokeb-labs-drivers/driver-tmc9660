@@ -13,12 +13,54 @@
       "inc/tmc9660_uart_interface.hpp"
     ]
   },
+  "chip-capabilities": {
+    "title": "What the TMC9660 does",
+    "alt": "Capability map of the TMC9660: FOC and servo loops (supported): Runs field-oriented current control and the torque, velocity and position loops in hardware; Ramp generator and homing (supported): Plans eight-point acceleration ramps in real time and searches the reference switches for home; Position feedback (supported): Reads Hall sensors, ABN encoders or an SPI encoder for commutation and position; Smart gate driver (supported): Drives up to four NMOS half-bridges, 1 A source and 2 A sink; Current sensing and measurement (supported): Amplifies the bottom-shunt currents and measures the supply voltage and the temperatures; Protections (supported): Overcurrent, gate-short, undervoltage and thermal protection; the flags are read before every start; Bootloader and application modes (supported): Sets up pins, clock and LDOs at power-up, then starts parameter mode (TMCL) or register mode; Hibernation and wake-up (supported): Switches all but the always-on block off; the WAKE pin or a timer powers the chip up again; OTP configuration (not covered): Stores the boot configuration permanently; the driver loads it and never burns it.",
+    "description": "Each card is one function of the TMC9660: an icon, its name and what it does for the application. The filled pill says how this driver covers it (legend below); the outlined pills are the chip registers behind it. The coverage table in the README gives the driver calls and the datasheet section of each card.",
+    "profile": "overview",
+    "width": 1200,
+    "source": "docs/hardware.yml",
+    "sources": [
+      "docs/hardware.yml",
+      "inc/tmc9660_spi_interface.hpp",
+      "inc/tmc9660_types.hpp",
+      "inc/tmc9660_uart_interface.hpp"
+    ]
+  },
   "chip-circuit-typical": {
     "title": "TMC9660: Typical application",
     "alt": "Schematic of the TMC9660 typical application: the chip with U2 MCU, C1 capacitor ≥ 0.5 µF, C11 capacitor 10 µF, C2 capacitor ≥ 1 µF, C3 capacitor 1 µF, C4 capacitor 10 µF, C5 capacitor 10 µF, C6 capacitor 8 µF, C7 capacitor 4.7 µF, C8 capacitor 220 nF, C9 capacitor 1.6 µF, C10 capacitor 1.6 µF, L1 inductor 27 µH, R1 resistor 10 kΩ; the MCU wires carry the port hooks GpioGet(CtrlPin::Faultn), GpioSet(CtrlPin::DrvEn), GpioSet(CtrlPin::Reset), GpioSet(CtrlPin::Wake), Transfer().",
     "description": "A schematic. The MCU is on the left, each of its pins level with the chip pin it connects to; above each wire is the hook of the driver's port that drives or reads it. Supply pins point up to their supply and decoupling, ground pins down. Pins on the right carry the loads and the pins tied to a supply or ground; a cross marks a pin left open. A dot is a junction; wires that cross without a dot are not connected.",
     "profile": "detail",
     "width": 1520,
+    "source": "docs/hardware.yml",
+    "sources": [
+      "docs/hardware.yml",
+      "inc/tmc9660_spi_interface.hpp",
+      "inc/tmc9660_types.hpp",
+      "inc/tmc9660_uart_interface.hpp"
+    ]
+  },
+  "chip-frame-tmcl-spi": {
+    "title": "TMC9660: Parameter-mode SPI datagram",
+    "alt": "Parameter-mode SPI datagram of the TMC9660, 64 bits, most significant bit first. Command: operation (bits 63 to 56), type and motor or bank (bits 55 to 40), data (big endian) (bits 39 to 8), checksum (bits 7 to 0); Reply: SPI status (bits 63 to 56), TMCL status (bits 55 to 48), operation (bits 47 to 40), data (big endian) (bits 39 to 8), checksum (bits 7 to 0). Below, the SPI mode 3 waveform of one transfer in the same bit grid.",
+    "description": "One Parameter-mode SPI datagram of the TMC9660, 64 bits in a row from the most significant (left, sent first) to the least significant (right). Each row is one kind of frame; each coloured box a field, with its first and last bit number under it. The waveform below draws the select, the clock and the data lines over the same bits.",
+    "profile": "overview",
+    "width": 1200,
+    "source": "docs/hardware.yml",
+    "sources": [
+      "docs/hardware.yml",
+      "inc/tmc9660_spi_interface.hpp",
+      "inc/tmc9660_types.hpp",
+      "inc/tmc9660_uart_interface.hpp"
+    ]
+  },
+  "chip-hero": {
+    "title": "TMC9660",
+    "alt": "Overview of the TMC9660, a gate driver and motor controller for BLDC, PMSM, stepper and brushed DC motors: field-oriented control, the servo loops and a ramp generator run in hardware, and a buck converter powers the chip from the motor supply. A MCU talks to it over SPI or UART; it drives MOSFET half-bridges, then Motor; it reads back Phase currents, Position sensor, Reference switches. Headline figures: 7.7 to 70 V single-supply operating range; 1 A / 2 A gate drive source and sink, up to four half-bridges; 10 MHz SPI clock, mode 3; 9 x 9 mm 64-pin TQFN body.",
+    "description": "The TMC9660 in the middle, drawn as its TQFN-64 package. On the left the MCU that runs the driver, joined to it by SPI or UART. To the right, what the chip drives, in the order the power flows. Below it, what the chip reads back. The tiles at the bottom are the headline numbers, each with the datasheet section and page it comes from.",
+    "profile": "overview",
+    "width": 1200,
     "source": "docs/hardware.yml",
     "sources": [
       "docs/hardware.yml",
@@ -47,6 +89,20 @@
     "description": "The TMC9660 seen from the top, in its TQFN-64 package. Pin 1 is marked by the dot; the numbers run counter-clockwise from it. Each pad is coloured by the pin's electrical type (legend below). Next to it is the pin's name and, in mono, the hook of the driver's port that drives or reads it; a pin without a hook is not used by the driver. The dashed square is the exposed pad.",
     "profile": "detail",
     "width": 1318,
+    "source": "docs/hardware.yml",
+    "sources": [
+      "docs/hardware.yml",
+      "inc/tmc9660_spi_interface.hpp",
+      "inc/tmc9660_types.hpp",
+      "inc/tmc9660_uart_interface.hpp"
+    ]
+  },
+  "chip-wiring-typical": {
+    "title": "Wiring: Typical application",
+    "alt": "Wiring of the TMC9660 for the Typical application: MCU SPI SCK to GPIO11 (Transfer()); MCU SPI MOSI to GPIO10 (Transfer()); MCU SPI MISO to GPIO9 (Transfer()); MCU GPIO / CS to GPIO12 (Transfer()); MCU GPIO to RSTN (GpioSet(CtrlPin::Reset)); MCU GPIO to DRV_EN (GpioSet(CtrlPin::DrvEn)); MCU GPIO (IRQ) to FAULTN (GpioGet(CtrlPin::Faultn)). Supplies, grounds and the support parts are listed under the drawing.",
+    "description": "The MCU on the left, the TMC9660 in the middle. Each wire is coloured by the chip pin's electrical type and carries the net name and the chip pin number above it and, under it, the driver hook that uses it (and any part on the net). The boxes underneath list the supplies, the support parts and the pins this circuit leaves unconnected.",
+    "profile": "overview",
+    "width": 1200,
     "source": "docs/hardware.yml",
     "sources": [
       "docs/hardware.yml",

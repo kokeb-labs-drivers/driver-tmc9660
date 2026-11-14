@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="819" viewBox="0 0 1200 819" role="img" aria-labelledby="chip-hero-title chip-hero-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-hero-title">TMC9660</title>
+<desc id="chip-hero-desc">Overview of the TMC9660, a gate driver and motor controller for BLDC, PMSM, stepper and brushed DC motors: field-oriented control, the servo loops and a ramp generator run in hardware, and a buck converter powers the chip from the motor supply. A MCU talks to it over SPI or UART; it drives MOSFET half-bridges, then Motor; it reads back Phase currents, Position sensor, Reference switches. Headline figures: 7.7 to 70 V single-supply operating range; 1 A / 2 A gate drive source and sink, up to four half-bridges; 10 MHz SPI clock, mode 3; 9 x 9 mm 64-pin TQFN body.</desc>
+<defs><marker id="fk-arrow-amber-strong" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#FBBF24"/></marker><marker id="fk-arrow-blue-strong" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#60A5FA"/></marker><marker id="fk-arrow-teal-strong" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2BB3A3"/></marker></defs>
+<rect x="0.5" y="0.5" width="1199" height="818" rx="16" fill="#0E131A" stroke="#283241"/>
+<text x="32" y="46.8" font-size="16" font-weight="700" letter-spacing="1.2" fill="#F8D27A">SMART GATE DRIVER WITH SERVO CONTROLLER</text>
+<text x="32" y="85.6" font-size="32" font-weight="700" fill="#E8EDF3">TMC9660</text>
+<text x="32" y="115.4" font-size="18" fill="#9AA6B5">What talks to it, what it drives and what it reads back, with its headline numbers. Datasheet: General Description, p. 1.</text>
+<rect x="32" y="131.4" width="1136" height="1" fill="#252F3C"/>
+<path d="M246 262.4 L393 262.4" fill="none" stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-blue-strong)" marker-start="url(#fk-arrow-blue-strong)"/>
+<path d="M655 262.4 L707 262.4" fill="none" stroke="#2BB3A3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-teal-strong)"/>
+<path d="M913 262.4 L965 262.4" fill="none" stroke="#2BB3A3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-teal-strong)"/>
+<path d="M524 427.4 L524 383.4" fill="none" stroke="#FBBF24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-amber-strong)"/>
+<rect x="397" y="183.3" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="397" y="202.2" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="397" y="221.1" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="397" y="240" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="397" y="258.9" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="397" y="277.8" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="397" y="296.7" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="397" y="315.6" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="397" y="334.5" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="639" y="183.3" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="639" y="202.2" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="639" y="221.1" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="639" y="240" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="639" y="258.9" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="639" y="277.8" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="639" y="296.7" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="639" y="315.6" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="639" y="334.5" width="12" height="7" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="436.1" y="145.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="457.2" y="145.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="478.3" y="145.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="499.4" y="145.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="520.5" y="145.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="541.6" y="145.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="562.7" y="145.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="583.8" y="145.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="604.9" y="145.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="436.1" y="367.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="457.2" y="367.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="478.3" y="367.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="499.4" y="367.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="520.5" y="367.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="541.6" y="367.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="562.7" y="367.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="583.8" y="367.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="604.9" y="367.4" width="7" height="12" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.2"/>
+<rect x="409" y="157.4" width="230" height="210" rx="10" fill="#18202B" stroke="#D2DAE4" stroke-width="2.2"/>
+<circle cx="429" cy="177.4" r="6" fill="#D2DAE4"/>
+<rect x="32" y="205.4" width="210" height="114" rx="12" fill="#13233A" stroke="#60A5FA" stroke-width="1.4"/>
+<rect x="32" y="213.4" width="4" height="98" rx="2" fill="#60A5FA"/>
+<rect x="711" y="192.4" width="198" height="140" rx="12" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="711" y="200.4" width="4" height="124" rx="2" fill="#2BB3A3"/>
+<rect x="969" y="193.4" width="198" height="138" rx="12" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="969" y="201.4" width="4" height="122" rx="2" fill="#2BB3A3"/>
+<rect x="344" y="431.4" width="360" height="163" rx="12" fill="#2C2310" stroke="#FBBF24" stroke-width="1.4"/>
+<rect x="344" y="439.4" width="4" height="147" rx="2" fill="#FBBF24"/>
+<rect x="32" y="634.4" width="272" height="153.9" rx="12" fill="#18202B" stroke="#3A4657" stroke-width="1"/>
+<rect x="320" y="634.4" width="272" height="153.9" rx="12" fill="#18202B" stroke="#3A4657" stroke-width="1"/>
+<rect x="608" y="634.4" width="272" height="153.9" rx="12" fill="#18202B" stroke="#3A4657" stroke-width="1"/>
+<rect x="896" y="634.4" width="272" height="153.9" rx="12" fill="#18202B" stroke="#3A4657" stroke-width="1"/>
+<text x="524" y="256.4" font-size="30" font-weight="700" text-anchor="middle" fill="#E8EDF3">TMC9660</text>
+<text x="524" y="286.4" font-size="17" text-anchor="middle" fill="#9AA6B5">TQFN-64</text>
+<text x="524" y="310.4" font-size="16" text-anchor="middle" fill="#9AA6B5">64 pins + pad</text>
+<text x="56" y="240.4" font-size="20" font-weight="700" fill="#BFDBFE">MCU</text>
+<text x="56" y="271" font-size="17" fill="#D2DAE4">your firmware and</text>
+<text x="56" y="295.7" font-size="17" fill="#D2DAE4">this driver</text>
+<rect x="264" y="250.4" width="110.9" height="24" rx="12" fill="#0E131A"/>
+<text x="319.5" y="268.2" font-size="16" font-weight="500" text-anchor="middle" fill="#9AA6B5">SPI or UART</text>
+<text x="735" y="227.4" font-size="20" font-weight="700" fill="#A7F3E6">MOSFET</text>
+<text x="735" y="253.4" font-size="20" font-weight="700" fill="#A7F3E6">half-bridges</text>
+<text x="735" y="284" font-size="17" fill="#D2DAE4">up to four, NMOS</text>
+<text x="735" y="308.7" font-size="17" fill="#D2DAE4">high and low side</text>
+<text x="993" y="228.4" font-size="20" font-weight="700" fill="#A7F3E6">Motor</text>
+<text x="993" y="259" font-size="17" fill="#D2DAE4">BLDC, PMSM,</text>
+<text x="993" y="283.7" font-size="17" fill="#D2DAE4">stepper or</text>
+<text x="993" y="308.4" font-size="17" fill="#D2DAE4">brushed DC</text>
+<text x="368" y="466.4" font-size="20" font-weight="700" fill="#FDE68A">Reads back</text>
+<text x="368" y="497" font-size="17" fill="#D2DAE4">Phase currents (bottom shunts)</text>
+<text x="368" y="521.7" font-size="17" fill="#D2DAE4">Position sensor (Hall, ABN or SPI</text>
+<text x="368" y="546.3" font-size="17" fill="#D2DAE4">encoder)</text>
+<text x="368" y="571" font-size="17" fill="#D2DAE4">Reference switches</text>
+<text x="48" y="682.4" font-size="30" font-weight="700" fill="#E8EDF3">7.7 to 70 V</text>
+<text x="48" y="712" font-size="17" fill="#D2DAE4">single-supply operating</text>
+<text x="48" y="735" font-size="17" fill="#D2DAE4">range</text>
+<text x="48" y="770.3" font-size="16" fill="#9AA6B5">Benefits and Features, p. 1</text>
+<text x="336" y="682.4" font-size="30" font-weight="700" fill="#E8EDF3">1 A / 2 A</text>
+<text x="336" y="712" font-size="17" fill="#D2DAE4">gate drive source and sink,</text>
+<text x="336" y="735" font-size="17" fill="#D2DAE4">up to four half-bridges</text>
+<text x="336" y="770.3" font-size="16" fill="#9AA6B5">GDU List of Features, p. 41</text>
+<text x="624" y="682.4" font-size="30" font-weight="700" fill="#E8EDF3">10 MHz</text>
+<text x="624" y="712" font-size="17" fill="#D2DAE4">SPI clock, mode 3</text>
+<text x="624" y="770.3" font-size="16" fill="#9AA6B5">SPI, p. 25</text>
+<text x="912" y="682.4" font-size="30" font-weight="700" fill="#E8EDF3">9 x 9 mm</text>
+<text x="912" y="712" font-size="17" fill="#D2DAE4">64-pin TQFN body</text>
+<text x="912" y="770.3" font-size="16" fill="#9AA6B5">Package Information, p. 10</text>
+</svg>
