@@ -1,0 +1,5 @@
+header_only:
+  tmc9660_bootconfig: constants and inline or constexpr functions only, nothing to compile separately
+  tmc9660_frames: constants and inline or constexpr functions only, nothing to compile separately
+  tmc9660_globals: constants and inline or constexpr functions only, nothing to compile separately
+  tmc9660_params: constants and inline or constexpr functions only, nothing to compile separately
