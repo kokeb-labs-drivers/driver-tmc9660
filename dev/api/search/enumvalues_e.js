@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['parameter_0',['parameter',['../group__tmc9660__types.html#gga80a7d8471c0bbe5a550185a14fba94a3a83f499a540b1323009c200d6f8cc9396',1,'tmc9660::Parameter'],['../group__tmc9660__types.html#ggaa93d0a0f4edc7d9fc50762f6d810e3e1a83f499a540b1323009c200d6f8cc9396',1,'tmc9660::Parameter']]],
+  ['partitionversion_1',['PartitionVersion',['../group__tmc9660__types.html#ggaa44db41f0bd5c8babb0b53a41a539bc4a48a617a708b822b15efa16053d750a50',1,'tmc9660']]],
+  ['phase_5fux1_5fadc_5fmapping_2',['PHASE_UX1_ADC_MAPPING',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa344044b695631899216fa0333d673525',1,'tmc9660']]],
+  ['phase_5fvx2_5fadc_5fmapping_3',['PHASE_VX2_ADC_MAPPING',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa398129888941f79d5fd1def3a973f13c',1,'tmc9660']]],
+  ['phase_5fwy1_5fadc_5fmapping_4',['PHASE_WY1_ADC_MAPPING',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa9dc4e1f5814d4091a72e077d11abad67',1,'tmc9660']]],
+  ['phase_5fy2_5fadc_5fmapping_5',['PHASE_Y2_ADC_MAPPING',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fabfd92d5ecfc50689e5a694d623a0426f',1,'tmc9660']]],
+  ['position_5fi_6',['POSITION_I',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa93e33e961b9be51fdbdd5f04c104ccce',1,'tmc9660']]],
+  ['position_5flimit_5fhigh_7',['POSITION_LIMIT_HIGH',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fac77a14db793a3811f406a2b4c963d183',1,'tmc9660']]],
+  ['position_5flimit_5flow_8',['POSITION_LIMIT_LOW',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa5c16dc6413de8a949074382139600cee',1,'tmc9660']]],
+  ['position_5floop_5fdownsampling_9',['POSITION_LOOP_DOWNSAMPLING',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa5af882ba2c7676e4cce913dbf138472f',1,'tmc9660']]],
+  ['position_5fnorm_5fi_10',['POSITION_NORM_I',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa3f84eaebda453168e2d81f3e46f0cf39',1,'tmc9660']]],
+  ['position_5fnorm_5fp_11',['POSITION_NORM_P',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa12a4440a2dd1b18f8078a20dfe17e144',1,'tmc9660']]],
+  ['position_5fp_12',['POSITION_P',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa08019f779f3ee48ec2bc79339901116d',1,'tmc9660']]],
+  ['position_5fpi_5ferror_13',['POSITION_PI_ERROR',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53facd930bba4e6c2b9740a368dc4933b061',1,'tmc9660']]],
+  ['position_5fpi_5fintegrator_14',['POSITION_PI_INTEGRATOR',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fae9ab968e2ce88de5714548b6a7d706a0',1,'tmc9660']]],
+  ['position_5freached_5fthreshold_15',['POSITION_REACHED_THRESHOLD',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fac34d830f153331b238b7b525d63157a2',1,'tmc9660']]],
+  ['position_5fscaling_5ffactor_16',['POSITION_SCALING_FACTOR',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa00a58d0c4ca0003bbfeaf1712c763717',1,'tmc9660']]],
+  ['position_5fsensor_5fselection_17',['POSITION_SENSOR_SELECTION',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa285344d727a00f5d0ced990156aaabd5',1,'tmc9660']]],
+  ['prescaler_18',['Prescaler',['../group__tmc9660__types.html#gga2cf46411f997123618019e6f60d4b192ad31f9063cc5aef6bafc10e43eda98ee8',1,'tmc9660']]],
+  ['pwm_5fh_5foutput_5fpolarity_19',['PWM_H_OUTPUT_POLARITY',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fad8cbbffbfd93fb895b5f228720cdd1c6',1,'tmc9660']]],
+  ['pwm_5fl_5foutput_5fpolarity_20',['PWM_L_OUTPUT_POLARITY',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa2c39ce5e17a77382cd769fc48e74c2e3',1,'tmc9660']]],
+  ['pwm_5fswitching_5fscheme_21',['PWM_SWITCHING_SCHEME',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa17aba9cd0dcf7ce89f61cc27fd28fd7f',1,'tmc9660']]]
+];
