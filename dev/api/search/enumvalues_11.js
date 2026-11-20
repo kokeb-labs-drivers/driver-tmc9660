@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['target_5fflux_0',['TARGET_FLUX',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa9fbd28171a33029af672568830333781',1,'tmc9660']]],
+  ['target_5fposition_1',['TARGET_POSITION',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa2fa89a641701ff6684ef0e99e269c87a',1,'tmc9660']]],
+  ['target_5ftorque_2',['TARGET_TORQUE',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa4f8a32f8785501fe7f4ca885600e50a9',1,'tmc9660']]],
+  ['target_5ftorque_5fbiquad_5ffilter_5facoeff_5f1_3',['TARGET_TORQUE_BIQUAD_FILTER_ACOEFF_1',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa34254cc76764cf5fdffd82b64f185b11',1,'tmc9660']]],
+  ['target_5ftorque_5fbiquad_5ffilter_5facoeff_5f2_4',['TARGET_TORQUE_BIQUAD_FILTER_ACOEFF_2',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa0bf47338a9e28c7417d01547ce910b19',1,'tmc9660']]],
+  ['target_5ftorque_5fbiquad_5ffilter_5fbcoeff_5f0_5',['TARGET_TORQUE_BIQUAD_FILTER_BCOEFF_0',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fad79cc2b9b6518da4218c56138398930b',1,'tmc9660']]],
+  ['target_5ftorque_5fbiquad_5ffilter_5fbcoeff_5f1_6',['TARGET_TORQUE_BIQUAD_FILTER_BCOEFF_1',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53faae927e40b4d5719b52c07422ae7080e2',1,'tmc9660']]],
+  ['target_5ftorque_5fbiquad_5ffilter_5fbcoeff_5f2_7',['TARGET_TORQUE_BIQUAD_FILTER_BCOEFF_2',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa581d1b6b6171358ecd830b46bd778674',1,'tmc9660']]],
+  ['target_5ftorque_5fbiquad_5ffilter_5fenable_8',['TARGET_TORQUE_BIQUAD_FILTER_ENABLE',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa66a22beb6a0365ddb3206c0ba57fb497',1,'tmc9660']]],
+  ['target_5fvelocity_9',['TARGET_VELOCITY',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa161204f93ebaf21080b6085184c8f24b',1,'tmc9660']]],
+  ['thermal_5fwinding_5ftime_5fconstant_5f1_10',['THERMAL_WINDING_TIME_CONSTANT_1',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa86f51ab4fab688aa0ec24e5f4504f8a2',1,'tmc9660']]],
+  ['thermal_5fwinding_5ftime_5fconstant_5f2_11',['THERMAL_WINDING_TIME_CONSTANT_2',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fac134e8a5276026330898ad9cf03f45b9',1,'tmc9660']]],
+  ['timeout_12',['timeout',['../group__tmc9660__types.html#gga74b114ef8219608ad8c200cf5b57515bac85a251cc457840f1e032f1b733e9398',1,'tmc9660::Timeout'],['../group__tmc9660__types.html#ggac82f4ab3cc5e1578da3f19fa475a38fcac85a251cc457840f1e032f1b733e9398',1,'tmc9660::Timeout']]],
+  ['torque_5fflux_5fcombined_5factual_5fvalues_13',['TORQUE_FLUX_COMBINED_ACTUAL_VALUES',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa479d2605a582b298954f0d858d00f422',1,'tmc9660']]],
+  ['torque_5fflux_5fcombined_5ftarget_5fvalues_14',['TORQUE_FLUX_COMBINED_TARGET_VALUES',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa5f6cd2e298c9f56ca95011145bb9731e',1,'tmc9660']]],
+  ['torque_5fi_15',['TORQUE_I',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa5ff0024efff1282f1df690159d9ffe6b',1,'tmc9660']]],
+  ['torque_5foffset_16',['TORQUE_OFFSET',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fa8d616dacf14866e4adc9db1438a6ffdc',1,'tmc9660']]],
+  ['torque_5fp_17',['TORQUE_P',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fad36ad87ba755016492a2165181acc6f6',1,'tmc9660']]],
+  ['torque_5fpi_5ferror_18',['TORQUE_PI_ERROR',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fac41b288eb36e879769bd14321dafc7e1',1,'tmc9660']]],
+  ['torque_5fpi_5fintegrator_19',['TORQUE_PI_INTEGRATOR',['../namespacetmc9660.html#a77ba1c387c8a8d9df56b9b95c7f3d53fadfb6c2839ad17d61c8d895ae454db490',1,'tmc9660']]],
+  ['triggermaskshift_20',['TriggerMaskShift',['../group__tmc9660__types.html#gga2cf46411f997123618019e6f60d4b192a619e13981695c64dbda0bb1b55acbad8',1,'tmc9660']]],
+  ['typehigh_21',['TypeHigh',['../group__tmc9660__types.html#gga92a2de7edb17bf418b138e280738529aaeb255175cc93a09c4269155c1a49e5c0',1,'tmc9660']]]
+];
