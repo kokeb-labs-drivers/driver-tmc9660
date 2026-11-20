@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['rampenable_0',['RampEnable',['../namespacetmc9660_1_1fields_1_1mcc__motion__config.html#a2475096c260966d624bc6d0c1ed7c417',1,'tmc9660::fields::mcc_motion_config']]],
+  ['rampera1_1',['RamperA1',['../namespacetmc9660_1_1fields_1_1mcc__ramper__a1.html#a7f5b673229b096dcc46c75b2cd25fb75',1,'tmc9660::fields::mcc_ramper_a1']]],
+  ['rampera2_2',['RamperA2',['../namespacetmc9660_1_1fields_1_1mcc__ramper__a2.html#a1382bc7d292c7a1382603ee671e74ca1',1,'tmc9660::fields::mcc_ramper_a2']]],
+  ['ramperaactual_3',['RamperAActual',['../namespacetmc9660_1_1fields_1_1mcc__ramper__a__actual.html#afb1b563cb76f90507a2e4e2ce81a21da',1,'tmc9660::fields::mcc_ramper_a_actual']]],
+  ['ramperamax_4',['RamperAMax',['../namespacetmc9660_1_1fields_1_1mcc__ramper__a__max.html#a1eeb8cdb91d15d6407345cd0739b9cc1',1,'tmc9660::fields::mcc_ramper_a_max']]],
+  ['ramperd1_5',['RamperD1',['../namespacetmc9660_1_1fields_1_1mcc__ramper__d1.html#a19eedd0a2ea0d3ec79956a1750179e18',1,'tmc9660::fields::mcc_ramper_d1']]],
+  ['ramperd2_6',['RamperD2',['../namespacetmc9660_1_1fields_1_1mcc__ramper__d2.html#a9c7eeae3e4f35236c5fd3fa8af781430',1,'tmc9660::fields::mcc_ramper_d2']]],
+  ['ramperdmax_7',['RamperDMax',['../namespacetmc9660_1_1fields_1_1mcc__ramper__d__max.html#a42ef52fcdd51b1469700e2e7c203506e',1,'tmc9660::fields::mcc_ramper_d_max']]],
+  ['ramperphie_8',['RamperPhiE',['../namespacetmc9660_1_1fields_1_1mcc__ramper__phi__e.html#ac0c5ad45df0755e9511d5bb7231b1971',1,'tmc9660::fields::mcc_ramper_phi_e']]],
+  ['ramperphieoffset_9',['RamperPhiEOffset',['../namespacetmc9660_1_1fields_1_1mcc__ramper__phi__e__offset.html#ad8d7ee5bb4ab01475dd817f82f95285b',1,'tmc9660::fields::mcc_ramper_phi_e_offset']]],
+  ['ramperv1_10',['RamperV1',['../namespacetmc9660_1_1fields_1_1mcc__ramper__v1.html#a06544d8f0724feca92087276a2bffc87',1,'tmc9660::fields::mcc_ramper_v1']]],
+  ['ramperv2_11',['RamperV2',['../namespacetmc9660_1_1fields_1_1mcc__ramper__v2.html#a6cdf13d153525d6d1839f3a74686ca85',1,'tmc9660::fields::mcc_ramper_v2']]],
+  ['rampervactual_12',['RamperVActual',['../namespacetmc9660_1_1fields_1_1mcc__ramper__v__actual.html#aee64d7ff086a30ea04a6d8492cc42bd7',1,'tmc9660::fields::mcc_ramper_v_actual']]],
+  ['rampervmax_13',['RamperVMax',['../namespacetmc9660_1_1fields_1_1mcc__ramper__v__max.html#a8f4d588c6464f4b3a7dbdf0690df7832',1,'tmc9660::fields::mcc_ramper_v_max']]],
+  ['rampervstart_14',['RamperVStart',['../namespacetmc9660_1_1fields_1_1mcc__ramper__v__start.html#af34a2100af9f8dd5e32ff6e43c6af449',1,'tmc9660::fields::mcc_ramper_v_start']]],
+  ['rampervstop_15',['RamperVStop',['../namespacetmc9660_1_1fields_1_1mcc__ramper__v__stop.html#ad4dc3b7fc1eb71b744dcc47e8980917a',1,'tmc9660::fields::mcc_ramper_v_stop']]],
+  ['rampervtarget_16',['RamperVTarget',['../namespacetmc9660_1_1fields_1_1mcc__ramper__v__target.html#a8d4ce165a1820366d9c019beff3866f9',1,'tmc9660::fields::mcc_ramper_v_target']]],
+  ['rampmode_17',['RampMode',['../namespacetmc9660_1_1fields_1_1mcc__motion__config.html#a6803cabc3900d0967b6493ae1a2ad164',1,'tmc9660::fields::mcc_motion_config']]],
+  ['rdyadc0_18',['RdyAdc0',['../namespacetmc9660_1_1fields_1_1adc__status.html#a3dd1536018fd688e4c09c442e68cac88',1,'tmc9660::fields::adc_status']]],
+  ['rdyadc1_19',['RdyAdc1',['../namespacetmc9660_1_1fields_1_1adc__status.html#a2c93c3158d24863a78d6974ed8b0d748',1,'tmc9660::fields::adc_status']]],
+  ['rdyadc2_20',['RdyAdc2',['../namespacetmc9660_1_1fields_1_1adc__status.html#a02753b6c06de5880141643d935767229',1,'tmc9660::fields::adc_status']]],
+  ['rdyadc3_21',['RdyAdc3',['../namespacetmc9660_1_1fields_1_1adc__status.html#ad699f3dcd426f0c51db12ab142152dc7',1,'tmc9660::fields::adc_status']]],
+  ['refswh_22',['refswh',['../namespacetmc9660_1_1fields_1_1mcc__inputs__raw.html#ad14b7bddf12beecfc93fc614ba4c351f',1,'tmc9660::fields::mcc_inputs_raw::RefSwH'],['../namespacetmc9660_1_1fields_1_1mcc__status__flags.html#a16c82a00264f02534e7a7abee7d7ea75',1,'tmc9660::fields::mcc_status_flags::RefSwH']]],
+  ['refswl_23',['refswl',['../namespacetmc9660_1_1fields_1_1mcc__inputs__raw.html#ad055ebea099633af52d4efd96dbe7b77',1,'tmc9660::fields::mcc_inputs_raw::RefSwL'],['../namespacetmc9660_1_1fields_1_1mcc__status__flags.html#a7c0b6b781b79f3be6100fd2399fa9442',1,'tmc9660::fields::mcc_status_flags::RefSwL']]],
+  ['refswr_24',['refswr',['../namespacetmc9660_1_1fields_1_1mcc__inputs__raw.html#afa470039ce4ed75dcba37600fadde8a3',1,'tmc9660::fields::mcc_inputs_raw::RefSwR'],['../namespacetmc9660_1_1fields_1_1mcc__status__flags.html#ad17143bc8c3c6bb75af4fdbe29a112f0',1,'tmc9660::fields::mcc_status_flags::RefSwR']]]
+];
