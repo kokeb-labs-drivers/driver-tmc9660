@@ -1,0 +1,13 @@
+<details>
+<summary>Table form of this figure</summary>
+<table>
+<caption>UART character and transceiver enable</caption>
+<thead><tr><th scope="col">Symbol</th><th scope="col">Parameter</th><th scope="col">Min</th><th scope="col">Typ</th><th scope="col">Max</th><th scope="col">Unit</th><th scope="col">Datasheet</th></tr></thead>
+<tbody>
+<tr><th scope="row">baud</th><td>Bit rate with automatic baud rate detection at the 40 MHz system clock</td><td>9600</td><td></td><td>250000</td><td>bit/s</td><td>UART, p. 24</td></tr>
+<tr><th scope="row">baud</th><td>Highest fixed bit rate (x8 oversampling)</td><td></td><td></td><td>5000000</td><td>bit/s</td><td>Table 5. UART Baud Rates, p. 23</td></tr>
+<tr><th scope="row">tPRE</th><td>UART_TXEN high before the start bit: UART_TXEN_PRE_DELAY, default 0</td><td></td><td>configurable</td><td></td><td></td><td>Bootloader, RS485 Configuration, p. 86</td></tr>
+<tr><th scope="row">tPOST</th><td>UART_TXEN high after the stop bit: UART_TXEN_POST_DELAY, default 0</td><td></td><td>configurable</td><td></td><td></td><td>Bootloader, RS485 Configuration, p. 86</td></tr>
+</tbody>
+</table>
+</details>

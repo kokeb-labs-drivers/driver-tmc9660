@@ -12,6 +12,7 @@ or UART, never to the power stage directly.
     - Package, pins and power-up pin functions: Pin Configurations; Pin Descriptions, p. 11
     - Supply ranges and the hibernation mode: Power Supply - Electrical Characteristics, p. 17
     - Pin functions at power-up and the UART and SPI of the bootloader: General-Purpose Input/Output Description, p. 19
+    - SPI peripheral, mode 3 and the 40-bit bootloader datagram: SPI, p. 25
     - Clock, reset, DRV_EN, WAKE and FAULTN: Clock and Control Description, p. 63
 
     All of them, with the driver API for each: [Datasheet map](datasheet.md).
@@ -201,13 +202,14 @@ restarts; `Config::faultn_is_reset` makes `Service()` treat a low level as a res
 | Setting | Bootloader SPI | TMCL SPI | Register-mode SPI | UART (all three) |
 | --- | --- | --- | --- | --- |
 | Mode | 3 | 3 | 3 | 8N1 |
-| Clock | Up to 10 MHz | Up to 10 MHz | Up to 10 MHz | Autobaud after `0x55`; 115200 is a safe start |
+| Clock | Up to 10 MHz | Up to 10 MHz | Up to 10 MHz | Autobaud from 9600 to 250000 bit/s at the 40 MHz clock (from `0x55` in the bootloader, from the sync bit in TMCL and register mode); up to 5 Mbit/s with a fixed rate; 115200 is a safe start |
 | Bit order | MSB first | MSB first | MSB first | LSB first, standard UART |
 | Frame | 5 bytes | 8 bytes, two transfers | 6 bytes | 8 bytes (bootloader), 9 bytes (TMCL, register) |
 | Chip select | Low for each frame | Low for each frame | Low for each frame | - |
 
 Every SPI exchange is one `Transfer()` call with chip select low for the whole frame. The TMCL SPI reply arrives in
-the transfer after the command, so a command costs two transfers (see [Parameter mode](parameter-mode.md)).
+the transfer after the command, so a command costs two transfers (see [Parameter mode](parameter-mode.md)). The
+waveforms and their timing are on [On the bus](bus.md).
 
 !!! warning "The MISO line stays driven after chip select rises (erratum 2)"
 

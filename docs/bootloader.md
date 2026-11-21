@@ -11,6 +11,7 @@ when that configuration says so. The driver exposes the bootloader as `Mode::Boo
     - SPI bootloader frame and delayed reply: Analog Devices (Trinamic) 19-101926 1, Bootloader, SPI Communication, p. 72
     - Bootloader commands and reply status codes: Analog Devices (Trinamic) 19-101926 1, Bootloader, Commands, p. 76
     - Boot configuration list, LDO and bootstrap configuration: Analog Devices (Trinamic) 19-101926 1, Bootloader, Configuration, p. 83
+    - RS-485 transmit enable delays: Analog Devices (Trinamic) 19-101926 1, Bootloader, RS485 Configuration, p. 86
     - Errata (OTP_BURN workaround, SPI slave MISO): Analog Devices (Trinamic) 19-101926 1, Errata, p. 99
     - Bootstrapping with the UblTools software: Analog Devices (Trinamic) AN-2601 0, Bootstrapping the TMC9660 IC using UblTools, p. 1
 

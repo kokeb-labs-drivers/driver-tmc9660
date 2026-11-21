@@ -1,0 +1,25 @@
+---
+kind: timing
+id: tmcl-spi
+title: TMCL command and reply on SPI
+kicker: On the bus
+alt: >-
+  A parameter-mode TMCL exchange on SPI: the reply to a 64-bit command comes back on MISO during the next 64-bit
+  datagram, while the first datagram returns the reply to the one before it.
+reads: >-
+  The three lanes are CS0 (SPI0_CS0), MOSI and MISO, left to right in time. In the first datagram MOSI carries the
+  command and MISO the reply to the previous datagram; in the second MOSI carries the next datagram and MISO the reply
+  to the command. Each datagram is 64 bits inside one CS0 low phase.
+bus: transaction
+signals:
+  - {id: cs, label: CS0, wave: "10....1.0....1"}
+  - {id: mosi, label: MOSI, wave: "x=....x.=....x", data: [command, next datagram]}
+  - {id: miso, label: MISO, wave: "z=....z.=....z", data: [previous reply, reply to command], tone: teal}
+groups:
+  - {from: 1, to: 6, label: "64 bits", ref: pm_spi}
+  - {from: 8, to: 13, label: "64 bits", ref: pm_spi}
+notes:
+  - {text: "Command: operation, type and motor or bank, 4 data bytes, checksum. Reply: SPI status, TMCL status,
+      operation, 4 data bytes, checksum. MSB first, data big-endian.", ref: pm_spi}
+  - {text: "SPI status 0xFF is OK, 0x00 a checksum error, 0x0C the first reply after start-up and 0xF0 not ready:
+      on 0xF0 send the datagram again.", ref: pm_spi}

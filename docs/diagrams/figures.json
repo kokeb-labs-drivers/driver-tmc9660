@@ -137,5 +137,73 @@
       "inc/tmc9660_spi_interface.hpp:SpiInterface",
       "inc/tmc9660_uart_interface.hpp:UartInterface"
     ]
+  },
+  "spi-timing": {
+    "title": "SPI bus timing",
+    "alt": "SPI timing of the TMC9660 in mode 3: SPI0_CS0 low frames a datagram, MOSI is read on each rising SPI0_SCK edge and MISO changes after each falling edge, with the select, setup and hold times the datasheet gives.",
+    "description": "The four lanes are CS0, SCK, MOSI and MISO (the pins SPI0_CS0, SPI0_SCK, SPI0_MOSI and SPI0_MISO), left to right in time. CS0 goes low, SCK idles high and clocks the bits of a bootloader datagram, the chip reads MOSI on the rising edge and drives MISO after the falling edge; bits 37 to 1 are left out. The table gives each interval with its datasheet value.",
+    "profile": "phone",
+    "width": 640,
+    "source": "docs/model/spi-timing.timing.yml",
+    "sources": [
+      "docs/model/spi-timing.timing.yml"
+    ],
+    "kind": "timing",
+    "palette": 2,
+    "print": "landscape",
+    "adaptive": true,
+    "twin": true,
+    "font": ""
+  },
+  "tmcl-spi": {
+    "title": "TMCL command and reply on SPI",
+    "alt": "A parameter-mode TMCL exchange on SPI: the reply to a 64-bit command comes back on MISO during the next 64-bit datagram, while the first datagram returns the reply to the one before it.",
+    "description": "The three lanes are CS0 (SPI0_CS0), MOSI and MISO, left to right in time. In the first datagram MOSI carries the command and MISO the reply to the previous datagram; in the second MOSI carries the next datagram and MISO the reply to the command. Each datagram is 64 bits inside one CS0 low phase.",
+    "profile": "phone",
+    "width": 640,
+    "source": "docs/model/tmcl-spi.timing.yml",
+    "sources": [
+      "docs/model/tmcl-spi.timing.yml"
+    ],
+    "kind": "timing",
+    "palette": 2,
+    "print": "landscape",
+    "adaptive": true,
+    "twin": false,
+    "font": ""
+  },
+  "uart-timing": {
+    "title": "UART character and transceiver enable",
+    "alt": "One UART character sent by the TMC9660: a start bit, eight data bits least significant first and a stop bit, with UART_TXEN raised before the start bit and dropped after the stop bit for an RS-485 transceiver.",
+    "description": "The two lanes are TX and TXEN (the pins UART_TX and UART_TXEN), left to right in time. TX idles high, the start bit pulls it low, the data bits D0 to D7 follow and the stop bit returns it high. TXEN goes high the pre-delay before the start bit and low the post-delay after the stop bit; the table gives the bit rates and both delays.",
+    "profile": "phone",
+    "width": 640,
+    "source": "docs/model/uart-timing.timing.yml",
+    "sources": [
+      "docs/model/uart-timing.timing.yml"
+    ],
+    "kind": "timing",
+    "palette": 2,
+    "print": "landscape",
+    "adaptive": true,
+    "twin": true,
+    "font": ""
+  },
+  "uart-topology": {
+    "title": "TMC9660 nodes on RS-485",
+    "alt": "Several TMC9660 on one RS-485 bus: the host and every chip share the DATA+ and DATA- pair through transceivers, and each chip answers only commands sent to its own odd module address.",
+    "description": "The host, a UART with an RS-485 transceiver, shares the DATA+ and DATA- pair with TMC9660 at address 1, TMC9660 at address 3 and the chips left out. Each TMC9660 drives its transceiver with UART_TXEN while it replies and listens otherwise.",
+    "profile": "phone",
+    "width": 640,
+    "source": "docs/model/uart-topology.topology.yml",
+    "sources": [
+      "docs/model/uart-topology.topology.yml"
+    ],
+    "kind": "topology",
+    "palette": 2,
+    "print": "landscape",
+    "adaptive": true,
+    "twin": false,
+    "font": ""
   }
 }

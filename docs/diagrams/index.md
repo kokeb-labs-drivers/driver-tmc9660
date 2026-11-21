@@ -232,3 +232,73 @@ Drawn from:
 - `public calls` in [`inc/tmc9660.hpp`](../../inc/tmc9660.hpp)
 - `SpiInterface` in [`inc/tmc9660_spi_interface.hpp`](../../inc/tmc9660_spi_interface.hpp)
 - `UartInterface` in [`inc/tmc9660_uart_interface.hpp`](../../inc/tmc9660_uart_interface.hpp)
+
+## SPI bus timing
+
+<!-- figure: spi-timing -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="spi-timing.dark.svg">
+  <img src="spi-timing.svg"
+    alt="SPI timing of the TMC9660 in mode 3: SPI0_CS0 low frames a datagram, MOSI is read on each rising
+    SPI0_SCK edge and MISO changes after each falling edge, with the select, setup and hold times the
+    datasheet gives.">
+</picture>
+<!-- /figure -->
+
+Hardware description: [`docs/model/spi-timing.timing.yml`](../model/spi-timing.timing.yml)
+
+Drawn from:
+
+- [`docs/model/spi-timing.timing.yml`](../model/spi-timing.timing.yml)
+
+## TMCL command and reply on SPI
+
+<!-- figure: tmcl-spi -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="tmcl-spi.dark.svg">
+  <img src="tmcl-spi.svg"
+    alt="A parameter-mode TMCL exchange on SPI: the reply to a 64-bit command comes back on MISO during the
+    next 64-bit datagram, while the first datagram returns the reply to the one before it.">
+</picture>
+<!-- /figure -->
+
+Hardware description: [`docs/model/tmcl-spi.timing.yml`](../model/tmcl-spi.timing.yml)
+
+Drawn from:
+
+- [`docs/model/tmcl-spi.timing.yml`](../model/tmcl-spi.timing.yml)
+
+## UART character and transceiver enable
+
+<!-- figure: uart-timing -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="uart-timing.dark.svg">
+  <img src="uart-timing.svg"
+    alt="One UART character sent by the TMC9660: a start bit, eight data bits least significant first and a
+    stop bit, with UART_TXEN raised before the start bit and dropped after the stop bit for an RS-485
+    transceiver.">
+</picture>
+<!-- /figure -->
+
+Hardware description: [`docs/model/uart-timing.timing.yml`](../model/uart-timing.timing.yml)
+
+Drawn from:
+
+- [`docs/model/uart-timing.timing.yml`](../model/uart-timing.timing.yml)
+
+## TMC9660 nodes on RS-485
+
+<!-- figure: uart-topology -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="uart-topology.dark.svg">
+  <img src="uart-topology.svg"
+    alt="Several TMC9660 on one RS-485 bus: the host and every chip share the DATA+ and DATA- pair through
+    transceivers, and each chip answers only commands sent to its own odd module address.">
+</picture>
+<!-- /figure -->
+
+Hardware description: [`docs/model/uart-topology.topology.yml`](../model/uart-topology.topology.yml)
+
+Drawn from:
+
+- [`docs/model/uart-topology.topology.yml`](../model/uart-topology.topology.yml)

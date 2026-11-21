@@ -1,0 +1,26 @@
+---
+kind: topology
+id: uart-topology
+title: TMC9660 nodes on RS-485
+kicker: Several chips
+alt: >-
+  Several TMC9660 on one RS-485 bus: the host and every chip share the DATA+ and DATA- pair through transceivers, and
+  each chip answers only commands sent to its own odd module address.
+reads: >-
+  The host, a UART with an RS-485 transceiver, shares the DATA+ and DATA- pair with TMC9660 at address 1, TMC9660 at
+  address 3 and the chips left out. Each TMC9660 drives its transceiver with UART_TXEN while it replies and listens
+  otherwise.
+style: bus
+refs:
+  bus: {doc: ds, section: "UART", page: 25}
+  addr: {doc: pm, section: "Table 61, Full list of global parameters in bank 0", page: 143}
+host: {label: Host, detail: UART and RS-485 transceiver, ref: bus}
+nodes:
+  - {label: TMC9660, detail: UART_TXEN to the transceiver, address: "address 1", ref: addr}
+  - {label: TMC9660, detail: UART_TXEN to the transceiver, address: "address 3", ref: addr}
+  - {more: true, label: "…", detail: up to address 255, ref: addr}
+shared: [DATA+, DATA-]
+facts:
+  - {text: "SERIAL_ADDRESS: odd values 1 to 255; the default is 1", ref: addr}
+  - {text: "The module address is the upper 7 bits of the device address", ref: pm_uart}
+  - {text: "A chip never sends before it receives a command, so one host and many chips share the pair", ref: pm_uart}

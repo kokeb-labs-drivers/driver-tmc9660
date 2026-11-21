@@ -9,7 +9,9 @@ the hardware: ramps, fault handling, brake chopper, step/direction, scripts. The
 
     - Application modes: Analog Devices (Trinamic) 19-101926 1, Application Modes, p. 16
     - TMCL frames over UART and SPI: Analog Devices (Trinamic) n/a 0, Communication Interfaces, p. 8
+    - TMCL over SPI, 64-bit datagram and SPI status codes: Analog Devices (Trinamic) n/a 0, Communication Interfaces, Serial-Peripheral Interface, p. 9
     - Parameter table: Analog Devices (Trinamic) n/a 0, Table 57, Full list of parameters, p. 102
+    - Serial and host address for UART and RS-485: Analog Devices (Trinamic) n/a 0, Table 61, Full list of global parameters in bank 0, p. 143
 
     All of them, with the driver API for each: [Datasheet map](datasheet.md).
 <!-- /generated -->
