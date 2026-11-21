@@ -26,16 +26,26 @@ numbers).
 | Application modes | 19-101926: Application Modes | p. 16 | `Mode`, `GetMode()`, `Error::WrongMode` | [Architecture](architecture.md), [Parameter mode](parameter-mode.md), [Register mode](register-mode.md) |
 | Supply ranges and the hibernation mode | 19-101926: Power Supply - Electrical Characteristics | p. 17 | `CtrlPin::Wake`, `PowerDown()` | [Hardware](hardware.md), [Safety](safety.md) |
 | Pin functions at power-up and the UART and SPI of the bootloader | 19-101926: General-Purpose Input/Output Description | p. 19 | `SpiPort`, `UartPort`, `Transfer()`, `Exchange()` | [Hardware](hardware.md), [Porting](porting.md) |
+| UART baud rates | 19-101926: Table 5. UART Baud Rates | p. 23 | `kMaxBaudRate`, `BootField::BlUartBaudrate` | [On the bus](bus.md) |
+| UART character, automatic baud rate detection | 19-101926: UART | p. 24 | `UartInterface`, `Exchange()` | [On the bus](bus.md), [Porting](porting.md) |
+| UART_TXEN, RS-485 and several chips on one bus | 19-101926: UART | p. 25 | `UartInterface` | [On the bus](bus.md) |
+| SPI peripheral, mode 3 and the 40-bit bootloader datagram | 19-101926: SPI | p. 25 | `SpiInterface`, `kSpiMode` | [On the bus](bus.md), [Hardware](hardware.md) |
+| SPI peripheral timing | 19-101926: SPI Peripheral - Electrical Characteristics | p. 27 | `SpiInterface`, `kSpiMode` | [On the bus](bus.md) |
+| SPI peripheral timing, clock and data | 19-101926: SPI Peripheral - Electrical Characteristics | p. 28 | `SpiInterface` | [On the bus](bus.md) |
 | Protections and the fault pin | 19-101926: Protections Description | p. 56 | `GateDriverStart()`, `Error::DeviceFault` | [Safety](safety.md), [Register mode](register-mode.md) |
 | Clock, reset, DRV_EN, WAKE and FAULTN | 19-101926: Clock and Control Description | p. 63 | `CtrlPin`, `Config::hardware_reset`, `Service()` | [Hardware](hardware.md), [Safety](safety.md), [Troubleshooting](troubleshooting.md) |
 | UART bootloader frame and its CRC-8 | 19-101926: Bootloader, UART Communication | p. 70 | `detail::BlUartEncode()`, `Error::Crc` | [Bootloader](bootloader.md) |
 | SPI bootloader frame and delayed reply | 19-101926: Bootloader, SPI Communication | p. 72 | `detail::BlSpiEncode()`, `Config::spi_reply_retries` | [Bootloader](bootloader.md) |
 | Bootloader commands and reply status codes | 19-101926: Bootloader, Commands | p. 76 | `BlGetInfo()`, `BlRead32()`, `BlWrite32()`, `BlEraseFlashSector()`, `BlStartApplication()` | [Bootloader](bootloader.md), [API guide](api-guide.md) |
 | Boot configuration list, LDO and bootstrap configuration | 19-101926: Bootloader, Configuration | p. 83 | `BootConfig`, `BootField`, `BlWriteConfig()` | [Bootloader](bootloader.md), [Safety](safety.md), [Configuration](configuration.md) |
+| RS-485 transmit enable delays | 19-101926: Bootloader, RS485 Configuration | p. 86 | `BootConfig` | [On the bus](bus.md), [Bootloader](bootloader.md) |
 | Errata (OTP_BURN workaround, SPI slave MISO) | 19-101926: Errata | p. 99 | `BlWrite32()` (OTP never written), `ReturnToBootloader()` | [Bootloader](bootloader.md), [Safety](safety.md) |
 | TMCL frames over UART and SPI | n/a: Communication Interfaces | p. 8 | `SetParam()`, `GetParam()`, `detail::TmclSpiEncode()` | [Parameter mode](parameter-mode.md) |
+| TMCL over SPI, 64-bit datagram and SPI status codes | n/a: Communication Interfaces, Serial-Peripheral Interface | p. 9 | `detail::TmclSpiEncode()`, `Config::spi_reply_retries` | [On the bus](bus.md), [Parameter mode](parameter-mode.md) |
 | Parameter table | n/a: Table 57, Full list of parameters | p. 102 | `inc/tmc9660_params.hpp`, `FindParam()` | [Parameter mode](parameter-mode.md), [Datasheet map](datasheet.md) |
+| Serial and host address for UART and RS-485 | n/a: Table 61, Full list of global parameters in bank 0 | p. 143 | `SetGlobal()`, `GetGlobal()` | [On the bus](bus.md), [Parameter mode](parameter-mode.md) |
 | Register-mode SPI and UART datagrams | n/a: Communication interfaces | p. 8 | `ReadReg()`, `WriteReg()`, `UpdateReg()` | [Register mode](register-mode.md) |
+| Register-mode 48-bit SPI datagram | n/a: Communication interfaces, SPI Interface | p. 9 | `ReadReg()`, `WriteReg()` | [On the bus](bus.md), [Register mode](register-mode.md) |
 | Register map | n/a: Register Map | p. 57 | `inc/tmc9660_registers.hpp`, `FindRegister()` | [Register mode](register-mode.md), [Datasheet map](datasheet.md) |
 | Bootstrapping with the UblTools software | AN-2601: Bootstrapping the TMC9660 IC using UblTools | p. 1 | `BlWriteConfig()`, `BlStartApplication()` | [Bootloader](bootloader.md) |
 <!-- /generated -->

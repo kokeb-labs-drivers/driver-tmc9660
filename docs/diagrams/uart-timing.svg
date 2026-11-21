@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="863" viewBox="0 0 640 863" role="img" aria-labelledby="uart-timing-title uart-timing-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="uart-timing-title">UART character and transceiver enable</title>
+<desc id="uart-timing-desc">One UART character sent by the TMC9660: a start bit, eight data bits least significant first and a stop bit, with UART_TXEN raised before the start bit and dropped after the stop bit for an RS-485 transceiver.</desc>
+<defs><marker id="uart-timing-arrow-ink2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2B3442"/></marker></defs>
+<rect x="0.5" y="0.5" width="639" height="862" rx="16" fill="#FFFFFF" stroke="#E2E7EE"/>
+<text x="32" y="44.4" font-size="13" font-weight="700" letter-spacing="1.2" fill="#7A360E">ON THE BUS</text>
+<text x="32" y="76.2" font-size="24" font-weight="700" fill="#0E1726">UART character and transceiver enable</text>
+<text x="32" y="102.7" font-size="15" fill="#566070">Sources: ds UART, p. 24; ds Table 5. UART Baud Rates, p. 23; ds</text>
+<text x="32" y="124.5" font-size="15" fill="#566070">Bootloader, RS485 Configuration, p. 86; pm Communication Interfaces,</text>
+<text x="32" y="146.2" font-size="15" fill="#566070">UART Interface, Tables 1 and 2, p. 8.</text>
+<rect x="32" y="162.2" width="576" height="1" fill="#E2E7EE"/>
+<path d="M152.2 320.6 L152.2 372.8" fill="none" stroke="#7C8798" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M184.4 320.6 L184.4 372.8" fill="none" stroke="#7C8798" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M505.6 320.6 L505.6 372.8" fill="none" stroke="#7C8798" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M537.8 320.6 L537.8 372.8" fill="none" stroke="#7C8798" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M88 254.6 L88 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M120.1 254.6 L120.1 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M152.2 254.6 L152.2 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M184.4 254.6 L184.4 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M216.5 254.6 L216.5 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M248.6 254.6 L248.6 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M280.8 254.6 L280.8 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M312.9 254.6 L312.9 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M345 254.6 L345 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M377.1 254.6 L377.1 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M409.2 254.6 L409.2 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M441.4 254.6 L441.4 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M473.5 254.6 L473.5 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M505.6 254.6 L505.6 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M537.8 254.6 L537.8 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M569.9 254.6 L569.9 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M602 254.6 L602 372.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M32 418.9 L608 418.9" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M32 491.8 L608 491.8" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M32 564.6 L608 564.6" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M32 637.5 L608 637.5" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M32 710.3 L608 710.3" fill="none" stroke="#E2E7EE" stroke-width="1"/>
+<path d="M185.4 245.6 L185.4 240.6 L215.5 240.6 L215.5 245.6" fill="none" stroke="#64748B" stroke-width="1.4"/>
+<path d="M217.5 213.4 L217.5 208.4 L472.5 208.4 L472.5 213.4" fill="none" stroke="#64748B" stroke-width="1.4"/>
+<path d="M474.5 245.6 L474.5 240.6 L504.6 240.6 L504.6 245.6" fill="none" stroke="#64748B" stroke-width="1.4"/>
+<path d="M88 259.6 L184.4 259.6 L184.4 259.6 L184.4 285.6 L216.5 285.6" fill="none" stroke="#2B3442" stroke-width="2"/>
+<path d="M216.5 285.6 L216.5 272.6" fill="none" stroke="#2B3442" stroke-width="2"/>
+<path d="M473.5 259.6 L602 259.6" fill="none" stroke="#2B3442" stroke-width="2"/>
+<path d="M88 333.6 L152.2 333.6 L152.2 333.6 L152.2 307.6 L537.8 307.6 L537.8 307.6 L537.8 333.6 L602 333.6" fill="none" stroke="#2B3442" stroke-width="2"/>
+<path d="M153.2 368.8 L183.4 368.8" fill="none" stroke="#2B3442" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#uart-timing-arrow-ink2)" marker-start="url(#uart-timing-arrow-ink2)"/>
+<path d="M506.6 368.8 L536.8 368.8" fill="none" stroke="#2B3442" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#uart-timing-arrow-ink2)" marker-start="url(#uart-timing-arrow-ink2)"/>
+<path d="M216.5 272.6 L221.5 259.6 L468.5 259.6 L473.5 272.6 L468.5 285.6 L221.5 285.6 Z" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="32" y="724.3" width="576" height="108.6" rx="10" fill="#F1F4F8" stroke="#CBD5E1" stroke-width="1"/>
+<text x="200.4" y="229.7" font-size="14" font-weight="600" text-anchor="middle" fill="#334155">start</text>
+<text x="345" y="197.5" font-size="14" font-weight="600" text-anchor="middle" fill="#334155">8 data bits, LSB first</text>
+<text x="489.6" y="229.7" font-size="14" font-weight="600" text-anchor="middle" fill="#334155">stop</text>
+<text x="32" y="278" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">TX</text>
+<text x="345" y="277.6" font-size="14" font-weight="600" text-anchor="middle" fill="#1E429F">D0 … D7</text>
+<text x="32" y="326" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">TXEN</text>
+<text x="190.4" y="373.8" font-size="14" font-weight="700" fill="#0E1726">tPRE</text>
+<text x="543.8" y="373.8" font-size="14" font-weight="700" fill="#0E1726">tPOST</text>
+<text x="32" y="403.2" font-size="17" font-weight="700" fill="#0E1726">Timing values</text>
+<text x="32" y="439.7" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">baud</text>
+<text x="608" y="439.7" font-size="15" font-weight="700" text-anchor="end" fill="#0E1726">min 9600 · max 250000 bit/s</text>
+<text x="32" y="459.9" font-size="15" fill="#2B3442">Bit rate with automatic baud rate detection at the 40 MHz system clock</text>
+<text x="32" y="480.1" font-size="14" fill="#566070">Datasheet UART, p. 24</text>
+<text x="32" y="512.5" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">baud</text>
+<text x="608" y="512.5" font-size="15" font-weight="700" text-anchor="end" fill="#0E1726">max 5000000 bit/s</text>
+<text x="32" y="532.8" font-size="15" fill="#2B3442">Highest fixed bit rate (x8 oversampling)</text>
+<text x="32" y="552.9" font-size="14" fill="#566070">Datasheet Table 5. UART Baud Rates, p. 23</text>
+<text x="32" y="585.4" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">tPRE</text>
+<text x="608" y="585.4" font-size="15" font-weight="700" text-anchor="end" fill="#0E1726">typ configurable</text>
+<text x="32" y="605.6" font-size="15" fill="#2B3442">UART_TXEN high before the start bit: UART_TXEN_PRE_DELAY, default 0</text>
+<text x="32" y="625.8" font-size="14" fill="#566070">Datasheet Bootloader, RS485 Configuration, p. 86</text>
+<text x="32" y="658.2" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">tPOST</text>
+<text x="608" y="658.2" font-size="15" font-weight="700" text-anchor="end" fill="#0E1726">typ configurable</text>
+<text x="32" y="678.5" font-size="15" fill="#2B3442">UART_TXEN high after the stop bit: UART_TXEN_POST_DELAY, default 0</text>
+<text x="32" y="698.6" font-size="14" fill="#566070">Datasheet Bootloader, RS485 Configuration, p. 86</text>
+<text x="46" y="752.8" font-size="17" font-weight="700" fill="#334155">Notes</text>
+<text x="46" y="773.2" font-size="15" fill="#334155">The line idles high. A TMCL datagram is nine such characters; bit 0 of</text>
+<text x="46" y="794.9" font-size="15" fill="#334155">the first is the sync bit, always 1, which the chip uses for automatic baud</text>
+<text x="46" y="816.7" font-size="15" fill="#334155">rate detection.</text>
+</svg>

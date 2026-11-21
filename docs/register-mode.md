@@ -9,6 +9,7 @@ The driver exposes it as `Mode::Register`: `ReadReg()`, `WriteReg()`, `UpdateReg
     - Application modes: Analog Devices (Trinamic) 19-101926 1, Application Modes, p. 16
     - Protections and the fault pin: Analog Devices (Trinamic) 19-101926 1, Protections Description, p. 56
     - Register-mode SPI and UART datagrams: Analog Devices (Trinamic) n/a 0, Communication interfaces, p. 8
+    - Register-mode 48-bit SPI datagram: Analog Devices (Trinamic) n/a 0, Communication interfaces, SPI Interface, p. 9
     - Register map: Analog Devices (Trinamic) n/a 0, Register Map, p. 57
 
     All of them, with the driver API for each: [Datasheet map](datasheet.md).

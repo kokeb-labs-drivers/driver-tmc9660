@@ -8,6 +8,7 @@ Run the driver on a new MCU by writing one class: the port, on SPI or on UART.
     From Analog Devices (Trinamic) 19-101926 1:
 
     - Pin functions at power-up and the UART and SPI of the bootloader: General-Purpose Input/Output Description, p. 19
+    - UART character, automatic baud rate detection: UART, p. 24
 
     All of them, with the driver API for each: [Datasheet map](datasheet.md).
 <!-- /generated -->

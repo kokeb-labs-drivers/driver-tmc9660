@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="664" viewBox="0 0 1200 664" role="img" aria-labelledby="chip-frame-tmcl-spi-title chip-frame-tmcl-spi-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-frame-tmcl-spi-title">TMC9660: Parameter-mode SPI datagram</title>
+<desc id="chip-frame-tmcl-spi-desc">Parameter-mode SPI datagram of the TMC9660, 64 bits, most significant bit first. Command: operation (bits 63 to 56), type and motor or bank (bits 55 to 40), data (big endian) (bits 39 to 8), checksum (bits 7 to 0); Reply: SPI status (bits 63 to 56), TMCL status (bits 55 to 48), operation (bits 47 to 40), data (big endian) (bits 39 to 8), checksum (bits 7 to 0). Below, the SPI mode 3 waveform of one transfer in the same bit grid.</desc>
+<rect x="0.5" y="0.5" width="1199" height="663" rx="16" fill="#FFFFFF" stroke="#E2E7EE"/>
+<text x="32" y="46.8" font-size="16" font-weight="700" letter-spacing="1.2" fill="#7A360E">ON THE BUS</text>
+<text x="32" y="85.6" font-size="32" font-weight="700" fill="#0E1726">TMC9660: Parameter-mode SPI datagram</text>
+<text x="32" y="115.4" font-size="18" fill="#566070">Every transfer is one 64-bit datagram in SPI mode 3; the reply answers the previous datagram. 64 bits, sent most significant</text>
+<text x="32" y="141.5" font-size="18" fill="#566070">bit first. Datasheet: Communication Interfaces, Serial-Peripheral Interface, p. 9.</text>
+<rect x="32" y="157.5" width="1136" height="1" fill="#E2E7EE"/>
+<path d="M226 397.5 L234 397.5 L234 419.5 L1160 419.5 L1160 397.5 L1168 397.5" fill="none" stroke="#2B3442" stroke-width="2"/>
+<path d="M226 443.5 L254 443.5 L254 443.5 L254 465.5 L260.9 465.5 L260.9 443.5 L267.8 443.5 L267.8 465.5 L274.8 465.5 L274.8 443.5 L281.7 443.5 L281.7 465.5 L288.6 465.5 L288.6 443.5 L295.5 443.5 L295.5 465.5 L302.5 465.5 L302.5 443.5 L309.4 443.5 L309.4 465.5 L316.3 465.5 L316.3 443.5 L323.2 443.5 L323.2 465.5 L330.1 465.5 L330.1 443.5 L337.1 443.5 L337.1 465.5 L344 465.5 L344 443.5 L350.9 443.5 L350.9 465.5 L357.8 465.5 L357.8 443.5 L364.8 443.5 L364.8 465.5 L371.7 465.5 L371.7 443.5 L378.6 443.5 L378.6 465.5 L385.5 465.5 L385.5 443.5 L392.4 443.5 L392.4 465.5 L399.4 465.5 L399.4 443.5 L406.3 443.5 L406.3 465.5 L413.2 465.5 L413.2 443.5 L420.1 443.5 L420.1 465.5 L427 465.5 L427 443.5 L434 443.5 L434 465.5 L440.9 465.5 L440.9 443.5 L447.8 443.5 L447.8 465.5 L454.7 465.5 L454.7 443.5 L461.7 443.5 L461.7 465.5 L468.6 465.5 L468.6 443.5 L475.5 443.5 L475.5 465.5 L482.4 465.5 L482.4 443.5 L489.3 443.5 L489.3 465.5 L496.3 465.5 L496.3 443.5 L503.2 443.5 L503.2 465.5 L510.1 465.5 L510.1 443.5 L517 443.5 L517 465.5 L524 465.5 L524 443.5 L530.9 443.5 L530.9 465.5 L537.8 465.5 L537.8 443.5 L544.7 443.5 L544.7 465.5 L551.6 465.5 L551.6 443.5 L558.6 443.5 L558.6 465.5 L565.5 465.5 L565.5 443.5 L572.4 443.5 L572.4 465.5 L579.3 465.5 L579.3 443.5 L586.2 443.5 L586.2 465.5 L593.2 465.5 L593.2 443.5 L600.1 443.5 L600.1 465.5 L607 465.5 L607 443.5 L613.9 443.5 L613.9 465.5 L620.9 465.5 L620.9 443.5 L627.8 443.5 L627.8 465.5 L634.7 465.5 L634.7 443.5 L641.6 443.5 L641.6 465.5 L648.5 465.5 L648.5 443.5 L655.5 443.5 L655.5 465.5 L662.4 465.5 L662.4 443.5 L669.3 443.5 L669.3 465.5 L676.2 465.5 L676.2 443.5 L683.2 443.5 L683.2 465.5 L690.1 465.5 L690.1 443.5 L697 443.5 L697 465.5 L703.9 465.5 L703.9 443.5 L710.8 443.5 L710.8 465.5 L717.8 465.5 L717.8 443.5 L724.7 443.5 L724.7 465.5 L731.6 465.5 L731.6 443.5 L738.5 443.5 L738.5 465.5 L745.5 465.5 L745.5 443.5 L752.4 443.5 L752.4 465.5 L759.3 465.5 L759.3 443.5 L766.2 443.5 L766.2 465.5 L773.1 465.5 L773.1 443.5 L780.1 443.5 L780.1 465.5 L787 465.5 L787 443.5 L793.9 443.5 L793.9 465.5 L800.8 465.5 L800.8 443.5 L807.8 443.5 L807.8 465.5 L814.7 465.5 L814.7 443.5 L821.6 443.5 L821.6 465.5 L828.5 465.5 L828.5 443.5 L835.4 443.5 L835.4 465.5 L842.4 465.5 L842.4 443.5 L849.3 443.5 L849.3 465.5 L856.2 465.5 L856.2 443.5 L863.1 443.5 L863.1 465.5 L870 465.5 L870 443.5 L877 443.5 L877 465.5 L883.9 465.5 L883.9 443.5 L890.8 443.5 L890.8 465.5 L897.7 465.5 L897.7 443.5 L904.7 443.5 L904.7 465.5 L911.6 465.5 L911.6 443.5 L918.5 443.5 L918.5 465.5 L925.4 465.5 L925.4 443.5 L932.3 443.5 L932.3 465.5 L939.3 465.5 L939.3 443.5 L946.2 443.5 L946.2 465.5 L953.1 465.5 L953.1 443.5 L960 443.5 L960 465.5 L967 465.5 L967 443.5 L973.9 443.5 L973.9 465.5 L980.8 465.5 L980.8 443.5 L987.7 443.5 L987.7 465.5 L994.6 465.5 L994.6 443.5 L1001.6 443.5 L1001.6 465.5 L1008.5 465.5 L1008.5 443.5 L1015.4 443.5 L1015.4 465.5 L1022.3 465.5 L1022.3 443.5 L1029.2 443.5 L1029.2 465.5 L1036.2 465.5 L1036.2 443.5 L1043.1 443.5 L1043.1 465.5 L1050 465.5 L1050 443.5 L1056.9 443.5 L1056.9 465.5 L1063.9 465.5 L1063.9 443.5 L1070.8 443.5 L1070.8 465.5 L1077.7 465.5 L1077.7 443.5 L1084.6 443.5 L1084.6 465.5 L1091.5 465.5 L1091.5 443.5 L1098.5 443.5 L1098.5 465.5 L1105.4 465.5 L1105.4 443.5 L1112.3 443.5 L1112.3 465.5 L1119.2 465.5 L1119.2 443.5 L1126.2 443.5 L1126.2 465.5 L1133.1 465.5 L1133.1 443.5 L1168 443.5" fill="none" stroke="#2563EB" stroke-width="2"/>
+<path d="M226 500.5 L254 500.5" fill="none" stroke="#8893A2" stroke-width="1.6"/>
+<path d="M1140 500.5 L1168 500.5" fill="none" stroke="#8893A2" stroke-width="1.6"/>
+<path d="M226 546.5 L254 546.5" fill="none" stroke="#8893A2" stroke-width="1.6"/>
+<path d="M1140 546.5 L1168 546.5" fill="none" stroke="#8893A2" stroke-width="1.6"/>
+<rect x="254" y="209.5" width="110.8" height="46" rx="6" fill="#FFF5E3" stroke="#C26A05" stroke-width="1.4"/>
+<rect x="364.8" y="209.5" width="221.5" height="46" rx="6" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4"/>
+<rect x="586.2" y="209.5" width="443" height="46" rx="6" fill="#EAF7EF" stroke="#15803D" stroke-width="1.4"/>
+<rect x="1029.2" y="209.5" width="110.8" height="46" rx="6" fill="#F1F4F8" stroke="#64748B" stroke-width="1.4"/>
+<rect x="254" y="297.5" width="110.8" height="46" rx="6" fill="#F3EEFF" stroke="#7C3AED" stroke-width="1.4"/>
+<rect x="364.8" y="297.5" width="110.8" height="46" rx="6" fill="#F3EEFF" stroke="#7C3AED" stroke-width="1.4"/>
+<rect x="475.5" y="297.5" width="110.8" height="46" rx="6" fill="#FFF5E3" stroke="#C26A05" stroke-width="1.4"/>
+<rect x="586.2" y="297.5" width="443" height="46" rx="6" fill="#EAF7EF" stroke="#15803D" stroke-width="1.4"/>
+<rect x="1029.2" y="297.5" width="110.8" height="46" rx="6" fill="#F1F4F8" stroke="#64748B" stroke-width="1.4"/>
+<path d="M254 500.5 L259 488.5 L359.8 488.5 L364.8 500.5 L359.8 512.5 L259 512.5 Z" fill="#FFF5E3" stroke="#C26A05" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M364.8 500.5 L369.8 488.5 L581.2 488.5 L586.2 500.5 L581.2 512.5 L369.8 512.5 Z" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M586.2 500.5 L591.2 488.5 L1024.2 488.5 L1029.2 500.5 L1024.2 512.5 L591.2 512.5 Z" fill="#EAF7EF" stroke="#15803D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1029.2 500.5 L1034.2 488.5 L1135 488.5 L1140 500.5 L1135 512.5 L1034.2 512.5 Z" fill="#F1F4F8" stroke="#64748B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M254 546.5 L259 534.5 L359.8 534.5 L364.8 546.5 L359.8 558.5 L259 558.5 Z" fill="#F3EEFF" stroke="#7C3AED" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M364.8 546.5 L369.8 534.5 L470.5 534.5 L475.5 546.5 L470.5 558.5 L369.8 558.5 Z" fill="#F3EEFF" stroke="#7C3AED" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M475.5 546.5 L480.5 534.5 L581.2 534.5 L586.2 546.5 L581.2 558.5 L480.5 558.5 Z" fill="#FFF5E3" stroke="#C26A05" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M586.2 546.5 L591.2 534.5 L1024.2 534.5 L1029.2 546.5 L1024.2 558.5 L591.2 558.5 Z" fill="#EAF7EF" stroke="#15803D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1029.2 546.5 L1034.2 534.5 L1135 534.5 L1140 546.5 L1135 558.5 L1034.2 558.5 Z" fill="#F1F4F8" stroke="#64748B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="254" y="191.5" font-size="16" fill="#566070">MSB, sent first</text>
+<text x="1140" y="191.5" font-size="16" text-anchor="end" fill="#566070">LSB, sent last</text>
+<text x="32" y="230.5" font-size="20" font-weight="700" fill="#0E1726">Command</text>
+<text x="32" y="250.5" font-size="16" fill="#566070">MOSI</text>
+<text x="309.4" y="238.6" font-size="17" font-weight="600" text-anchor="middle" fill="#8A3C0B">operation</text>
+<text x="256" y="275.5" font-size="16" fill="#566070">63</text>
+<text x="362.8" y="275.5" font-size="16" text-anchor="end" fill="#566070">56</text>
+<text x="475.5" y="238.6" font-size="17" font-weight="600" text-anchor="middle" fill="#1E429F">type and motor or bank</text>
+<text x="366.8" y="275.5" font-size="16" fill="#566070">55</text>
+<text x="584.2" y="275.5" font-size="16" text-anchor="end" fill="#566070">40</text>
+<text x="807.8" y="238.6" font-size="17" font-weight="600" text-anchor="middle" fill="#14532D">data (big endian)</text>
+<text x="588.2" y="275.5" font-size="16" fill="#566070">39</text>
+<text x="1027.2" y="275.5" font-size="16" text-anchor="end" fill="#566070">8</text>
+<text x="1084.6" y="238.6" font-size="17" font-weight="600" text-anchor="middle" fill="#334155">checksum</text>
+<text x="1031.2" y="275.5" font-size="16" fill="#566070">7</text>
+<text x="1138" y="275.5" font-size="16" text-anchor="end" fill="#566070">0</text>
+<text x="32" y="318.5" font-size="20" font-weight="700" fill="#0E1726">Reply</text>
+<text x="32" y="338.5" font-size="16" fill="#566070">MISO, next datagram</text>
+<text x="309.4" y="326.6" font-size="17" font-weight="600" text-anchor="middle" fill="#5B21B6">SPI status</text>
+<text x="256" y="363.5" font-size="16" fill="#566070">63</text>
+<text x="362.8" y="363.5" font-size="16" text-anchor="end" fill="#566070">56</text>
+<text x="420.1" y="326.3" font-size="16" font-weight="600" text-anchor="middle" fill="#5B21B6">TMCL status</text>
+<text x="366.8" y="363.5" font-size="16" fill="#566070">55</text>
+<text x="473.5" y="363.5" font-size="16" text-anchor="end" fill="#566070">48</text>
+<text x="530.9" y="326.6" font-size="17" font-weight="600" text-anchor="middle" fill="#8A3C0B">operation</text>
+<text x="477.5" y="363.5" font-size="16" fill="#566070">47</text>
+<text x="584.2" y="363.5" font-size="16" text-anchor="end" fill="#566070">40</text>
+<text x="807.8" y="326.6" font-size="17" font-weight="600" text-anchor="middle" fill="#14532D">data (big endian)</text>
+<text x="588.2" y="363.5" font-size="16" fill="#566070">39</text>
+<text x="1027.2" y="363.5" font-size="16" text-anchor="end" fill="#566070">8</text>
+<text x="1084.6" y="326.6" font-size="17" font-weight="600" text-anchor="middle" fill="#334155">checksum</text>
+<text x="1031.2" y="363.5" font-size="16" fill="#566070">7</text>
+<text x="1138" y="363.5" font-size="16" text-anchor="end" fill="#566070">0</text>
+<text x="32" y="414.3" font-size="16" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">SPI0_CS0</text>
+<text x="32" y="460.3" font-size="16" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">SPI0_SCK</text>
+<text x="32" y="506.3" font-size="16" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">MOSI</text>
+<text x="309.4" y="506.3" font-size="16" font-weight="600" text-anchor="middle" fill="#8A3C0B">operation</text>
+<text x="475.5" y="506.3" font-size="16" font-weight="600" text-anchor="middle" fill="#1E429F">type and motor or bank</text>
+<text x="807.8" y="506.3" font-size="16" font-weight="600" text-anchor="middle" fill="#14532D">data (big endian)</text>
+<text x="1084.6" y="506.3" font-size="16" font-weight="600" text-anchor="middle" fill="#334155">checksum</text>
+<text x="32" y="552.3" font-size="16" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">MISO</text>
+<text x="309.4" y="552.3" font-size="16" font-weight="600" text-anchor="middle" fill="#5B21B6">SPI status</text>
+<text x="530.9" y="552.3" font-size="16" font-weight="600" text-anchor="middle" fill="#8A3C0B">operation</text>
+<text x="807.8" y="552.3" font-size="16" font-weight="600" text-anchor="middle" fill="#14532D">data (big endian)</text>
+<text x="1084.6" y="552.3" font-size="16" font-weight="600" text-anchor="middle" fill="#334155">checksum</text>
+<text x="32" y="594.3" font-size="16" fill="#566070">SPI mode 3: SPI0_SCK idles high; the chip samples its input on the rising edge and changes its output after the falling edge. SPI0_CS0 stays</text>
+<text x="32" y="617.5" font-size="16" fill="#566070">low for the whole frame.</text>
+</svg>

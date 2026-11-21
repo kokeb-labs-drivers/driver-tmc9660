@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1197" viewBox="0 0 1200 1197" role="img" aria-labelledby="chip-wiring-typical-title chip-wiring-typical-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-wiring-typical-title">Wiring: Typical application</title>
+<desc id="chip-wiring-typical-desc">Wiring of the TMC9660 for the Typical application: MCU SPI SCK to GPIO11 (Transfer()); MCU SPI MOSI to GPIO10 (Transfer()); MCU SPI MISO to GPIO9 (Transfer()); MCU GPIO / CS to GPIO12 (Transfer()); MCU GPIO to RSTN (GpioSet(CtrlPin::Reset)); MCU GPIO to DRV_EN (GpioSet(CtrlPin::DrvEn)); MCU GPIO (IRQ) to FAULTN (GpioGet(CtrlPin::Faultn)). Supplies, grounds and the support parts are listed under the drawing.</desc>
+<rect x="0.5" y="0.5" width="1199" height="1196" rx="16" fill="#FFFFFF" stroke="#E2E7EE"/>
+<text x="32" y="46.8" font-size="16" font-weight="700" letter-spacing="1.2" fill="#7A360E">PINS AND WIRING</text>
+<text x="32" y="85.6" font-size="32" font-weight="700" fill="#0E1726">Wiring: Typical application</text>
+<text x="32" y="115.4" font-size="18" fill="#566070">What you connect by hand, with the driver hook on each MCU wire. The full schematic, with every part and value, is on the</text>
+<text x="32" y="141.5" font-size="18" fill="#566070">Hardware page. Datasheet: Pin Descriptions, p. 12.</text>
+<rect x="32" y="157.5" width="1136" height="1" fill="#E2E7EE"/>
+<path d="M437.9 280.3 L708.1 280.3" fill="none" stroke="#2563EB" stroke-width="2.2"/>
+<path d="M437.9 365.9 L708.1 365.9" fill="none" stroke="#2563EB" stroke-width="2.2"/>
+<path d="M437.9 451.5 L708.1 451.5" fill="none" stroke="#2563EB" stroke-width="2.2"/>
+<path d="M437.9 537.1 L708.1 537.1" fill="none" stroke="#2563EB" stroke-width="2.2"/>
+<path d="M437.9 622.7 L708.1 622.7" fill="none" stroke="#0B7A72" stroke-width="2.2"/>
+<path d="M437.9 708.3 L708.1 708.3" fill="none" stroke="#0B7A72" stroke-width="2.2"/>
+<path d="M437.9 793.9 L708.1 793.9" fill="none" stroke="#C26A05" stroke-width="2.2"/>
+<rect x="722.1" y="175.5" width="240" height="679.2" rx="10" fill="#F5F7FA" stroke="#2B3442" stroke-width="2.2"/>
+<rect x="237.9" y="175.5" width="200" height="679.2" rx="12" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4"/>
+<rect x="32" y="882.7" width="1136" height="103.6" rx="12" fill="#FFEEF2" stroke="#F5BECB" stroke-width="1"/>
+<rect x="32" y="1000.3" width="1136" height="103.6" rx="12" fill="#F1F4F8" stroke="#CBD5E1" stroke-width="1"/>
+<text x="842.1" y="210.5" font-size="20" font-weight="700" text-anchor="middle" fill="#0E1726">TMC9660</text>
+<text x="842.1" y="232.9" font-size="16" text-anchor="middle" fill="#566070">U1</text>
+<text x="255.9" y="210.5" font-size="20" font-weight="700" fill="#1E429F">MCU</text>
+<text x="255.9" y="232.9" font-size="16" fill="#1E429F">U2</text>
+<text x="419.9" y="286.1" font-size="16" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#1E429F">SPI SCK</text>
+<text x="744.1" y="286.1" font-size="16" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">GPIO11</text>
+<rect x="708.1" y="274.3" width="14" height="12" rx="2" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4"/>
+<text x="573" y="270.3" font-size="16" font-weight="600" text-anchor="middle" fill="#2B3442">SPI0_SCK  pin 3</text>
+<text x="573" y="303.1" font-size="16" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#566070">Transfer()</text>
+<text x="419.9" y="371.7" font-size="16" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#1E429F">SPI MOSI</text>
+<text x="744.1" y="371.7" font-size="16" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">GPIO10</text>
+<rect x="708.1" y="359.9" width="14" height="12" rx="2" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4"/>
+<text x="573" y="355.9" font-size="16" font-weight="600" text-anchor="middle" fill="#2B3442">SPI0_MOSI  pin 2</text>
+<text x="573" y="388.7" font-size="16" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#566070">Transfer()</text>
+<text x="419.9" y="457.3" font-size="16" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#1E429F">SPI MISO</text>
+<text x="744.1" y="457.3" font-size="16" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">GPIO9</text>
+<rect x="708.1" y="445.5" width="14" height="12" rx="2" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4"/>
+<text x="573" y="441.5" font-size="16" font-weight="600" text-anchor="middle" fill="#2B3442">SPI0_MISO  pin 1</text>
+<text x="573" y="474.3" font-size="16" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#566070">Transfer()</text>
+<text x="419.9" y="542.9" font-size="16" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#1E429F">GPIO / CS</text>
+<text x="744.1" y="542.9" font-size="16" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">GPIO12</text>
+<rect x="708.1" y="531.1" width="14" height="12" rx="2" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4"/>
+<text x="573" y="527.1" font-size="16" font-weight="600" text-anchor="middle" fill="#2B3442">SPI0_CS0  pin 4</text>
+<text x="573" y="559.9" font-size="16" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#566070">Transfer()</text>
+<text x="419.9" y="628.5" font-size="16" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#1E429F">GPIO</text>
+<text x="744.1" y="628.5" font-size="16" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">RSTN</text>
+<rect x="708.1" y="616.7" width="14" height="12" rx="2" fill="#E6F6F4" stroke="#0B7A72" stroke-width="1.4"/>
+<text x="573" y="612.7" font-size="16" font-weight="600" text-anchor="middle" fill="#2B3442">RSTN  pin 22</text>
+<text x="573" y="645.5" font-size="16" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#566070">GpioSet(CtrlPin::Reset)</text>
+<text x="419.9" y="714.1" font-size="16" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#1E429F">GPIO</text>
+<text x="744.1" y="714.1" font-size="16" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">DRV_EN</text>
+<rect x="708.1" y="702.3" width="14" height="12" rx="2" fill="#E6F6F4" stroke="#0B7A72" stroke-width="1.4"/>
+<text x="573" y="698.3" font-size="16" font-weight="600" text-anchor="middle" fill="#2B3442">DRV_EN  pin 21</text>
+<text x="573" y="731.1" font-size="16" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#566070">GpioSet(CtrlPin::DrvEn)</text>
+<text x="419.9" y="799.7" font-size="16" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#1E429F">GPIO (IRQ)</text>
+<text x="744.1" y="799.7" font-size="16" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">FAULTN</text>
+<rect x="708.1" y="787.9" width="14" height="12" rx="2" fill="#FFF5E3" stroke="#C26A05" stroke-width="1.4"/>
+<text x="573" y="783.9" font-size="16" font-weight="600" text-anchor="middle" fill="#2B3442">FAULTN  pin 20</text>
+<text x="573" y="816.7" font-size="16" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#566070">GpioGet(CtrlPin::Faultn)</text>
+<text x="573" y="838.3" font-size="16" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="middle" fill="#566070">+ R1 10 kΩ</text>
+<text x="50" y="917.7" font-size="20" font-weight="700" fill="#9F1239">Supplies and ground</text>
+<text x="50" y="941.1" font-size="17" fill="#9F1239">VSA: VSA, WAKE · VS: VS · VCC_IO: VCC_IO; also U2.VIO · GNDP: GNDP · GND: AIN0, AIN1, AIN2, AIN3, EP, GND, GNDA; also</text>
+<text x="50" y="965.8" font-size="17" fill="#9F1239">U2.GND</text>
+<text x="50" y="1035.3" font-size="20" font-weight="700" fill="#334155">Also on the board</text>
+<text x="50" y="1058.8" font-size="17" fill="#334155">Support parts: 11 capacitors, 1 resistor, 1 other part around the supplies (values in the full schematic). 35 pins are not drawn in</text>
+<text x="50" y="1083.4" font-size="17" fill="#334155">this circuit; the full schematic lists them.</text>
+<text x="32" y="1129.5" font-size="16" fill="#566070">* Not confirmed in the datasheet: R1: the pull-up value is a choice; the datasheet says FAULTN is open drain.</text>
+<rect x="32" y="1146.7" width="14" height="14" rx="4" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4"/>
+<text x="54" y="1161.3" font-size="16" fill="#566070">bus</text>
+<rect x="107.4" y="1146.7" width="14" height="14" rx="4" fill="#E6F6F4" stroke="#0B7A72" stroke-width="1.4"/>
+<text x="129.4" y="1161.3" font-size="16" fill="#566070">digital in</text>
+<rect x="220.4" y="1146.7" width="14" height="14" rx="4" fill="#FFF5E3" stroke="#C26A05" stroke-width="1.4"/>
+<text x="242.4" y="1161.3" font-size="16" fill="#566070">open drain</text>
+</svg>

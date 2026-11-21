@@ -14,12 +14,26 @@ refs:
   gpio: {doc: ds, section: "General-Purpose Input/Output Description", page: 19}
   modes: {doc: ds, section: "Application Modes", page: 16}
   supply: {doc: ds, section: "Power Supply - Electrical Characteristics", page: 17}
+  roc: {doc: ds, section: "Table 1. Recommended Operating Conditions", page: 9}
   package: {doc: ds, section: "Package Information", page: 10}
   ctl: {doc: ds, section: "Clock and Control Description", page: 63}
   boot: {doc: ds, section: "Bootloader", page: 68}
   order: {doc: ds, section: "Ordering Information", page: 98}
   blocks: {doc: ds, section: "Functional Diagrams", page: 15}
   prot: {doc: ds, section: "Protections Description", page: 56}
+  cover: {doc: ds, section: "General Description", page: 1}
+  features: {doc: ds, section: "Benefits and Features", page: 1}
+  power_save: {doc: ds, section: "Power-Saving Modes", page: 16}
+  spi: {doc: ds, section: "SPI", page: 25}
+  gdu_features: {doc: ds, section: "GDU List of Features", page: 41}
+  foc: {doc: ds, section: "Motor Control Core Description, Field-Oriented Control", page: 29}
+  ramp: {doc: ds, section: "Motor Control Core Description, Ramp Generator", page: 31}
+  encoder: {doc: ds, section: "Motor Control Core Description, Encoder Feedback", page: 32}
+  gdu: {doc: ds, section: "Gate Driver Unit Description", page: 41}
+  mu: {doc: ds, section: "Measurement Unit Description", page: 50}
+  otp: {doc: ds, section: "Bootloader, OTP Memory", page: 76}
+  pm_spi: {doc: pm, section: "Communication Interfaces, Serial-Peripheral Interface", page: 9}
+  pm_uart: {doc: pm, section: "Communication Interfaces, UART Interface, Tables 1 and 2", page: 8}
 
 package:
   type: TQFN-64
@@ -31,7 +45,144 @@ package:
 supply:
   - {name: VSA, min_v: 7.7, max_v: 80.0, ref: supply}
   - {name: VS, min_v: 7.7, max_v: 70.0, ref: supply}
-  - {name: VCC_IO, min_v: 2.5, max_v: 5.0, ref: supply}
+  - {name: VCC_IO, min_v: 2.2, max_v: 5.5, ref: supply}   # Table 1 (p. 9) recommends 2.5 V to 5 V: ambiguity A25
+
+# The chip-first README: what the chip is and does, where it is used, how the driver covers it, what one SPI
+# transfer carries. `kokeb-docs figures` draws chip-hero, chip-capabilities and chip-frame-tmcl-spi from it,
+# `kokeb-docs gen` the README's chip-summary, chip-uses and chip-coverage regions.
+overview:
+  summary: >-
+    a gate driver and motor controller for BLDC, PMSM, stepper and brushed DC motors: field-oriented control, the
+    servo loops and a ramp generator run in hardware, and a buck converter powers the chip from the motor supply
+  category: Smart gate driver with servo controller
+  ref: cover
+  applications:
+    - Robotics
+    - Power tools
+    - Gardening equipment
+    - Automated guided vehicles and warehouse automation
+    - Pumps, such as peristaltic pumps
+    - Industrial 3D printing
+    - Factory automation
+    - Desktop manufacturing
+    - E-bikes and light electric vehicles
+  specs:
+    - {value: "7.7 to 70 V", label: single-supply operating range, ref: features}
+    - {value: "1 A / 2 A", label: "gate drive source and sink, up to four half-bridges", ref: gdu_features}
+    - {value: "10 MHz", label: "SPI clock, mode 3", ref: spi}
+    - {value: "9 x 9 mm", label: "64-pin TQFN body", ref: package}
+  system:
+    host: MCU
+    bus: SPI or UART
+    drives:
+      - {label: MOSFET half-bridges, detail: "up to four, NMOS high and low side", ref: gdu}
+      - {label: Motor, detail: "BLDC, PMSM, stepper or brushed DC", ref: features}
+    senses:
+      - {label: Phase currents, detail: "bottom shunts", ref: mu}
+      - {label: Position sensor, detail: "Hall, ABN or SPI encoder", ref: encoder}
+      - {label: Reference switches, ref: modes}
+
+# Headers the capability `api` and `registers` names are checked against: the parameter names (parameter mode)
+# and the register names (register mode).
+driver:
+  api: [inc/tmc9660.hpp, inc/tmc9660_types.hpp]
+  registers: [inc/tmc9660_params.hpp, inc/tmc9660_registers.hpp]
+
+capabilities:
+  - {id: foc, title: FOC and servo loops, icon: motion, status: supported, ref: foc, docs: parameter-mode.md,
+     what: "Runs field-oriented current control and the torque, velocity and position loops in hardware",
+     api: [SetTargetTorque, SetTargetVelocity, SetTargetPosition, MotorStop],
+     registers: [TARGET_TORQUE, TARGET_VELOCITY, TARGET_POSITION, MCC_PID_CONFIG]}
+  - {id: ramp, title: Ramp generator and homing, icon: ramp, status: supported, ref: ramp, docs: parameter-mode.md,
+     what: "Plans eight-point acceleration ramps in real time and searches the reference switches for home",
+     api: [SetParam, ReferenceSearchCommand],
+     registers: [RAMP_ENABLE, RAMP_VMAX, RAMP_AMAX, REFERENCE_SWITCH_SEARCH_MODE, MCC_RAMPER_SWITCH_MODE]}
+  - {id: feedback, title: Position feedback, icon: encoder, status: supported, ref: encoder, docs: parameter-mode.md,
+     what: "Reads Hall sensors, ABN encoders or an SPI encoder for commutation and position",
+     api: [GetParam, SetParam],
+     registers: [HALL_PHI_E, ABN_1_STEPS, SPI_ENCODER_TRANSFER, MCC_HALL_MODE, MCC_ABN_MODE]}
+  - {id: gate, title: Smart gate driver, icon: gate, status: supported, ref: gdu, docs: safety.md,
+     what: "Drives up to four NMOS half-bridges, 1 A source and 2 A sink",
+     note: "switched on only after the fault flags read clear",
+     api: [EnableDrive, GateDriverStart, DisableDrive],
+     registers: [COMMUTATION_MODE, UVW_SOURCE_CURRENT, MCC_GDRV_HW, MCC_GDRV_CFG]}
+  - {id: measure, title: Current sensing and measurement, icon: current, status: supported, ref: mu,
+     docs: parameter-mode.md,
+     what: "Amplifies the bottom-shunt currents and measures the supply voltage and the temperatures",
+     api: [GetParam, SetParam],
+     registers: [CSA_GAIN_ADC_I0_TO_ADC_I2, ADC_I0, SUPPLY_VOLTAGE, CHIP_TEMPERATURE, MCC_ADC_I1_I0_RAW]}
+  - {id: protection, title: Protections, icon: shield, status: supported, ref: prot, docs: safety.md,
+     what: "Overcurrent, gate-short, undervoltage and thermal protection; the flags are read before every start",
+     api: [ClearFlags, Service, GetParam],
+     registers: [GENERAL_ERROR_FLAGS, GDRV_ERROR_FLAGS, MCC_GDRV_FAULT, MCC_GDRV_PROT]}
+  - {id: modes, title: Bootloader and application modes, icon: settings, status: supported, ref: boot,
+     docs: bootloader.md,
+     what: "Sets up pins, clock and LDOs at power-up, then starts parameter mode (TMCL) or register mode",
+     api: [BlGetInfo, BlWriteConfig, BlStartApplication, GetParam, SetParam, ReadReg, WriteReg]}
+  - {id: hibernate, title: Hibernation and wake-up, icon: sleep, status: supported, ref: power_save, docs: safety.md,
+     note: "the drive is switched off first",
+     what: "Switches all but the always-on block off; the WAKE pin or a timer powers the chip up again",
+     api: [PowerDown, "CtrlPin::Wake"]}
+  - {id: otp, title: OTP configuration, icon: memory, status: not-covered, ref: otp, docs: bootloader.md,
+     what: "Stores the boot configuration permanently; the driver loads it and never burns it",
+     api: [BlOtpLoad]}
+
+frames:
+  - id: tmcl-spi
+    title: Parameter-mode SPI datagram
+    description: Every transfer is one 64-bit datagram in SPI mode 3; the reply answers the previous datagram.
+    bits: 64
+    ref: pm_spi
+    rows:
+      - label: Command
+        sub: MOSI
+        fields:
+          - {name: operation, bits: [63, 56], tone: amber}
+          - {name: type and motor or bank, bits: [55, 40], tone: blue}
+          - {name: data (big endian), bits: [39, 8], tone: green}
+          - {name: checksum, bits: [7, 0], tone: slate}
+      - label: Reply
+        sub: MISO, next datagram
+        fields:
+          - {name: SPI status, bits: [63, 56], tone: violet}
+          - {name: TMCL status, bits: [55, 48], tone: violet}
+          - {name: operation, bits: [47, 40], tone: amber}
+          - {name: data (big endian), bits: [39, 8], tone: green}
+          - {name: checksum, bits: [7, 0], tone: slate}
+    waveform:
+      spi_mode: 3
+      select: SPI0_CS0
+      clock: SPI0_SCK
+      lanes:
+        - {name: MOSI, row: Command}
+        - {name: MISO, row: Reply}
+  - id: tmcl-uart
+    title: Parameter-mode UART datagram
+    description: >-
+      Every command and every reply is nine bytes, and the chip answers only after a command; the sync bit is always 1
+      and sets the baud rate.
+    bits: 72
+    bit_order: lsb-first
+    ref: pm_uart
+    rows:
+      - label: Command
+        sub: UART_RXD
+        fields:
+          - {name: sync bit and module address, short: address, bits: [0, 7], tone: blue}
+          - {name: operation, bits: [8, 15], tone: amber}
+          - {name: type, bits: [16, 27], tone: blue}
+          - {name: motor or bank, short: bank, bits: [28, 31], tone: blue}
+          - {name: data (big endian), bits: [32, 63], tone: green}
+          - {name: checksum, bits: [64, 71], tone: slate}
+      - label: Reply
+        sub: UART_TXD
+        fields:
+          - {name: host address, short: host, bits: [0, 7], tone: blue}
+          - {name: sync bit and module address, short: module, bits: [8, 15], tone: blue}
+          - {name: TMCL status, short: status, bits: [16, 23], tone: violet}
+          - {name: operation, bits: [24, 31], tone: amber}
+          - {name: data (big endian), bits: [32, 63], tone: green}
+          - {name: checksum, bits: [64, 71], tone: slate}
 
 hooks:
   - {id: transfer, call: "Transfer()", kind: spi, source: inc/tmc9660_spi_interface.hpp, symbol: Transfer}
@@ -50,7 +201,7 @@ pins:
   - {number: 6, name: GPIO14, type: digital-io, domain: VCC_IO, function: "GPIO14 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
   - {number: 7, name: 1V8, type: power, domain: 1V8, function: "Digital core supply input; 10 uF to GND", ref: pins}
   - {number: 8, name: GND, type: ground, function: "Ground", ref: pins}
-  - {number: 9, name: VCC_IO, type: power, domain: VCC_IO, function: "Logic supply input, 2.5 V to 5 V (3 V or more for SPI at 10 MHz); 1 uF to GND", ref: pins}
+  - {number: 9, name: VCC_IO, type: power, domain: VCC_IO, function: "Logic supply input, 2.2 V to 5.5 V (3 V or more for SPI at 10 MHz); 1 uF to GND", ref: supply}
   - {number: 10, name: GPIO15, type: digital-io, domain: VCC_IO, function: "GPIO15 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
   - {number: 11, name: GPIO16, type: digital-io, domain: VCC_IO, function: "GPIO16 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
   - {number: 12, name: GPIO17, type: digital-io, domain: VCC_IO, function: "GPIO17 (input with pull-up at power-up)", unused: "Leave open (internal pull-up)", ref: pins}
