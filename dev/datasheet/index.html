@@ -102,72 +102,6 @@
   <meta property="og:description" content="C++20 driver for the TMC9660 servo controller and gate driver (bootloader, parameter mode and register mode over SPI or UART)">
   <meta property="og:url" content="https://kokeb-labs-drivers.github.io/driver-tmc9660/latest/datasheet/">
   <meta name="twitter:card" content="summary">
-  <script>
-(function () {
-  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
-  var SRC = "https://unpkg.com/mermaid@11.17.2/dist/mermaid.min.js",
-      SRI = "sha384-EOXBFmc3gx5mb+vn0vPvvGqACToJD24hhacX5Yx+8NUUQrHIle/Qi5Bg9o3zKwW2", config = {}, real, loading;
-  var waiting = [], io = null, ahead = false, ENGAGE = ["scroll", "keydown", "pointerdown", "touchstart"];
-  var stub = {
-    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
-    render: function (id, text) {
-      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-kb-mermaid])");
-      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
-      if (el) el.setAttribute("data-kb-mermaid", "");
-      return near(el).then(load).then(function (m) { return m.render(id, text); });
-    }
-  };
-  function load() {
-    return loading || (loading = new Promise(function (resolve, reject) {
-      var s = document.createElement("script");
-      s.src = SRC;
-      s.integrity = SRI;
-      s.crossOrigin = "anonymous";
-      s.onload = function () {
-        real = window.mermaid;
-        window.mermaid = stub;
-        real.initialize(config);
-        resolve(real);
-      };
-      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
-      document.head.appendChild(s);
-    }));
-  }
-  // One observer for the diagrams still waiting: on the screen only until the reader engages, then a screen ahead.
-  function watch() {
-    if (io) io.disconnect();
-    io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) release(function (w) { return w.el === e.target; });
-      });
-    }, { rootMargin: ahead ? "100% 0px" : "0px" });
-    waiting.forEach(function (w) { io.observe(w.el); });
-  }
-  function release(which) {
-    waiting = waiting.filter(function (w) {
-      if (!which(w)) return true;
-      io.unobserve(w.el);
-      w.go();
-      return false;
-    });
-  }
-  function near(el) {
-    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
-    return new Promise(function (resolve) {
-      waiting.push({ el: el, go: resolve });
-      if (io) io.observe(el); else watch();
-    });
-  }
-  function engaged() {
-    ENGAGE.forEach(function (t) { window.removeEventListener(t, engaged, true); });
-    ahead = true;
-    if (io) watch();
-  }
-  ENGAGE.forEach(function (t) { window.addEventListener(t, engaged, { capture: true, passive: true }); });
-  window.addEventListener("beforeprint", function () { if (io) release(function () { return true; }); });
-  window.mermaid = stub;
-})();
-</script>
 
   </head>
   
@@ -505,6 +439,8 @@
   
     
     
+      
+        
       
         
       
@@ -1156,6 +1092,48 @@ numbers).</p>
 <td><a href="../hardware/">Hardware</a>, <a href="../porting/">Porting</a></td>
 </tr>
 <tr>
+<td>UART baud rates</td>
+<td>19-101926: Table 5. UART Baud Rates</td>
+<td>p. 23</td>
+<td><code>kMaxBaudRate</code>, <code>BootField::BlUartBaudrate</code></td>
+<td><a href="../bus/">On the bus</a></td>
+</tr>
+<tr>
+<td>UART character, automatic baud rate detection</td>
+<td>19-101926: UART</td>
+<td>p. 24</td>
+<td><code>UartInterface</code>, <code>Exchange()</code></td>
+<td><a href="../bus/">On the bus</a>, <a href="../porting/">Porting</a></td>
+</tr>
+<tr>
+<td>UART_TXEN, RS-485 and several chips on one bus</td>
+<td>19-101926: UART</td>
+<td>p. 25</td>
+<td><code>UartInterface</code></td>
+<td><a href="../bus/">On the bus</a></td>
+</tr>
+<tr>
+<td>SPI peripheral, mode 3 and the 40-bit bootloader datagram</td>
+<td>19-101926: SPI</td>
+<td>p. 25</td>
+<td><code>SpiInterface</code>, <code>kSpiMode</code></td>
+<td><a href="../bus/">On the bus</a>, <a href="../hardware/">Hardware</a></td>
+</tr>
+<tr>
+<td>SPI peripheral timing</td>
+<td>19-101926: SPI Peripheral - Electrical Characteristics</td>
+<td>p. 27</td>
+<td><code>SpiInterface</code>, <code>kSpiMode</code></td>
+<td><a href="../bus/">On the bus</a></td>
+</tr>
+<tr>
+<td>SPI peripheral timing, clock and data</td>
+<td>19-101926: SPI Peripheral - Electrical Characteristics</td>
+<td>p. 28</td>
+<td><code>SpiInterface</code></td>
+<td><a href="../bus/">On the bus</a></td>
+</tr>
+<tr>
 <td>Protections and the fault pin</td>
 <td>19-101926: Protections Description</td>
 <td>p. 56</td>
@@ -1198,6 +1176,13 @@ numbers).</p>
 <td><a href="../bootloader/">Bootloader</a>, <a href="../safety/">Safety</a>, <a href="../configuration/">Configuration</a></td>
 </tr>
 <tr>
+<td>RS-485 transmit enable delays</td>
+<td>19-101926: Bootloader, RS485 Configuration</td>
+<td>p. 86</td>
+<td><code>BootConfig</code></td>
+<td><a href="../bus/">On the bus</a>, <a href="../bootloader/">Bootloader</a></td>
+</tr>
+<tr>
 <td>Errata (OTP_BURN workaround, SPI slave MISO)</td>
 <td>19-101926: Errata</td>
 <td>p. 99</td>
@@ -1212,6 +1197,13 @@ numbers).</p>
 <td><a href="../parameter-mode/">Parameter mode</a></td>
 </tr>
 <tr>
+<td>TMCL over SPI, 64-bit datagram and SPI status codes</td>
+<td>n/a: Communication Interfaces, Serial-Peripheral Interface</td>
+<td>p. 9</td>
+<td><code>detail::TmclSpiEncode()</code>, <code>Config::spi_reply_retries</code></td>
+<td><a href="../bus/">On the bus</a>, <a href="../parameter-mode/">Parameter mode</a></td>
+</tr>
+<tr>
 <td>Parameter table</td>
 <td>n/a: Table 57, Full list of parameters</td>
 <td>p. 102</td>
@@ -1219,11 +1211,25 @@ numbers).</p>
 <td><a href="../parameter-mode/">Parameter mode</a>, <a href="./">Datasheet map</a></td>
 </tr>
 <tr>
+<td>Serial and host address for UART and RS-485</td>
+<td>n/a: Table 61, Full list of global parameters in bank 0</td>
+<td>p. 143</td>
+<td><code>SetGlobal()</code>, <code>GetGlobal()</code></td>
+<td><a href="../bus/">On the bus</a>, <a href="../parameter-mode/">Parameter mode</a></td>
+</tr>
+<tr>
 <td>Register-mode SPI and UART datagrams</td>
 <td>n/a: Communication interfaces</td>
 <td>p. 8</td>
 <td><code>ReadReg()</code>, <code>WriteReg()</code>, <code>UpdateReg()</code></td>
 <td><a href="../register-mode/">Register mode</a></td>
+</tr>
+<tr>
+<td>Register-mode 48-bit SPI datagram</td>
+<td>n/a: Communication interfaces, SPI Interface</td>
+<td>p. 9</td>
+<td><code>ReadReg()</code>, <code>WriteReg()</code></td>
+<td><a href="../bus/">On the bus</a>, <a href="../register-mode/">Register mode</a></td>
 </tr>
 <tr>
 <td>Register map</td>

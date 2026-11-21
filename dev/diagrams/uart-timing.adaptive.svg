@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="863" viewBox="0 0 640 863" role="img" aria-labelledby="uart-timing-title uart-timing-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" class="fk">
+<title id="uart-timing-title">UART character and transceiver enable</title>
+<desc id="uart-timing-desc">One UART character sent by the TMC9660: a start bit, eight data bits least significant first and a stop bit, with UART_TXEN raised before the start bit and dropped after the stop bit for an RS-485 transceiver.</desc>
+<style>
+.fk{--fk-blue-strong:#2563EB;--fk-blue-text:#1E429F;--fk-blue-tint:#EAF2FF;--fk-brand-text:#7A360E;--fk-canvas:#FFFFFF;--fk-frame:#E2E7EE;--fk-hair:#E2E7EE;--fk-ink:#0E1726;--fk-ink2:#2B3442;--fk-muted:#566070;--fk-rail:#7C8798;--fk-slate-soft:#CBD5E1;--fk-slate-strong:#64748B;--fk-slate-text:#334155;--fk-slate-tint:#F1F4F8;}
+@media (prefers-color-scheme:dark){.fk{--fk-blue-strong:#60A5FA;--fk-blue-text:#BFDBFE;--fk-blue-tint:#13233A;--fk-brand-text:#F8D27A;--fk-canvas:#0E131A;--fk-frame:#283241;--fk-hair:#252F3C;--fk-ink:#E8EDF3;--fk-ink2:#D2DAE4;--fk-muted:#9AA6B5;--fk-rail:#6C7889;--fk-slate-soft:#3A4656;--fk-slate-strong:#94A3B8;--fk-slate-text:#E2E8F0;--fk-slate-tint:#1B232E;}}
+:root[data-theme="dark"] .fk,[data-md-color-scheme="slate"] .fk{--fk-blue-strong:#60A5FA;--fk-blue-text:#BFDBFE;--fk-blue-tint:#13233A;--fk-brand-text:#F8D27A;--fk-canvas:#0E131A;--fk-frame:#283241;--fk-hair:#252F3C;--fk-ink:#E8EDF3;--fk-ink2:#D2DAE4;--fk-muted:#9AA6B5;--fk-rail:#6C7889;--fk-slate-soft:#3A4656;--fk-slate-strong:#94A3B8;--fk-slate-text:#E2E8F0;--fk-slate-tint:#1B232E;}
+:root[data-theme="light"] .fk,[data-md-color-scheme="default"] .fk{--fk-blue-strong:#2563EB;--fk-blue-text:#1E429F;--fk-blue-tint:#EAF2FF;--fk-brand-text:#7A360E;--fk-canvas:#FFFFFF;--fk-frame:#E2E7EE;--fk-hair:#E2E7EE;--fk-ink:#0E1726;--fk-ink2:#2B3442;--fk-muted:#566070;--fk-rail:#7C8798;--fk-slate-soft:#CBD5E1;--fk-slate-strong:#64748B;--fk-slate-text:#334155;--fk-slate-tint:#F1F4F8;}
+.fk-f-blue-strong{fill:var(--fk-blue-strong)}.fk-s-blue-strong{stroke:var(--fk-blue-strong)}
+.fk-f-blue-text{fill:var(--fk-blue-text)}.fk-s-blue-text{stroke:var(--fk-blue-text)}
+.fk-f-blue-tint{fill:var(--fk-blue-tint)}.fk-s-blue-tint{stroke:var(--fk-blue-tint)}
+.fk-f-brand-text{fill:var(--fk-brand-text)}.fk-s-brand-text{stroke:var(--fk-brand-text)}
+.fk-f-canvas{fill:var(--fk-canvas)}.fk-s-canvas{stroke:var(--fk-canvas)}
+.fk-f-frame{fill:var(--fk-frame)}.fk-s-frame{stroke:var(--fk-frame)}
+.fk-f-hair{fill:var(--fk-hair)}.fk-s-hair{stroke:var(--fk-hair)}
+.fk-f-ink{fill:var(--fk-ink)}.fk-s-ink{stroke:var(--fk-ink)}
+.fk-f-ink2{fill:var(--fk-ink2)}.fk-s-ink2{stroke:var(--fk-ink2)}
+.fk-f-muted{fill:var(--fk-muted)}.fk-s-muted{stroke:var(--fk-muted)}
+.fk-f-rail{fill:var(--fk-rail)}.fk-s-rail{stroke:var(--fk-rail)}
+.fk-f-slate-soft{fill:var(--fk-slate-soft)}.fk-s-slate-soft{stroke:var(--fk-slate-soft)}
+.fk-f-slate-strong{fill:var(--fk-slate-strong)}.fk-s-slate-strong{stroke:var(--fk-slate-strong)}
+.fk-f-slate-text{fill:var(--fk-slate-text)}.fk-s-slate-text{stroke:var(--fk-slate-text)}
+.fk-f-slate-tint{fill:var(--fk-slate-tint)}.fk-s-slate-tint{stroke:var(--fk-slate-tint)}
+@media (forced-colors:active){.fk text{fill:CanvasText}.fk rect,.fk circle{fill:Canvas;stroke:CanvasText}.fk path{stroke:CanvasText}.fk marker path{fill:CanvasText;stroke:none}}
+</style>
+<defs><marker id="uart-timing-arrow-ink2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fk-f-ink2"/></marker></defs>
+<rect x="0.5" y="0.5" width="639" height="862" rx="16" class="fk-f-canvas fk-s-frame"/>
+<text x="32" y="44.4" font-size="13" font-weight="700" letter-spacing="1.2" class="fk-f-brand-text">ON THE BUS</text>
+<text x="32" y="76.2" font-size="24" font-weight="700" class="fk-f-ink">UART character and transceiver enable</text>
+<text x="32" y="102.7" font-size="15" class="fk-f-muted">Sources: ds UART, p. 24; ds Table 5. UART Baud Rates, p. 23; ds</text>
+<text x="32" y="124.5" font-size="15" class="fk-f-muted">Bootloader, RS485 Configuration, p. 86; pm Communication Interfaces,</text>
+<text x="32" y="146.2" font-size="15" class="fk-f-muted">UART Interface, Tables 1 and 2, p. 8.</text>
+<rect x="32" y="162.2" width="576" height="1" class="fk-f-hair"/>
+<path d="M152.2 320.6 L152.2 372.8" fill="none" stroke-width="1" stroke-dasharray="3 3" class="fk-s-rail"/>
+<path d="M184.4 320.6 L184.4 372.8" fill="none" stroke-width="1" stroke-dasharray="3 3" class="fk-s-rail"/>
+<path d="M505.6 320.6 L505.6 372.8" fill="none" stroke-width="1" stroke-dasharray="3 3" class="fk-s-rail"/>
+<path d="M537.8 320.6 L537.8 372.8" fill="none" stroke-width="1" stroke-dasharray="3 3" class="fk-s-rail"/>
+<path d="M88 254.6 L88 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M120.1 254.6 L120.1 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M152.2 254.6 L152.2 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M184.4 254.6 L184.4 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M216.5 254.6 L216.5 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M248.6 254.6 L248.6 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M280.8 254.6 L280.8 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M312.9 254.6 L312.9 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M345 254.6 L345 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M377.1 254.6 L377.1 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M409.2 254.6 L409.2 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M441.4 254.6 L441.4 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M473.5 254.6 L473.5 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M505.6 254.6 L505.6 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M537.8 254.6 L537.8 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M569.9 254.6 L569.9 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M602 254.6 L602 372.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M32 418.9 L608 418.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M32 491.8 L608 491.8" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M32 564.6 L608 564.6" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M32 637.5 L608 637.5" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M32 710.3 L608 710.3" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M185.4 245.6 L185.4 240.6 L215.5 240.6 L215.5 245.6" fill="none" stroke-width="1.4" class="fk-s-slate-strong"/>
+<path d="M217.5 213.4 L217.5 208.4 L472.5 208.4 L472.5 213.4" fill="none" stroke-width="1.4" class="fk-s-slate-strong"/>
+<path d="M474.5 245.6 L474.5 240.6 L504.6 240.6 L504.6 245.6" fill="none" stroke-width="1.4" class="fk-s-slate-strong"/>
+<path d="M88 259.6 L184.4 259.6 L184.4 259.6 L184.4 285.6 L216.5 285.6" fill="none" stroke-width="2" class="fk-s-ink2"/>
+<path d="M216.5 285.6 L216.5 272.6" fill="none" stroke-width="2" class="fk-s-ink2"/>
+<path d="M473.5 259.6 L602 259.6" fill="none" stroke-width="2" class="fk-s-ink2"/>
+<path d="M88 333.6 L152.2 333.6 L152.2 333.6 L152.2 307.6 L537.8 307.6 L537.8 307.6 L537.8 333.6 L602 333.6" fill="none" stroke-width="2" class="fk-s-ink2"/>
+<path d="M153.2 368.8 L183.4 368.8" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#uart-timing-arrow-ink2)" marker-start="url(#uart-timing-arrow-ink2)" class="fk-s-ink2"/>
+<path d="M506.6 368.8 L536.8 368.8" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#uart-timing-arrow-ink2)" marker-start="url(#uart-timing-arrow-ink2)" class="fk-s-ink2"/>
+<path d="M216.5 272.6 L221.5 259.6 L468.5 259.6 L473.5 272.6 L468.5 285.6 L221.5 285.6 Z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="fk-f-blue-tint fk-s-blue-strong"/>
+<rect x="32" y="724.3" width="576" height="108.6" rx="10" stroke-width="1" class="fk-f-slate-tint fk-s-slate-soft"/>
+<text x="200.4" y="229.7" font-size="14" font-weight="600" text-anchor="middle" class="fk-f-slate-text">start</text>
+<text x="345" y="197.5" font-size="14" font-weight="600" text-anchor="middle" class="fk-f-slate-text">8 data bits, LSB first</text>
+<text x="489.6" y="229.7" font-size="14" font-weight="600" text-anchor="middle" class="fk-f-slate-text">stop</text>
+<text x="32" y="278" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" class="fk-f-ink">TX</text>
+<text x="345" y="277.6" font-size="14" font-weight="600" text-anchor="middle" class="fk-f-blue-text">D0 … D7</text>
+<text x="32" y="326" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" class="fk-f-ink">TXEN</text>
+<text x="190.4" y="373.8" font-size="14" font-weight="700" class="fk-f-ink">tPRE</text>
+<text x="543.8" y="373.8" font-size="14" font-weight="700" class="fk-f-ink">tPOST</text>
+<text x="32" y="403.2" font-size="17" font-weight="700" class="fk-f-ink">Timing values</text>
+<text x="32" y="439.7" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" class="fk-f-ink">baud</text>
+<text x="608" y="439.7" font-size="15" font-weight="700" text-anchor="end" class="fk-f-ink">min 9600 · max 250000 bit/s</text>
+<text x="32" y="459.9" font-size="15" class="fk-f-ink2">Bit rate with automatic baud rate detection at the 40 MHz system clock</text>
+<text x="32" y="480.1" font-size="14" class="fk-f-muted">Datasheet UART, p. 24</text>
+<text x="32" y="512.5" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" class="fk-f-ink">baud</text>
+<text x="608" y="512.5" font-size="15" font-weight="700" text-anchor="end" class="fk-f-ink">max 5000000 bit/s</text>
+<text x="32" y="532.8" font-size="15" class="fk-f-ink2">Highest fixed bit rate (x8 oversampling)</text>
+<text x="32" y="552.9" font-size="14" class="fk-f-muted">Datasheet Table 5. UART Baud Rates, p. 23</text>
+<text x="32" y="585.4" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" class="fk-f-ink">tPRE</text>
+<text x="608" y="585.4" font-size="15" font-weight="700" text-anchor="end" class="fk-f-ink">typ configurable</text>
+<text x="32" y="605.6" font-size="15" class="fk-f-ink2">UART_TXEN high before the start bit: UART_TXEN_PRE_DELAY, default 0</text>
+<text x="32" y="625.8" font-size="14" class="fk-f-muted">Datasheet Bootloader, RS485 Configuration, p. 86</text>
+<text x="32" y="658.2" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" class="fk-f-ink">tPOST</text>
+<text x="608" y="658.2" font-size="15" font-weight="700" text-anchor="end" class="fk-f-ink">typ configurable</text>
+<text x="32" y="678.5" font-size="15" class="fk-f-ink2">UART_TXEN high after the stop bit: UART_TXEN_POST_DELAY, default 0</text>
+<text x="32" y="698.6" font-size="14" class="fk-f-muted">Datasheet Bootloader, RS485 Configuration, p. 86</text>
+<text x="46" y="752.8" font-size="17" font-weight="700" class="fk-f-slate-text">Notes</text>
+<text x="46" y="773.2" font-size="15" class="fk-f-slate-text">The line idles high. A TMCL datagram is nine such characters; bit 0 of</text>
+<text x="46" y="794.9" font-size="15" class="fk-f-slate-text">the first is the sync bit, always 1, which the chip uses for automatic baud</text>
+<text x="46" y="816.7" font-size="15" class="fk-f-slate-text">rate detection.</text>
+</svg>

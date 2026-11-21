@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="829" viewBox="0 0 640 829" role="img" aria-labelledby="uart-topology-title uart-topology-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" class="fk">
+<title id="uart-topology-title">TMC9660 nodes on RS-485</title>
+<desc id="uart-topology-desc">Several TMC9660 on one RS-485 bus: the host and every chip share the DATA+ and DATA- pair through transceivers, and each chip answers only commands sent to its own odd module address.</desc>
+<style>
+.fk{--fk-blue-strong:#2563EB;--fk-blue-text:#1E429F;--fk-blue-tint:#EAF2FF;--fk-brand-text:#7A360E;--fk-canvas:#FFFFFF;--fk-card:#FFFFFF;--fk-frame:#E2E7EE;--fk-hair:#E2E7EE;--fk-ink:#0E1726;--fk-ink2:#2B3442;--fk-line:#738093;--fk-muted:#566070;--fk-slate-soft:#CBD5E1;--fk-slate-text:#334155;--fk-slate-tint:#F1F4F8;--fk-teal-strong:#0B7A72;--fk-teal-text:#0B5F59;--fk-teal-tint:#E6F6F4;}
+@media (prefers-color-scheme:dark){.fk{--fk-blue-strong:#60A5FA;--fk-blue-text:#BFDBFE;--fk-blue-tint:#13233A;--fk-brand-text:#F8D27A;--fk-canvas:#0E131A;--fk-card:#151C26;--fk-frame:#283241;--fk-hair:#252F3C;--fk-ink:#E8EDF3;--fk-ink2:#D2DAE4;--fk-line:#6C7889;--fk-muted:#9AA6B5;--fk-slate-soft:#3A4656;--fk-slate-text:#E2E8F0;--fk-slate-tint:#1B232E;--fk-teal-strong:#2BB3A3;--fk-teal-text:#A7F3E6;--fk-teal-tint:#0F2A28;}}
+:root[data-theme="dark"] .fk,[data-md-color-scheme="slate"] .fk{--fk-blue-strong:#60A5FA;--fk-blue-text:#BFDBFE;--fk-blue-tint:#13233A;--fk-brand-text:#F8D27A;--fk-canvas:#0E131A;--fk-card:#151C26;--fk-frame:#283241;--fk-hair:#252F3C;--fk-ink:#E8EDF3;--fk-ink2:#D2DAE4;--fk-line:#6C7889;--fk-muted:#9AA6B5;--fk-slate-soft:#3A4656;--fk-slate-text:#E2E8F0;--fk-slate-tint:#1B232E;--fk-teal-strong:#2BB3A3;--fk-teal-text:#A7F3E6;--fk-teal-tint:#0F2A28;}
+:root[data-theme="light"] .fk,[data-md-color-scheme="default"] .fk{--fk-blue-strong:#2563EB;--fk-blue-text:#1E429F;--fk-blue-tint:#EAF2FF;--fk-brand-text:#7A360E;--fk-canvas:#FFFFFF;--fk-card:#FFFFFF;--fk-frame:#E2E7EE;--fk-hair:#E2E7EE;--fk-ink:#0E1726;--fk-ink2:#2B3442;--fk-line:#738093;--fk-muted:#566070;--fk-slate-soft:#CBD5E1;--fk-slate-text:#334155;--fk-slate-tint:#F1F4F8;--fk-teal-strong:#0B7A72;--fk-teal-text:#0B5F59;--fk-teal-tint:#E6F6F4;}
+.fk-f-blue-strong{fill:var(--fk-blue-strong)}.fk-s-blue-strong{stroke:var(--fk-blue-strong)}
+.fk-f-blue-text{fill:var(--fk-blue-text)}.fk-s-blue-text{stroke:var(--fk-blue-text)}
+.fk-f-blue-tint{fill:var(--fk-blue-tint)}.fk-s-blue-tint{stroke:var(--fk-blue-tint)}
+.fk-f-brand-text{fill:var(--fk-brand-text)}.fk-s-brand-text{stroke:var(--fk-brand-text)}
+.fk-f-canvas{fill:var(--fk-canvas)}.fk-s-canvas{stroke:var(--fk-canvas)}
+.fk-f-card{fill:var(--fk-card)}.fk-s-card{stroke:var(--fk-card)}
+.fk-f-frame{fill:var(--fk-frame)}.fk-s-frame{stroke:var(--fk-frame)}
+.fk-f-hair{fill:var(--fk-hair)}.fk-s-hair{stroke:var(--fk-hair)}
+.fk-f-ink{fill:var(--fk-ink)}.fk-s-ink{stroke:var(--fk-ink)}
+.fk-f-ink2{fill:var(--fk-ink2)}.fk-s-ink2{stroke:var(--fk-ink2)}
+.fk-f-line{fill:var(--fk-line)}.fk-s-line{stroke:var(--fk-line)}
+.fk-f-muted{fill:var(--fk-muted)}.fk-s-muted{stroke:var(--fk-muted)}
+.fk-f-slate-soft{fill:var(--fk-slate-soft)}.fk-s-slate-soft{stroke:var(--fk-slate-soft)}
+.fk-f-slate-text{fill:var(--fk-slate-text)}.fk-s-slate-text{stroke:var(--fk-slate-text)}
+.fk-f-slate-tint{fill:var(--fk-slate-tint)}.fk-s-slate-tint{stroke:var(--fk-slate-tint)}
+.fk-f-teal-strong{fill:var(--fk-teal-strong)}.fk-s-teal-strong{stroke:var(--fk-teal-strong)}
+.fk-f-teal-text{fill:var(--fk-teal-text)}.fk-s-teal-text{stroke:var(--fk-teal-text)}
+.fk-f-teal-tint{fill:var(--fk-teal-tint)}.fk-s-teal-tint{stroke:var(--fk-teal-tint)}
+@media (forced-colors:active){.fk text{fill:CanvasText}.fk rect,.fk circle{fill:Canvas;stroke:CanvasText}.fk path{stroke:CanvasText}.fk marker path{fill:CanvasText;stroke:none}}
+</style>
+<rect x="0.5" y="0.5" width="639" height="828" rx="16" class="fk-f-canvas fk-s-frame"/>
+<text x="32" y="44.4" font-size="13" font-weight="700" letter-spacing="1.2" class="fk-f-brand-text">SEVERAL CHIPS</text>
+<text x="32" y="76.2" font-size="24" font-weight="700" class="fk-f-ink">TMC9660 nodes on RS-485</text>
+<text x="32" y="102.7" font-size="15" class="fk-f-muted">Sources: ds UART, p. 25; pm Table 61, Full list of global parameters in bank</text>
+<text x="32" y="124.5" font-size="15" class="fk-f-muted">0, p. 143; pm Communication Interfaces, UART Interface, Tables 1 and 2, p.</text>
+<text x="32" y="146.2" font-size="15" class="fk-f-muted">8.</text>
+<rect x="32" y="162.2" width="576" height="1" class="fk-f-hair"/>
+<path d="M510.7 216.4 L510.7 594.4" fill="none" stroke-width="2.2" class="fk-s-ink2"/>
+<path d="M452.3 224.4 L510.7 224.4" fill="none" stroke-width="1.8" class="fk-s-ink2"/>
+<path d="M452.3 316.4 L510.7 316.4" fill="none" stroke-width="1.8" class="fk-s-ink2"/>
+<path d="M452.3 430.4 L510.7 430.4" fill="none" stroke-width="1.8" class="fk-s-ink2"/>
+<path d="M452.3 544.4 L510.7 544.4" fill="none" stroke-width="1.8" stroke-dasharray="5 4" class="fk-s-ink2"/>
+<path d="M575.6 216.4 L575.6 594.4" fill="none" stroke-width="2.2" class="fk-s-ink2"/>
+<path d="M452.3 234.4 L575.6 234.4" fill="none" stroke-width="1.8" class="fk-s-ink2"/>
+<path d="M452.3 326.4 L575.6 326.4" fill="none" stroke-width="1.8" class="fk-s-ink2"/>
+<path d="M452.3 440.4 L575.6 440.4" fill="none" stroke-width="1.8" class="fk-s-ink2"/>
+<path d="M452.3 554.4 L575.6 554.4" fill="none" stroke-width="1.8" stroke-dasharray="5 4" class="fk-s-ink2"/>
+<rect x="32" y="208.4" width="420.3" height="74" rx="10" stroke-width="1.4" class="fk-f-blue-tint fk-s-blue-strong"/>
+<rect x="32" y="216.4" width="4" height="58" rx="2" class="fk-f-blue-strong"/>
+<rect x="32" y="300.4" width="420.3" height="96" rx="10" stroke-width="1.4" class="fk-f-teal-tint fk-s-teal-strong"/>
+<rect x="32" y="308.4" width="4" height="80" rx="2" class="fk-f-teal-strong"/>
+<rect x="32" y="414.4" width="420.3" height="96" rx="10" stroke-width="1.4" class="fk-f-teal-tint fk-s-teal-strong"/>
+<rect x="32" y="422.4" width="4" height="80" rx="2" class="fk-f-teal-strong"/>
+<rect x="32" y="528.4" width="420.3" height="74" rx="10" stroke-width="1" stroke-dasharray="6 4" class="fk-f-card fk-s-line"/>
+<rect x="32" y="624.4" width="576" height="173.8" rx="10" stroke-width="1" class="fk-f-slate-tint fk-s-slate-soft"/>
+<text x="52" y="236.8" font-size="17" font-weight="700" class="fk-f-blue-text">Host</text>
+<text x="52" y="264.6" font-size="15" class="fk-f-ink2">UART and RS-485 transceiver</text>
+<text x="52" y="328.8" font-size="17" font-weight="700" class="fk-f-teal-text">TMC9660</text>
+<text x="52" y="356.6" font-size="15" class="fk-f-ink2">address 1</text>
+<text x="52" y="378.3" font-size="15" class="fk-f-ink2">UART_TXEN to the transceiver</text>
+<text x="52" y="442.8" font-size="17" font-weight="700" class="fk-f-teal-text">TMC9660</text>
+<text x="52" y="470.6" font-size="15" class="fk-f-ink2">address 3</text>
+<text x="52" y="492.3" font-size="15" class="fk-f-ink2">UART_TXEN to the transceiver</text>
+<text x="52" y="556.8" font-size="17" font-weight="700" class="fk-f-ink">…</text>
+<text x="52" y="584.6" font-size="15" class="fk-f-ink2">up to address 255</text>
+<text x="510.7" y="208.4" font-size="14" font-weight="700" text-anchor="middle" class="fk-f-ink">DATA+</text>
+<circle cx="510.7" cy="224.4" r="3.6" class="fk-f-ink2"/>
+<circle cx="510.7" cy="316.4" r="3.6" class="fk-f-ink2"/>
+<circle cx="510.7" cy="430.4" r="3.6" class="fk-f-ink2"/>
+<circle cx="510.7" cy="544.4" r="3.6" class="fk-f-ink2"/>
+<text x="575.6" y="208.4" font-size="14" font-weight="700" text-anchor="middle" class="fk-f-ink">DATA-</text>
+<circle cx="575.6" cy="234.4" r="3.6" class="fk-f-ink2"/>
+<circle cx="575.6" cy="326.4" r="3.6" class="fk-f-ink2"/>
+<circle cx="575.6" cy="440.4" r="3.6" class="fk-f-ink2"/>
+<circle cx="575.6" cy="554.4" r="3.6" class="fk-f-ink2"/>
+<text x="46" y="652.8" font-size="17" font-weight="700" class="fk-f-slate-text">Limits</text>
+<text x="46" y="673.2" font-size="15" class="fk-f-slate-text">SERIAL_ADDRESS: odd values 1 to 255; the default is 1 (Table 61, Full list</text>
+<text x="46" y="695" font-size="15" class="fk-f-slate-text">of global parameters in bank 0, p. 143). The module address is the upper</text>
+<text x="46" y="716.8" font-size="15" class="fk-f-slate-text">7 bits of the device address (Communication Interfaces, UART Interface,</text>
+<text x="46" y="738.5" font-size="15" class="fk-f-slate-text">Tables 1 and 2, p. 8). A chip never sends before it receives a command,</text>
+<text x="46" y="760.2" font-size="15" class="fk-f-slate-text">so one host and many chips share the pair (Communication Interfaces,</text>
+<text x="46" y="782" font-size="15" class="fk-f-slate-text">UART Interface, Tables 1 and 2, p. 8).</text>
+</svg>

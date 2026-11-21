@@ -82,6 +82,48 @@ topics:
     page: 19
     driver: "`SpiPort`, `UartPort`, `Transfer()`, `Exchange()`"
     docs: [hardware, porting]
+  - topic: UART baud rates
+    doc: ds
+    section: Table 5. UART Baud Rates
+    page: 23
+    driver: "`kMaxBaudRate`, `BootField::BlUartBaudrate`"
+    docs: [bus]
+  - topic: UART character, automatic baud rate detection
+    doc: ds
+    section: UART
+    page: 24
+    driver: "`UartInterface`, `Exchange()`"
+    docs: [bus, porting]
+  - topic: UART_TXEN, RS-485 and several chips on one bus
+    doc: ds
+    section: UART
+    page: 25
+    driver: "`UartInterface`"
+    docs: [bus]
+  - topic: SPI peripheral, mode 3 and the 40-bit bootloader datagram
+    doc: ds
+    section: SPI
+    page: 25
+    driver: "`SpiInterface`, `kSpiMode`"
+    docs: [bus, hardware]
+  - topic: SPI peripheral timing
+    doc: ds
+    section: SPI Peripheral - Electrical Characteristics
+    page: 27
+    driver: "`SpiInterface`, `kSpiMode`"
+    docs: [bus]
+  - topic: SPI peripheral timing, clock and data
+    doc: ds
+    section: SPI Peripheral - Electrical Characteristics
+    page: 28
+    driver: "`SpiInterface`"
+    docs: [bus]
+  - topic: RS-485 transmit enable delays
+    doc: ds
+    section: Bootloader, RS485 Configuration
+    page: 86
+    driver: "`BootConfig`"
+    docs: [bus, bootloader]
   - topic: UART bootloader frame and its CRC-8
     doc: ds
     section: Bootloader, UART Communication
@@ -130,6 +172,18 @@ topics:
     page: 8
     driver: "`SetParam()`, `GetParam()`, `detail::TmclSpiEncode()`"
     docs: [parameter-mode]
+  - topic: TMCL over SPI, 64-bit datagram and SPI status codes
+    doc: pm
+    section: Communication Interfaces, Serial-Peripheral Interface
+    page: 9
+    driver: "`detail::TmclSpiEncode()`, `Config::spi_reply_retries`"
+    docs: [bus, parameter-mode]
+  - topic: Serial and host address for UART and RS-485
+    doc: pm
+    section: Table 61, Full list of global parameters in bank 0
+    page: 143
+    driver: "`SetGlobal()`, `GetGlobal()`"
+    docs: [bus, parameter-mode]
   - topic: Parameter table
     doc: pm
     section: Table 57, Full list of parameters
@@ -148,6 +202,12 @@ topics:
     page: 8
     driver: "`ReadReg()`, `WriteReg()`, `UpdateReg()`"
     docs: [register-mode]
+  - topic: Register-mode 48-bit SPI datagram
+    doc: rm
+    section: Communication interfaces, SPI Interface
+    page: 9
+    driver: "`ReadReg()`, `WriteReg()`"
+    docs: [bus, register-mode]
   - topic: Bootstrapping with the UblTools software
     doc: an
     section: Bootstrapping the TMC9660 IC using UblTools

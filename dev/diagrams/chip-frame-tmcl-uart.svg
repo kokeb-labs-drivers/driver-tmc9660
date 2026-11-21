@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="442" viewBox="0 0 1200 442" role="img" aria-labelledby="chip-frame-tmcl-uart-title chip-frame-tmcl-uart-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-frame-tmcl-uart-title">TMC9660: Parameter-mode UART datagram</title>
+<desc id="chip-frame-tmcl-uart-desc">Parameter-mode UART datagram of the TMC9660, 72 bits, sent byte by byte, each byte least significant bit first, bit 0 first. Command: sync bit and module address (bits 0 to 7), operation (bits 8 to 15), type (bits 16 to 27), motor or bank (bits 28 to 31), data (big endian) (bits 32 to 63), checksum (bits 64 to 71); Reply: host address (bits 0 to 7), sync bit and module address (bits 8 to 15), TMCL status (bits 16 to 23), operation (bits 24 to 31), data (big endian) (bits 32 to 63), checksum (bits 64 to 71).</desc>
+<rect x="0.5" y="0.5" width="1199" height="441" rx="16" fill="#FFFFFF" stroke="#E2E7EE"/>
+<text x="32" y="46.8" font-size="16" font-weight="700" letter-spacing="1.2" fill="#7A360E">ON THE BUS</text>
+<text x="32" y="85.6" font-size="32" font-weight="700" fill="#0E1726">TMC9660: Parameter-mode UART datagram</text>
+<text x="32" y="115.4" font-size="18" fill="#566070">Every command and every reply is nine bytes, and the chip answers only after a command; the sync bit is always 1 and sets</text>
+<text x="32" y="141.5" font-size="18" fill="#566070">the baud rate. 72 bits, sent from bit 0, each byte least significant bit first. Datasheet: Communication Interfaces, UART</text>
+<text x="32" y="167.6" font-size="18" fill="#566070">Interface, Tables 1 and 2, p. 8.</text>
+<rect x="32" y="183.6" width="1136" height="1" fill="#E2E7EE"/>
+<rect x="210" y="235.6" width="103.3" height="46" rx="6" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4"/>
+<rect x="313.3" y="235.6" width="103.3" height="46" rx="6" fill="#FFF5E3" stroke="#C26A05" stroke-width="1.4"/>
+<rect x="416.7" y="235.6" width="155" height="46" rx="6" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4"/>
+<rect x="571.7" y="235.6" width="51.7" height="46" rx="6" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4"/>
+<rect x="623.3" y="235.6" width="413.3" height="46" rx="6" fill="#EAF7EF" stroke="#15803D" stroke-width="1.4"/>
+<rect x="1036.7" y="235.6" width="103.3" height="46" rx="6" fill="#F1F4F8" stroke="#64748B" stroke-width="1.4"/>
+<rect x="210" y="323.6" width="103.3" height="46" rx="6" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4"/>
+<rect x="313.3" y="323.6" width="103.3" height="46" rx="6" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4"/>
+<rect x="416.7" y="323.6" width="103.3" height="46" rx="6" fill="#F3EEFF" stroke="#7C3AED" stroke-width="1.4"/>
+<rect x="520" y="323.6" width="103.3" height="46" rx="6" fill="#FFF5E3" stroke="#C26A05" stroke-width="1.4"/>
+<rect x="623.3" y="323.6" width="413.3" height="46" rx="6" fill="#EAF7EF" stroke="#15803D" stroke-width="1.4"/>
+<rect x="1036.7" y="323.6" width="103.3" height="46" rx="6" fill="#F1F4F8" stroke="#64748B" stroke-width="1.4"/>
+<text x="210" y="217.6" font-size="16" fill="#566070">Bit 0, sent first</text>
+<text x="1140" y="217.6" font-size="16" text-anchor="end" fill="#566070">Bit 71, sent last</text>
+<text x="32" y="256.6" font-size="20" font-weight="700" fill="#0E1726">Command</text>
+<text x="32" y="276.6" font-size="16" fill="#566070">UART_RXD</text>
+<text x="261.7" y="264.7" font-size="17" font-weight="600" text-anchor="middle" fill="#1E429F">address</text>
+<text x="212" y="301.6" font-size="16" fill="#566070">0</text>
+<text x="311.3" y="301.6" font-size="16" text-anchor="end" fill="#566070">7</text>
+<text x="365" y="264.7" font-size="17" font-weight="600" text-anchor="middle" fill="#8A3C0B">operation</text>
+<text x="315.3" y="301.6" font-size="16" fill="#566070">8</text>
+<text x="414.7" y="301.6" font-size="16" text-anchor="end" fill="#566070">15</text>
+<text x="494.2" y="264.7" font-size="17" font-weight="600" text-anchor="middle" fill="#1E429F">type</text>
+<text x="418.7" y="301.6" font-size="16" fill="#566070">16</text>
+<text x="569.7" y="301.6" font-size="16" text-anchor="end" fill="#566070">27</text>
+<text x="597.5" y="264.7" font-size="17" font-weight="600" text-anchor="middle" fill="#1E429F">bank</text>
+<text x="573.7" y="301.6" font-size="16" fill="#566070">28</text>
+<text x="621.3" y="301.6" font-size="16" text-anchor="end" fill="#566070">31</text>
+<text x="830" y="264.7" font-size="17" font-weight="600" text-anchor="middle" fill="#14532D">data (big endian)</text>
+<text x="625.3" y="301.6" font-size="16" fill="#566070">32</text>
+<text x="1034.7" y="301.6" font-size="16" text-anchor="end" fill="#566070">63</text>
+<text x="1088.3" y="264.7" font-size="17" font-weight="600" text-anchor="middle" fill="#334155">checksum</text>
+<text x="1038.7" y="301.6" font-size="16" fill="#566070">64</text>
+<text x="1138" y="301.6" font-size="16" text-anchor="end" fill="#566070">71</text>
+<text x="32" y="344.6" font-size="20" font-weight="700" fill="#0E1726">Reply</text>
+<text x="32" y="364.6" font-size="16" fill="#566070">UART_TXD</text>
+<text x="261.7" y="352.7" font-size="17" font-weight="600" text-anchor="middle" fill="#1E429F">host</text>
+<text x="212" y="389.6" font-size="16" fill="#566070">0</text>
+<text x="311.3" y="389.6" font-size="16" text-anchor="end" fill="#566070">7</text>
+<text x="365" y="352.7" font-size="17" font-weight="600" text-anchor="middle" fill="#1E429F">module</text>
+<text x="315.3" y="389.6" font-size="16" fill="#566070">8</text>
+<text x="414.7" y="389.6" font-size="16" text-anchor="end" fill="#566070">15</text>
+<text x="468.3" y="352.7" font-size="17" font-weight="600" text-anchor="middle" fill="#5B21B6">status</text>
+<text x="418.7" y="389.6" font-size="16" fill="#566070">16</text>
+<text x="518" y="389.6" font-size="16" text-anchor="end" fill="#566070">23</text>
+<text x="571.7" y="352.7" font-size="17" font-weight="600" text-anchor="middle" fill="#8A3C0B">operation</text>
+<text x="522" y="389.6" font-size="16" fill="#566070">24</text>
+<text x="621.3" y="389.6" font-size="16" text-anchor="end" fill="#566070">31</text>
+<text x="830" y="352.7" font-size="17" font-weight="600" text-anchor="middle" fill="#14532D">data (big endian)</text>
+<text x="625.3" y="389.6" font-size="16" fill="#566070">32</text>
+<text x="1034.7" y="389.6" font-size="16" text-anchor="end" fill="#566070">63</text>
+<text x="1088.3" y="352.7" font-size="17" font-weight="600" text-anchor="middle" fill="#334155">checksum</text>
+<text x="1038.7" y="389.6" font-size="16" fill="#566070">64</text>
+<text x="1138" y="389.6" font-size="16" text-anchor="end" fill="#566070">71</text>
+</svg>

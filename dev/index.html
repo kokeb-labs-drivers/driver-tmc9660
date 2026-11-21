@@ -100,72 +100,6 @@
   <meta property="og:description" content="C++20 driver for the TMC9660 servo controller and gate driver (bootloader, parameter mode and register mode over SPI or UART)">
   <meta property="og:url" content="https://kokeb-labs-drivers.github.io/driver-tmc9660/latest/">
   <meta name="twitter:card" content="summary">
-  <script>
-(function () {
-  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
-  var SRC = "https://unpkg.com/mermaid@11.17.2/dist/mermaid.min.js",
-      SRI = "sha384-EOXBFmc3gx5mb+vn0vPvvGqACToJD24hhacX5Yx+8NUUQrHIle/Qi5Bg9o3zKwW2", config = {}, real, loading;
-  var waiting = [], io = null, ahead = false, ENGAGE = ["scroll", "keydown", "pointerdown", "touchstart"];
-  var stub = {
-    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
-    render: function (id, text) {
-      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-kb-mermaid])");
-      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
-      if (el) el.setAttribute("data-kb-mermaid", "");
-      return near(el).then(load).then(function (m) { return m.render(id, text); });
-    }
-  };
-  function load() {
-    return loading || (loading = new Promise(function (resolve, reject) {
-      var s = document.createElement("script");
-      s.src = SRC;
-      s.integrity = SRI;
-      s.crossOrigin = "anonymous";
-      s.onload = function () {
-        real = window.mermaid;
-        window.mermaid = stub;
-        real.initialize(config);
-        resolve(real);
-      };
-      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
-      document.head.appendChild(s);
-    }));
-  }
-  // One observer for the diagrams still waiting: on the screen only until the reader engages, then a screen ahead.
-  function watch() {
-    if (io) io.disconnect();
-    io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) release(function (w) { return w.el === e.target; });
-      });
-    }, { rootMargin: ahead ? "100% 0px" : "0px" });
-    waiting.forEach(function (w) { io.observe(w.el); });
-  }
-  function release(which) {
-    waiting = waiting.filter(function (w) {
-      if (!which(w)) return true;
-      io.unobserve(w.el);
-      w.go();
-      return false;
-    });
-  }
-  function near(el) {
-    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
-    return new Promise(function (resolve) {
-      waiting.push({ el: el, go: resolve });
-      if (io) io.observe(el); else watch();
-    });
-  }
-  function engaged() {
-    ENGAGE.forEach(function (t) { window.removeEventListener(t, engaged, true); });
-    ahead = true;
-    if (io) watch();
-  }
-  ENGAGE.forEach(function (t) { window.addEventListener(t, engaged, { capture: true, passive: true }); });
-  window.addEventListener("beforeprint", function () { if (io) release(function () { return true; }); });
-  window.mermaid = stub;
-})();
-</script>
 
   </head>
   
@@ -537,10 +471,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-you-get" class="md-nav__link">
+  <a href="#what-it-does" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What you get
+        What it does
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-it-is-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where it is used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inside-the-chip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inside the chip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pins-and-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pins and wiring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#driver-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Driver coverage
       
     </span>
   </a>
@@ -585,6 +574,8 @@
   
     
     
+      
+        
       
         
       
@@ -872,10 +863,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-you-get" class="md-nav__link">
+  <a href="#what-it-does" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What you get
+        What it does
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-it-is-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where it is used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inside-the-chip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inside the chip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pins-and-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pins and wiring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#driver-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Driver coverage
       
     </span>
   </a>
@@ -932,7 +978,7 @@
 
 
 <div class="kb-hero">
-<p><span class="kb-kicker">Driver</span></p>
+<p><span class="kb-kicker">Smart gate driver with servo controller</span></p>
 <h1 id="tmc9660-driver">TMC9660 Driver<a class="headerlink" href="#tmc9660-driver" title="Permanent link">&para;</a></h1>
 <p>A C++20 driver for the TMC9660 servo controller and gate driver: the bootloader, parameter mode and register mode,
 over SPI or UART, with guards so that nothing energises a motor by accident. It runs on any MCU.</p>
@@ -940,20 +986,222 @@ over SPI or UART, with guards so that nothing energises a motor by accident. It 
 <a class="md-button" href="api-guide/">API guide</a>
 <a class="md-button" href="https://github.com/kokeb-labs-drivers/driver-tmc9660">Source on GitHub</a></p>
 </div>
-<p>The driver has no platform code. You give it a small class that brings the bus up and moves bytes; it does the
-rest: the frames of three protocols, the checks of every reply, the parameter and register tables, and the rules
-that keep the power stage off until the chip and your request say otherwise.</p>
+<!-- generated: chip-summary -->
+<p>The <strong>TMC9660</strong> is a gate driver and motor controller for BLDC, PMSM, stepper and brushed DC motors: field-oriented
+control, the servo loops and a ramp generator run in hardware, and a buck converter powers the chip from the motor
+supply (General Description, p. 1).</p>
+<!-- /generated -->
+
 <figure class="kb-figure">
-<img src="diagrams/driver-layers.svg#only-light" alt="Layer diagram: your application calls the TMC9660 core, which sends register reads and writes through the SPI or UART port contract to the port class you write, which drives the chip; the core and the contract are the same on every MCU." width="1200" height="1300"><img src="diagrams/driver-layers.dark.svg#only-dark" alt="Layer diagram: your application calls the TMC9660 core, which sends register reads and writes through the SPI or UART port contract to the port class you write, which drives the chip; the core and the contract are the same on every MCU." width="1200" height="1300">
-<figcaption>The layers, one of them yours</figcaption>
+<img src="diagrams/chip-hero.svg#only-light" alt="Overview of the TMC9660, a gate driver and motor controller for BLDC, PMSM, stepper and brushed DC motors: field-oriented control, the servo loops and a ramp generator run in hardware, and a buck converter powers the chip from the motor supply. A MCU talks to it over SPI or UART; it drives MOSFET half-bridges, then Motor; it reads back Phase currents, Position sensor, Reference switches. Headline figures: 7.7 to 70 V single-supply operating range; 1 A / 2 A gate drive source and sink, up to four half-bridges; 10 MHz SPI clock, mode 3; 9 x 9 mm 64-pin TQFN body." width="1200" height="819"><img src="diagrams/chip-hero.dark.svg#only-dark" alt="Overview of the TMC9660, a gate driver and motor controller for BLDC, PMSM, stepper and brushed DC motors: field-oriented control, the servo loops and a ramp generator run in hardware, and a buck converter powers the chip from the motor supply. A MCU talks to it over SPI or UART; it drives MOSFET half-bridges, then Motor; it reads back Phase currents, Position sensor, Reference switches. Headline figures: 7.7 to 70 V single-supply operating range; 1 A / 2 A gate drive source and sink, up to four half-bridges; 10 MHz SPI clock, mode 3; 9 x 9 mm 64-pin TQFN body." width="1200" height="819">
+<figcaption>TMC9660</figcaption>
 </figure>
 
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
-<p>Top to bottom, each arrow is a call. Your application calls one object, whose public calls are listed from the umbrella header in inc/. The core turns each call into register reads and writes and hands them to the port contract (the CRTP base in inc/*_interface.hpp), which forwards them, at compile time, to the hooks of the port class you write; your port moves the bytes on the bus. The notes on the right say which layers stay the same on every MCU and which one you write. A library without a port contract has only the first two layers.</p>
-<p>Drawn from: <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660.hpp"><code>inc/tmc9660.hpp</code></a> <code>public calls</code>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a> <code>SpiInterface</code>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a> <code>UartInterface</code>; figure module <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/docs/diagrams/figures/driver-layers.py"><code>docs/diagrams/figures/driver-layers.py</code></a>.</p>
+<p>The TMC9660 in the middle, drawn as its TQFN-64 package. On the left the MCU that runs the driver, joined to it by SPI or UART. To the right, what the chip drives, in the order the power flows. Below it, what the chip reads back. The tiles at the bottom are the headline numbers, each with the datasheet section and page it comes from.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
 </details>
-<h2 id="what-you-get">What you get<a class="headerlink" href="#what-you-get" title="Permanent link">&para;</a></h2>
+<h2 id="what-it-does">What it does<a class="headerlink" href="#what-it-does" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="diagrams/chip-capabilities.svg#only-light" alt="Capability map of the TMC9660: FOC and servo loops (supported): Runs field-oriented current control and the torque, velocity and position loops in hardware; Ramp generator and homing (supported): Plans eight-point acceleration ramps in real time and searches the reference switches for home; Position feedback (supported): Reads Hall sensors, ABN encoders or an SPI encoder for commutation and position; Smart gate driver (supported): Drives up to four NMOS half-bridges, 1 A source and 2 A sink; Current sensing and measurement (supported): Amplifies the bottom-shunt currents and measures the supply voltage and the temperatures; Protections (supported): Overcurrent, gate-short, undervoltage and thermal protection; the flags are read before every start; Bootloader and application modes (supported): Sets up pins, clock and LDOs at power-up, then starts parameter mode (TMCL) or register mode; Hibernation and wake-up (supported): Switches all but the always-on block off; the WAKE pin or a timer powers the chip up again; OTP configuration (not covered): Stores the boot configuration permanently; the driver loads it and never burns it." width="1200" height="1138" loading="lazy"><img src="diagrams/chip-capabilities.dark.svg#only-dark" alt="Capability map of the TMC9660: FOC and servo loops (supported): Runs field-oriented current control and the torque, velocity and position loops in hardware; Ramp generator and homing (supported): Plans eight-point acceleration ramps in real time and searches the reference switches for home; Position feedback (supported): Reads Hall sensors, ABN encoders or an SPI encoder for commutation and position; Smart gate driver (supported): Drives up to four NMOS half-bridges, 1 A source and 2 A sink; Current sensing and measurement (supported): Amplifies the bottom-shunt currents and measures the supply voltage and the temperatures; Protections (supported): Overcurrent, gate-short, undervoltage and thermal protection; the flags are read before every start; Bootloader and application modes (supported): Sets up pins, clock and LDOs at power-up, then starts parameter mode (TMCL) or register mode; Hibernation and wake-up (supported): Switches all but the always-on block off; the WAKE pin or a timer powers the chip up again; OTP configuration (not covered): Stores the boot configuration permanently; the driver loads it and never burns it." width="1200" height="1138" loading="lazy">
+<figcaption>What the TMC9660 does</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>Each card is one function of the TMC9660: an icon, its name and what it does for the application. The filled pill says how this driver covers it (legend below); the outlined pills are the chip registers behind it. The coverage table in the README gives the driver calls and the datasheet section of each card.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
+</details>
+<h2 id="where-it-is-used">Where it is used<a class="headerlink" href="#where-it-is-used" title="Permanent link">&para;</a></h2>
+<!-- generated: chip-uses -->
+<ul>
+<li>Robotics</li>
+<li>Power tools</li>
+<li>Gardening equipment</li>
+<li>Automated guided vehicles and warehouse automation</li>
+<li>Pumps, such as peristaltic pumps</li>
+<li>Industrial 3D printing</li>
+<li>Factory automation</li>
+<li>Desktop manufacturing</li>
+<li>E-bikes and light electric vehicles</li>
+</ul>
+<p>Uses named by the datasheet (General Description, p. 1).</p>
+<!-- /generated -->
+
+<h2 id="inside-the-chip">Inside the chip<a class="headerlink" href="#inside-the-chip" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="diagrams/chip-blocks.svg#only-light" alt="Block diagram of the TMC9660: its function blocks, how they connect and which package pins reach each block." width="1200" height="967" loading="lazy"><img src="diagrams/chip-blocks.dark.svg#only-dark" alt="Block diagram of the TMC9660: its function blocks, how they connect and which package pins reach each block." width="1200" height="967" loading="lazy">
+<figcaption>Inside the TMC9660</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The TMC9660's function blocks inside its outline. Arrows between blocks carry signals or data in the direction they point (both ways where they have two heads). The package pins stand on the left and right edges with their numbers, each wired to the block it reaches.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
+</details>
+<h2 id="pins-and-wiring">Pins and wiring<a class="headerlink" href="#pins-and-wiring" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="diagrams/chip-pinout.svg#only-light" alt="Pinout of the TMC9660 in TQFN-64, top view: 64 pins and an exposed pad, each with its name, its electrical type as a colour and the driver hook that uses it." width="1318" height="1404" loading="lazy"><img src="diagrams/chip-pinout.dark.svg#only-dark" alt="Pinout of the TMC9660 in TQFN-64, top view: 64 pins and an exposed pad, each with its name, its electrical type as a colour and the driver hook that uses it." width="1318" height="1404" loading="lazy">
+<figcaption>TMC9660 pinout, TQFN-64</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The TMC9660 seen from the top, in its TQFN-64 package. Pin 1 is marked by the dot; the numbers run counter-clockwise from it. Each pad is coloured by the pin's electrical type (legend below). Next to it is the pin's name and, in mono, the hook of the driver's port that drives or reads it; a pin without a hook is not used by the driver. The dashed square is the exposed pad.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
+</details>
+<figure class="kb-figure">
+<img src="diagrams/chip-wiring-typical.svg#only-light" alt="Wiring of the TMC9660 for the Typical application: MCU SPI SCK to GPIO11 (Transfer()); MCU SPI MOSI to GPIO10 (Transfer()); MCU SPI MISO to GPIO9 (Transfer()); MCU GPIO / CS to GPIO12 (Transfer()); MCU GPIO to RSTN (GpioSet(CtrlPin::Reset)); MCU GPIO to DRV_EN (GpioSet(CtrlPin::DrvEn)); MCU GPIO (IRQ) to FAULTN (GpioGet(CtrlPin::Faultn)). Supplies, grounds and the support parts are listed under the drawing." width="1200" height="1197" loading="lazy"><img src="diagrams/chip-wiring-typical.dark.svg#only-dark" alt="Wiring of the TMC9660 for the Typical application: MCU SPI SCK to GPIO11 (Transfer()); MCU SPI MOSI to GPIO10 (Transfer()); MCU SPI MISO to GPIO9 (Transfer()); MCU GPIO / CS to GPIO12 (Transfer()); MCU GPIO to RSTN (GpioSet(CtrlPin::Reset)); MCU GPIO to DRV_EN (GpioSet(CtrlPin::DrvEn)); MCU GPIO (IRQ) to FAULTN (GpioGet(CtrlPin::Faultn)). Supplies, grounds and the support parts are listed under the drawing." width="1200" height="1197" loading="lazy">
+<figcaption>Wiring: Typical application</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The MCU on the left, the TMC9660 in the middle. Each wire to the chip is coloured by the chip pin's electrical type and carries the net name and the chip pin number above it and, under it, the driver hooks that use it (and any part on the net). The boxes underneath list the supplies, the support parts and the pins this circuit leaves unconnected.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
+</details>
+<figure class="kb-figure">
+<img src="diagrams/chip-frame-tmcl-spi.svg#only-light" alt="Parameter-mode SPI datagram of the TMC9660, 64 bits, most significant bit first. Command: operation (bits 63 to 56), type and motor or bank (bits 55 to 40), data (big endian) (bits 39 to 8), checksum (bits 7 to 0); Reply: SPI status (bits 63 to 56), TMCL status (bits 55 to 48), operation (bits 47 to 40), data (big endian) (bits 39 to 8), checksum (bits 7 to 0). Below, the SPI mode 3 waveform of one transfer in the same bit grid." width="1200" height="664" loading="lazy"><img src="diagrams/chip-frame-tmcl-spi.dark.svg#only-dark" alt="Parameter-mode SPI datagram of the TMC9660, 64 bits, most significant bit first. Command: operation (bits 63 to 56), type and motor or bank (bits 55 to 40), data (big endian) (bits 39 to 8), checksum (bits 7 to 0); Reply: SPI status (bits 63 to 56), TMCL status (bits 55 to 48), operation (bits 47 to 40), data (big endian) (bits 39 to 8), checksum (bits 7 to 0). Below, the SPI mode 3 waveform of one transfer in the same bit grid." width="1200" height="664" loading="lazy">
+<figcaption>TMC9660: Parameter-mode SPI datagram</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>One Parameter-mode SPI datagram of the TMC9660, 64 bits in a row from the most significant (left, sent first) to the least significant (right). Each row is one kind of frame; each coloured box a field, with its first and last bit number under it. The waveform below draws the select, the clock and the data lines over the same bits.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
+</details>
+<figure class="kb-figure">
+<img src="diagrams/chip-frame-tmcl-uart.svg#only-light" alt="Parameter-mode UART datagram of the TMC9660, 72 bits, sent byte by byte, each byte least significant bit first, bit 0 first. Command: sync bit and module address (bits 0 to 7), operation (bits 8 to 15), type (bits 16 to 27), motor or bank (bits 28 to 31), data (big endian) (bits 32 to 63), checksum (bits 64 to 71); Reply: host address (bits 0 to 7), sync bit and module address (bits 8 to 15), TMCL status (bits 16 to 23), operation (bits 24 to 31), data (big endian) (bits 32 to 63), checksum (bits 64 to 71)." width="1200" height="442" loading="lazy"><img src="diagrams/chip-frame-tmcl-uart.dark.svg#only-dark" alt="Parameter-mode UART datagram of the TMC9660, 72 bits, sent byte by byte, each byte least significant bit first, bit 0 first. Command: sync bit and module address (bits 0 to 7), operation (bits 8 to 15), type (bits 16 to 27), motor or bank (bits 28 to 31), data (big endian) (bits 32 to 63), checksum (bits 64 to 71); Reply: host address (bits 0 to 7), sync bit and module address (bits 8 to 15), TMCL status (bits 16 to 23), operation (bits 24 to 31), data (big endian) (bits 32 to 63), checksum (bits 64 to 71)." width="1200" height="442" loading="lazy">
+<figcaption>TMC9660: Parameter-mode UART datagram</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>One Parameter-mode UART datagram of the TMC9660, 72 bits in a row from bit 0 (left, sent first) to the last bit (right), each byte sent least significant bit first. Each row is one kind of frame; each coloured box a field, with its first and last bit number under it.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
+</details>
+<p>Every pin, the UART pins, the bus settings, the timing and the power: <a href="hardware/">Hardware</a>.</p>
+<h2 id="quick-start">Quick start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<p>Wire the chip as above, write the port (<a href="porting/">Porting</a>), then read a parameter:</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"tmc9660.hpp"</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">read_actual_velocity</span><span class="p">(</span><span class="n">MyPort</span><span class="o">&amp;</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="o">&amp;</span><span class="w"> </span><span class="n">velocity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="n">tmc9660</span><span class="o">::</span><span class="n">Config</span><span class="w"> </span><span class="n">config</span><span class="p">{};</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="n">config</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="n">tmc9660</span><span class="o">::</span><span class="n">Mode</span><span class="o">::</span><span class="n">Parameter</span><span class="p">;</span><span class="w"> </span><span class="c1">// the chip boots into the mode its boot configuration says</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="n">tmc9660</span><span class="o">::</span><span class="n">TMC9660</span><span class="o">&lt;</span><span class="n">MyPort</span><span class="o">&gt;</span><span class="w"> </span><span class="n">chip</span><span class="p">(</span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">);</span><span class="w"> </span><span class="c1">// no I/O yet</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chip</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span><span class="w"> </span><span class="o">!</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 1. bus up, identity check, first handshake</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">error</span><span class="p">);</span><span class="w"> </span><span class="c1">//    Bus, Timeout or DeviceIdMismatch: check wiring and mode</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">      </span><span class="n">chip</span><span class="p">.</span><span class="n">GetParam</span><span class="p">(</span><span class="n">tmc9660</span><span class="o">::</span><span class="n">Param</span><span class="o">::</span><span class="n">ACTUAL_VELOCITY</span><span class="p">);</span><span class="w"> </span><span class="c1">// 2. a checked read of one parameter</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">error</span><span class="p">);</span><span class="w"> </span><span class="c1">//    UnexpectedReset: the chip restarted, start again</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="n">velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">value</span><span class="p">);</span><span class="w"> </span><span class="c1">// 3. in the unit of the parameter</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The steps explained: <a href="quickstart/">Quickstart</a>.</p>
+<h2 id="driver-coverage">Driver coverage<a class="headerlink" href="#driver-coverage" title="Permanent link">&para;</a></h2>
+<!-- generated: chip-coverage -->
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>What the chip does</th>
+<th>Driver API</th>
+<th>Registers</th>
+<th>Status</th>
+<th>Datasheet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="parameter-mode/">FOC and servo loops</a></td>
+<td>Runs field-oriented current control and the torque, velocity and position loops in hardware</td>
+<td><code>SetTargetTorque</code>, <code>SetTargetVelocity</code>, <code>SetTargetPosition</code>, <code>MotorStop</code></td>
+<td><code>TARGET_TORQUE</code>, <code>TARGET_VELOCITY</code>, <code>TARGET_POSITION</code>, <code>MCC_PID_CONFIG</code></td>
+<td>Supported</td>
+<td>Motor Control Core Description, Field-Oriented Control, p. 29</td>
+</tr>
+<tr>
+<td><a href="parameter-mode/">Ramp generator and homing</a></td>
+<td>Plans eight-point acceleration ramps in real time and searches the reference switches for home</td>
+<td><code>SetParam</code>, <code>ReferenceSearchCommand</code></td>
+<td><code>RAMP_ENABLE</code>, <code>RAMP_VMAX</code>, <code>RAMP_AMAX</code>, <code>REFERENCE_SWITCH_SEARCH_MODE</code>, <code>MCC_RAMPER_SWITCH_MODE</code></td>
+<td>Supported</td>
+<td>Motor Control Core Description, Ramp Generator, p. 31</td>
+</tr>
+<tr>
+<td><a href="parameter-mode/">Position feedback</a></td>
+<td>Reads Hall sensors, ABN encoders or an SPI encoder for commutation and position</td>
+<td><code>GetParam</code>, <code>SetParam</code></td>
+<td><code>HALL_PHI_E</code>, <code>ABN_1_STEPS</code>, <code>SPI_ENCODER_TRANSFER</code>, <code>MCC_HALL_MODE</code>, <code>MCC_ABN_MODE</code></td>
+<td>Supported</td>
+<td>Motor Control Core Description, Encoder Feedback, p. 32</td>
+</tr>
+<tr>
+<td><a href="safety/">Smart gate driver</a></td>
+<td>Drives up to four NMOS half-bridges, 1 A source and 2 A sink (switched on only after the fault flags read clear)</td>
+<td><code>EnableDrive</code>, <code>GateDriverStart</code>, <code>DisableDrive</code></td>
+<td><code>COMMUTATION_MODE</code>, <code>UVW_SOURCE_CURRENT</code>, <code>MCC_GDRV_HW</code>, <code>MCC_GDRV_CFG</code></td>
+<td>Supported</td>
+<td>Gate Driver Unit Description, p. 41</td>
+</tr>
+<tr>
+<td><a href="parameter-mode/">Current sensing and measurement</a></td>
+<td>Amplifies the bottom-shunt currents and measures the supply voltage and the temperatures</td>
+<td><code>GetParam</code>, <code>SetParam</code></td>
+<td><code>CSA_GAIN_ADC_I0_TO_ADC_I2</code>, <code>ADC_I0</code>, <code>SUPPLY_VOLTAGE</code>, <code>CHIP_TEMPERATURE</code>, <code>MCC_ADC_I1_I0_RAW</code></td>
+<td>Supported</td>
+<td>Measurement Unit Description, p. 50</td>
+</tr>
+<tr>
+<td><a href="safety/">Protections</a></td>
+<td>Overcurrent, gate-short, undervoltage and thermal protection; the flags are read before every start</td>
+<td><code>ClearFlags</code>, <code>Service</code>, <code>GetParam</code></td>
+<td><code>GENERAL_ERROR_FLAGS</code>, <code>GDRV_ERROR_FLAGS</code>, <code>MCC_GDRV_FAULT</code>, <code>MCC_GDRV_PROT</code></td>
+<td>Supported</td>
+<td>Protections Description, p. 56</td>
+</tr>
+<tr>
+<td><a href="bootloader/">Bootloader and application modes</a></td>
+<td>Sets up pins, clock and LDOs at power-up, then starts parameter mode (TMCL) or register mode</td>
+<td><code>BlGetInfo</code>, <code>BlWriteConfig</code>, <code>BlStartApplication</code>, <code>GetParam</code>, <code>SetParam</code>, <code>ReadReg</code>, <code>WriteReg</code></td>
+<td>-</td>
+<td>Supported</td>
+<td>Bootloader, p. 68</td>
+</tr>
+<tr>
+<td><a href="safety/">Hibernation and wake-up</a></td>
+<td>Switches all but the always-on block off; the WAKE pin or a timer powers the chip up again (the drive is switched off first)</td>
+<td><code>PowerDown</code>, <code>CtrlPin::Wake</code></td>
+<td>-</td>
+<td>Supported</td>
+<td>Power-Saving Modes, p. 16</td>
+</tr>
+<tr>
+<td><a href="bootloader/">OTP configuration</a></td>
+<td>Stores the boot configuration permanently; the driver loads it and never burns it</td>
+<td><code>BlOtpLoad</code></td>
+<td>-</td>
+<td>Not covered</td>
+<td>Bootloader, OTP Memory, p. 76</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Supported</strong>: the driver covers it and a host test checks it; <strong>Not covered</strong>: the chip has it and the driver leaves it
+alone.</p>
+<p>From <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <code>kokeb-docs hardware --check</code> confirms that every API name is in
+<code>inc/tmc9660.hpp</code>, <code>inc/tmc9660_types.hpp</code> and every register in <code>inc/tmc9660_params.hpp</code>, <code>inc/tmc9660_registers.hpp</code>.</p>
+<!-- /generated -->
+
+<p>The driver has no platform code. You give it a small class that brings the bus up and moves bytes; it does the
+rest: the frames of three protocols, the checks of every reply, the parameter and register tables, and the rules
+that keep the power stage off until the chip and your request say otherwise.</p>
 <ul>
 <li><strong>Three modes in one class.</strong> <code>Mode::Bootloader</code>, <code>Mode::Parameter</code> and <code>Mode::Register</code>; a call that belongs to
   another mode returns <code>WrongMode</code> and sends nothing. See <a href="bootloader/">Bootloader</a>,

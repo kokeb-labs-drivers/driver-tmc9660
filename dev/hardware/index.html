@@ -16,7 +16,7 @@
         <link rel="prev" href="../platforms/">
       
       
-        <link rel="next" href="../architecture/">
+        <link rel="next" href="../bus/">
       
       
         
@@ -102,72 +102,6 @@
   <meta property="og:description" content="C++20 driver for the TMC9660 servo controller and gate driver (bootloader, parameter mode and register mode over SPI or UART)">
   <meta property="og:url" content="https://kokeb-labs-drivers.github.io/driver-tmc9660/latest/hardware/">
   <meta name="twitter:card" content="summary">
-  <script>
-(function () {
-  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
-  var SRC = "https://unpkg.com/mermaid@11.17.2/dist/mermaid.min.js",
-      SRI = "sha384-EOXBFmc3gx5mb+vn0vPvvGqACToJD24hhacX5Yx+8NUUQrHIle/Qi5Bg9o3zKwW2", config = {}, real, loading;
-  var waiting = [], io = null, ahead = false, ENGAGE = ["scroll", "keydown", "pointerdown", "touchstart"];
-  var stub = {
-    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
-    render: function (id, text) {
-      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-kb-mermaid])");
-      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
-      if (el) el.setAttribute("data-kb-mermaid", "");
-      return near(el).then(load).then(function (m) { return m.render(id, text); });
-    }
-  };
-  function load() {
-    return loading || (loading = new Promise(function (resolve, reject) {
-      var s = document.createElement("script");
-      s.src = SRC;
-      s.integrity = SRI;
-      s.crossOrigin = "anonymous";
-      s.onload = function () {
-        real = window.mermaid;
-        window.mermaid = stub;
-        real.initialize(config);
-        resolve(real);
-      };
-      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
-      document.head.appendChild(s);
-    }));
-  }
-  // One observer for the diagrams still waiting: on the screen only until the reader engages, then a screen ahead.
-  function watch() {
-    if (io) io.disconnect();
-    io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) release(function (w) { return w.el === e.target; });
-      });
-    }, { rootMargin: ahead ? "100% 0px" : "0px" });
-    waiting.forEach(function (w) { io.observe(w.el); });
-  }
-  function release(which) {
-    waiting = waiting.filter(function (w) {
-      if (!which(w)) return true;
-      io.unobserve(w.el);
-      w.go();
-      return false;
-    });
-  }
-  function near(el) {
-    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
-    return new Promise(function (resolve) {
-      waiting.push({ el: el, go: resolve });
-      if (io) io.observe(el); else watch();
-    });
-  }
-  function engaged() {
-    ENGAGE.forEach(function (t) { window.removeEventListener(t, engaged, true); });
-    ahead = true;
-    if (io) watch();
-  }
-  ENGAGE.forEach(function (t) { window.addEventListener(t, engaged, { capture: true, passive: true }); });
-  window.addEventListener("beforeprint", function () { if (io) release(function () { return true; }); });
-  window.mermaid = stub;
-})();
-</script>
 
   </head>
   
@@ -516,6 +450,8 @@
       
         
       
+        
+      
     
     
     
@@ -819,6 +755,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On the bus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1196,6 +1160,7 @@ or UART, never to the power stage directly.</p>
 <li>Package, pins and power-up pin functions: Pin Configurations; Pin Descriptions, p. 11</li>
 <li>Supply ranges and the hibernation mode: Power Supply - Electrical Characteristics, p. 17</li>
 <li>Pin functions at power-up and the UART and SPI of the bootloader: General-Purpose Input/Output Description, p. 19</li>
+<li>SPI peripheral, mode 3 and the 40-bit bootloader datagram: SPI, p. 25</li>
 <li>Clock, reset, DRV_EN, WAKE and FAULTN: Clock and Control Description, p. 63</li>
 </ul>
 <p>All of them, with the driver API for each: <a href="../datasheet/">Datasheet map</a>.</p>
@@ -1213,7 +1178,7 @@ The pin table below is drawn from <a href="../hardware.yml"><code>docs/hardware.
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>The TMC9660 seen from the top, in its TQFN-64 package. Pin 1 is marked by the dot; the numbers run counter-clockwise from it. Each pad is coloured by the pin's electrical type (legend below). Next to it is the pin's name and, in mono, the hook of the driver's port that drives or reads it; a pin without a hook is not used by the driver. The dashed square is the exposed pad.</p>
-<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
 </details>
 <figure class="kb-figure">
 <img src="../diagrams/chip-outline.svg#only-light" alt="Outline of the TMC9660 in TQFN-64 drawn to scale from above: body 9.0 x 9.0 mm, pitch 0.5 mm, 64 pins and an exposed pad." width="1049" height="715" loading="lazy"><img src="../diagrams/chip-outline.dark.svg#only-dark" alt="Outline of the TMC9660 in TQFN-64 drawn to scale from above: body 9.0 x 9.0 mm, pitch 0.5 mm, 64 pins and an exposed pad." width="1049" height="715" loading="lazy">
@@ -1223,7 +1188,7 @@ The pin table below is drawn from <a href="../hardware.yml"><code>docs/hardware.
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>The TMC9660 package seen from the top and, when the height is known, from the side, drawn to scale: 9.0 x 9.0 mm. The arrows carry the datasheet's dimensions, the dot marks pin 1 and the pads are numbered counter-clockwise from it, coloured by the pin's electrical type (legend below). Pads sit centred on each side at the stated pitch; the datasheet's land pattern is the reference for a board.</p>
-<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
 </details>
 <!-- generated: chip-pins -->
 <p>TQFN-64, 64 pins and an exposed pad (Pin Configurations, p. 11).</p>
@@ -1316,10 +1281,10 @@ The pin table below is drawn from <a href="../hardware.yml"><code>docs/hardware.
 <td>9</td>
 <td><code>VCC_IO</code></td>
 <td>power (VCC_IO)</td>
-<td>Logic supply input, 2.5 V to 5 V (3 V or more for SPI at 10 MHz); 1 uF to GND</td>
+<td>Logic supply input, 2.2 V to 5.5 V (3 V or more for SPI at 10 MHz); 1 uF to GND</td>
 <td>-</td>
 <td>-</td>
-<td>Pin Descriptions, p. 12</td>
+<td>Power Supply - Electrical Characteristics, p. 17</td>
 </tr>
 <tr>
 <td>10</td>
@@ -1839,7 +1804,7 @@ The pin table below is drawn from <a href="../hardware.yml"><code>docs/hardware.
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>The TMC9660's function blocks inside its outline. Arrows between blocks carry signals or data in the direction they point (both ways where they have two heads). The package pins stand on the left and right edges with their numbers, each wired to the block it reaches.</p>
-<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
 </details>
 <h2 id="reference-circuit">Reference circuit<a class="headerlink" href="#reference-circuit" title="Permanent link">&para;</a></h2>
 <figure class="kb-figure">
@@ -1850,7 +1815,7 @@ The pin table below is drawn from <a href="../hardware.yml"><code>docs/hardware.
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>A schematic. The MCU is on the left, each of its pins level with the chip pin it connects to; above each wire is the hook of the driver's port that drives or reads it. Supply pins point up to their supply and decoupling, ground pins down. Pins on the right carry the loads and the pins tied to a supply or ground; a cross marks a pin left open. A dot is a junction; wires that cross without a dot are not connected.</p>
-<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_types.hpp"><code>inc/tmc9660_types.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>.</p>
 </details>
 <!-- generated: chip-parts -->
 <table>
@@ -2060,7 +2025,7 @@ restarts; <code>Config::faultn_is_reset</code> makes <code>Service()</code> trea
 <td>Up to 10 MHz</td>
 <td>Up to 10 MHz</td>
 <td>Up to 10 MHz</td>
-<td>Autobaud after <code>0x55</code>; 115200 is a safe start</td>
+<td>Autobaud from 9600 to 250000 bit/s at the 40 MHz clock (from <code>0x55</code> in the bootloader, from the sync bit in TMCL and register mode); up to 5 Mbit/s with a fixed rate; 115200 is a safe start</td>
 </tr>
 <tr>
 <td>Bit order</td>
@@ -2086,7 +2051,8 @@ restarts; <code>Config::faultn_is_reset</code> makes <code>Service()</code> trea
 </tbody>
 </table>
 <p>Every SPI exchange is one <code>Transfer()</code> call with chip select low for the whole frame. The TMCL SPI reply arrives in
-the transfer after the command, so a command costs two transfers (see <a href="../parameter-mode/">Parameter mode</a>).</p>
+the transfer after the command, so a command costs two transfers (see <a href="../parameter-mode/">Parameter mode</a>). The
+waveforms and their timing are on <a href="../bus/">On the bus</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">The MISO line stays driven after chip select rises (erratum 2)</p>
 <p>The TMC9660's SPI peripheral does not return MISO to high impedance when chip select is released. With other
@@ -2154,7 +2120,7 @@ hook for the first workaround.</p>
 </tr>
 <tr>
 <td>VCC_IO</td>
-<td>2.5 V to 5 V (3 V or more for SPI at 10 MHz)</td>
+<td>2.2 V to 5.5 V (3 V or more for SPI at 10 MHz); Table 1 recommends 2.5 V to 5 V (<a href="../ambiguities/">Ambiguities</a>, A25)</td>
 <td>Logic levels of the GPIO and of the host link</td>
 </tr>
 <tr>
@@ -2215,11 +2181,11 @@ of the driver is in the datasheet: <a href="../datasheet/">Datasheet map</a>.</p
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_registers.hpp"><code>inc/tmc9660_registers.hpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_registers.hpp"><code>inc/tmc9660_registers.hpp</code></a></td>
 <td>The 163 registers of register mode, generated from the Register Mode Reference Manual</td>
 </tr>
 <tr>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_params.hpp"><code>inc/tmc9660_params.hpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_params.hpp"><code>inc/tmc9660_params.hpp</code></a></td>
 <td>The 289 parameters of parameter mode, generated from Table 57 of the Parameter Mode Reference Manual</td>
 </tr>
 </tbody>
@@ -2278,13 +2244,13 @@ of the driver is in the datasheet: <a href="../datasheet/">Datasheet map</a>.</p
         
         
           
-          <a href="../architecture/" class="md-footer__link md-footer__link--next" aria-label="Next: Architecture">
+          <a href="../bus/" class="md-footer__link md-footer__link--next" aria-label="Next: On the bus">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Architecture
+                On the bus
               </div>
             </div>
             <div class="md-footer__button md-icon">

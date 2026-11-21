@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="519" viewBox="0 0 640 519" role="img" aria-labelledby="tmcl-spi-title tmcl-spi-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" class="fk">
+<title id="tmcl-spi-title">TMCL command and reply on SPI</title>
+<desc id="tmcl-spi-desc">A parameter-mode TMCL exchange on SPI: the reply to a 64-bit command comes back on MISO during the next 64-bit datagram, while the first datagram returns the reply to the one before it.</desc>
+<style>
+.fk{--fk-blue-strong:#2563EB;--fk-blue-text:#1E429F;--fk-blue-tint:#EAF2FF;--fk-brand-text:#7A360E;--fk-canvas:#FFFFFF;--fk-frame:#E2E7EE;--fk-hair:#E2E7EE;--fk-ink:#0E1726;--fk-ink2:#2B3442;--fk-muted:#566070;--fk-paper:#F5F7FA;--fk-rail:#7C8798;--fk-slate-soft:#CBD5E1;--fk-slate-strong:#64748B;--fk-slate-text:#334155;--fk-slate-tint:#F1F4F8;--fk-teal-strong:#0B7A72;--fk-teal-text:#0B5F59;--fk-teal-tint:#E6F6F4;}
+@media (prefers-color-scheme:dark){.fk{--fk-blue-strong:#60A5FA;--fk-blue-text:#BFDBFE;--fk-blue-tint:#13233A;--fk-brand-text:#F8D27A;--fk-canvas:#0E131A;--fk-frame:#283241;--fk-hair:#252F3C;--fk-ink:#E8EDF3;--fk-ink2:#D2DAE4;--fk-muted:#9AA6B5;--fk-paper:#18202B;--fk-rail:#6C7889;--fk-slate-soft:#3A4656;--fk-slate-strong:#94A3B8;--fk-slate-text:#E2E8F0;--fk-slate-tint:#1B232E;--fk-teal-strong:#2BB3A3;--fk-teal-text:#A7F3E6;--fk-teal-tint:#0F2A28;}}
+:root[data-theme="dark"] .fk,[data-md-color-scheme="slate"] .fk{--fk-blue-strong:#60A5FA;--fk-blue-text:#BFDBFE;--fk-blue-tint:#13233A;--fk-brand-text:#F8D27A;--fk-canvas:#0E131A;--fk-frame:#283241;--fk-hair:#252F3C;--fk-ink:#E8EDF3;--fk-ink2:#D2DAE4;--fk-muted:#9AA6B5;--fk-paper:#18202B;--fk-rail:#6C7889;--fk-slate-soft:#3A4656;--fk-slate-strong:#94A3B8;--fk-slate-text:#E2E8F0;--fk-slate-tint:#1B232E;--fk-teal-strong:#2BB3A3;--fk-teal-text:#A7F3E6;--fk-teal-tint:#0F2A28;}
+:root[data-theme="light"] .fk,[data-md-color-scheme="default"] .fk{--fk-blue-strong:#2563EB;--fk-blue-text:#1E429F;--fk-blue-tint:#EAF2FF;--fk-brand-text:#7A360E;--fk-canvas:#FFFFFF;--fk-frame:#E2E7EE;--fk-hair:#E2E7EE;--fk-ink:#0E1726;--fk-ink2:#2B3442;--fk-muted:#566070;--fk-paper:#F5F7FA;--fk-rail:#7C8798;--fk-slate-soft:#CBD5E1;--fk-slate-strong:#64748B;--fk-slate-text:#334155;--fk-slate-tint:#F1F4F8;--fk-teal-strong:#0B7A72;--fk-teal-text:#0B5F59;--fk-teal-tint:#E6F6F4;}
+.fk-f-blue-strong{fill:var(--fk-blue-strong)}.fk-s-blue-strong{stroke:var(--fk-blue-strong)}
+.fk-f-blue-text{fill:var(--fk-blue-text)}.fk-s-blue-text{stroke:var(--fk-blue-text)}
+.fk-f-blue-tint{fill:var(--fk-blue-tint)}.fk-s-blue-tint{stroke:var(--fk-blue-tint)}
+.fk-f-brand-text{fill:var(--fk-brand-text)}.fk-s-brand-text{stroke:var(--fk-brand-text)}
+.fk-f-canvas{fill:var(--fk-canvas)}.fk-s-canvas{stroke:var(--fk-canvas)}
+.fk-f-frame{fill:var(--fk-frame)}.fk-s-frame{stroke:var(--fk-frame)}
+.fk-f-hair{fill:var(--fk-hair)}.fk-s-hair{stroke:var(--fk-hair)}
+.fk-f-ink{fill:var(--fk-ink)}.fk-s-ink{stroke:var(--fk-ink)}
+.fk-f-ink2{fill:var(--fk-ink2)}.fk-s-ink2{stroke:var(--fk-ink2)}
+.fk-f-muted{fill:var(--fk-muted)}.fk-s-muted{stroke:var(--fk-muted)}
+.fk-f-paper{fill:var(--fk-paper)}.fk-s-paper{stroke:var(--fk-paper)}
+.fk-f-rail{fill:var(--fk-rail)}.fk-s-rail{stroke:var(--fk-rail)}
+.fk-f-slate-soft{fill:var(--fk-slate-soft)}.fk-s-slate-soft{stroke:var(--fk-slate-soft)}
+.fk-f-slate-strong{fill:var(--fk-slate-strong)}.fk-s-slate-strong{stroke:var(--fk-slate-strong)}
+.fk-f-slate-text{fill:var(--fk-slate-text)}.fk-s-slate-text{stroke:var(--fk-slate-text)}
+.fk-f-slate-tint{fill:var(--fk-slate-tint)}.fk-s-slate-tint{stroke:var(--fk-slate-tint)}
+.fk-f-teal-strong{fill:var(--fk-teal-strong)}.fk-s-teal-strong{stroke:var(--fk-teal-strong)}
+.fk-f-teal-text{fill:var(--fk-teal-text)}.fk-s-teal-text{stroke:var(--fk-teal-text)}
+.fk-f-teal-tint{fill:var(--fk-teal-tint)}.fk-s-teal-tint{stroke:var(--fk-teal-tint)}
+@media (forced-colors:active){.fk text{fill:CanvasText}.fk rect,.fk circle{fill:Canvas;stroke:CanvasText}.fk path{stroke:CanvasText}.fk marker path{fill:CanvasText;stroke:none}}
+</style>
+<rect x="0.5" y="0.5" width="639" height="518" rx="16" class="fk-f-canvas fk-s-frame"/>
+<text x="32" y="44.4" font-size="13" font-weight="700" letter-spacing="1.2" class="fk-f-brand-text">ON THE BUS</text>
+<text x="32" y="76.2" font-size="24" font-weight="700" class="fk-f-ink">TMCL command and reply on SPI</text>
+<text x="32" y="102.7" font-size="15" class="fk-f-muted">Datasheet: Communication Interfaces, Serial-Peripheral Interface, p. 9.</text>
+<rect x="32" y="118.7" width="576" height="1" class="fk-f-hair"/>
+<path d="M88 178.9 L88 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M124.7 178.9 L124.7 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M161.4 178.9 L161.4 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M198.1 178.9 L198.1 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M234.9 178.9 L234.9 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M271.6 178.9 L271.6 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M308.3 178.9 L308.3 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M345 178.9 L345 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M381.7 178.9 L381.7 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M418.4 178.9 L418.4 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M455.1 178.9 L455.1 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M491.9 178.9 L491.9 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M528.6 178.9 L528.6 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M565.3 178.9 L565.3 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<path d="M602 178.9 L602 310.9" fill="none" stroke-width="1" class="fk-s-hair"/>
+<rect x="88" y="231.9" width="36.7" height="26" rx="0" class="fk-f-paper"/>
+<rect x="308.3" y="231.9" width="73.4" height="26" rx="0" class="fk-f-paper"/>
+<rect x="565.3" y="231.9" width="36.7" height="26" rx="0" class="fk-f-paper"/>
+<path d="M125.7 169.9 L125.7 164.9 L307.3 164.9 L307.3 169.9" fill="none" stroke-width="1.4" class="fk-s-slate-strong"/>
+<path d="M382.7 169.9 L382.7 164.9 L564.3 164.9 L564.3 169.9" fill="none" stroke-width="1.4" class="fk-s-slate-strong"/>
+<path d="M88 183.9 L124.7 183.9 L124.7 183.9 L124.7 209.9 L308.3 209.9 L308.3 209.9 L308.3 183.9 L381.7 183.9 L381.7 183.9 L381.7 209.9 L565.3 209.9 L565.3 209.9 L565.3 183.9 L602 183.9" fill="none" stroke-width="2" class="fk-s-ink2"/>
+<path d="M88 238.9 L95 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M88 245.9 L102 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M88 252.9 L109 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M90 257.9 L116 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M97 257.9 L123 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M104 257.9 L124.7 237.2" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M111 257.9 L124.7 244.2" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M118 257.9 L124.7 251.2" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M88 231.9 L124.7 231.9" fill="none" stroke-width="1.6" class="fk-s-ink2"/>
+<path d="M88 257.9 L124.7 257.9" fill="none" stroke-width="1.6" class="fk-s-ink2"/>
+<path d="M308.3 238.9 L315.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M308.3 245.9 L322.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M308.3 252.9 L329.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M310.3 257.9 L336.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M317.3 257.9 L343.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M324.3 257.9 L350.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M331.3 257.9 L357.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M338.3 257.9 L364.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M345.3 257.9 L371.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M352.3 257.9 L378.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M359.3 257.9 L381.7 235.5" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M366.3 257.9 L381.7 242.5" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M373.3 257.9 L381.7 249.5" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M380.3 257.9 L381.7 256.5" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M308.3 231.9 L381.7 231.9" fill="none" stroke-width="1.6" class="fk-s-ink2"/>
+<path d="M308.3 257.9 L381.7 257.9" fill="none" stroke-width="1.6" class="fk-s-ink2"/>
+<path d="M565.3 238.9 L572.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M565.3 245.9 L579.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M565.3 252.9 L586.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M567.3 257.9 L593.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M574.3 257.9 L600.3 231.9" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M581.3 257.9 L602 237.2" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M588.3 257.9 L602 244.2" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M595.3 257.9 L602 251.2" fill="none" stroke-width="1" class="fk-s-rail"/>
+<path d="M565.3 231.9 L602 231.9" fill="none" stroke-width="1.6" class="fk-s-ink2"/>
+<path d="M565.3 257.9 L602 257.9" fill="none" stroke-width="1.6" class="fk-s-ink2"/>
+<path d="M88 292.9 L124.7 292.9" fill="none" stroke-width="2" class="fk-s-rail"/>
+<path d="M308.3 292.9 L381.7 292.9" fill="none" stroke-width="2" class="fk-s-rail"/>
+<path d="M565.3 292.9 L602 292.9" fill="none" stroke-width="2" class="fk-s-rail"/>
+<path d="M124.7 244.9 L129.7 231.9 L303.3 231.9 L308.3 244.9 L303.3 257.9 L129.7 257.9 Z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="fk-f-blue-tint fk-s-blue-strong"/>
+<path d="M381.7 244.9 L386.7 231.9 L560.3 231.9 L565.3 244.9 L560.3 257.9 L386.7 257.9 Z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="fk-f-blue-tint fk-s-blue-strong"/>
+<path d="M124.7 292.9 L129.7 279.9 L303.3 279.9 L308.3 292.9 L303.3 305.9 L129.7 305.9 Z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="fk-f-teal-tint fk-s-teal-strong"/>
+<path d="M381.7 292.9 L386.7 279.9 L560.3 279.9 L565.3 292.9 L560.3 305.9 L386.7 305.9 Z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="fk-f-teal-tint fk-s-teal-strong"/>
+<rect x="32" y="336.9" width="576" height="152.1" rx="10" stroke-width="1" class="fk-f-slate-tint fk-s-slate-soft"/>
+<text x="216.5" y="154" font-size="14" font-weight="600" text-anchor="middle" class="fk-f-slate-text">64 bits</text>
+<text x="473.5" y="154" font-size="14" font-weight="600" text-anchor="middle" class="fk-f-slate-text">64 bits</text>
+<text x="32" y="202.3" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" class="fk-f-ink">CS0</text>
+<text x="32" y="250.3" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" class="fk-f-ink">MOSI</text>
+<text x="216.5" y="249.9" font-size="14" font-weight="600" text-anchor="middle" class="fk-f-blue-text">command</text>
+<text x="473.5" y="249.9" font-size="14" font-weight="600" text-anchor="middle" class="fk-f-blue-text">next datagram</text>
+<text x="32" y="298.3" font-size="15" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" class="fk-f-ink">MISO</text>
+<text x="216.5" y="297.9" font-size="14" font-weight="600" text-anchor="middle" class="fk-f-teal-text">previous reply</text>
+<text x="473.5" y="297.9" font-size="14" font-weight="600" text-anchor="middle" class="fk-f-teal-text">reply to command</text>
+<text x="46" y="365.3" font-size="17" font-weight="700" class="fk-f-slate-text">Notes</text>
+<text x="46" y="385.8" font-size="15" class="fk-f-slate-text">Command: operation, type and motor or bank, 4 data bytes, checksum.</text>
+<text x="46" y="407.5" font-size="15" class="fk-f-slate-text">Reply: SPI status, TMCL status, operation, 4 data bytes, checksum. MSB</text>
+<text x="46" y="429.2" font-size="15" class="fk-f-slate-text">first, data big-endian. SPI status 0xFF is OK, 0x00 a checksum error,</text>
+<text x="46" y="451" font-size="15" class="fk-f-slate-text">0x0C the first reply after start-up and 0xF0 not ready: on 0xF0 send the</text>
+<text x="46" y="472.7" font-size="15" class="fk-f-slate-text">datagram again.</text>
+</svg>

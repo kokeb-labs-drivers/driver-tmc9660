@@ -1,0 +1,49 @@
+---
+kind: timing
+id: spi-timing
+title: SPI bus timing
+kicker: On the bus
+alt: >-
+  SPI timing of the TMC9660 in mode 3: SPI0_CS0 low frames a datagram, MOSI is read on each rising SPI0_SCK edge and
+  MISO changes after each falling edge, with the select, setup and hold times the datasheet gives.
+reads: >-
+  The four lanes are CS0, SCK, MOSI and MISO (the pins SPI0_CS0, SPI0_SCK, SPI0_MOSI and SPI0_MISO), left to right in
+  time. CS0 goes low, SCK idles high and clocks the bits of a bootloader datagram, the chip reads MOSI on the rising
+  edge and drives MISO after the falling edge; bits 37 to 1 are left out. The table gives each interval with its
+  datasheet value.
+bus: spi
+mode: {cpol: 1, cpha: 1}
+refs:
+  spi_ec: {doc: ds, section: "SPI Peripheral - Electrical Characteristics", page: 27}
+  spi_ec2: {doc: ds, section: "SPI Peripheral - Electrical Characteristics", page: 28}
+  rm_spi: {doc: rm, section: "Communication interfaces, SPI Interface", page: 9}
+signals:
+  - {id: cs, label: CS0, wave: "10........1."}
+  - {id: sck, label: SCK, wave: "1.nnn|nnn1..", clock: true}
+  - {id: mosi, label: MOSI, wave: "x.===|===x..", data: [b39, b38, b37, b2, b1, b0]}
+  - {id: miso, label: MISO, wave: "z.===|===z..", data: [b39, b38, b37, b2, b1, b0], tone: teal}
+groups:
+  - {from: 2, to: 9, label: "40-bit bootloader datagram, MSB first", ref: spi}
+params:
+  - {id: tcss, symbol: tCSS, label: CS_ setup time, min: 100, unit: ns, ref: spi_ec}
+  - {id: tcc, symbol: tCC, label: SCK valid before or after a change of CS_ (one SCK period), min: TSCK, unit: ns,
+     ref: spi_ec}
+  - {id: tcsh, symbol: tCSH, label: CS_ high time, min: 4 x TCLK, unit: ns, ref: spi_ec}
+  - {id: tcl, symbol: tCL, label: SCK low time, min: 20, unit: ns, ref: spi_ec}
+  - {id: tch, symbol: tCH, label: SCK high time, min: 20, unit: ns, ref: spi_ec}
+  - {id: tdu, symbol: tDU, label: MOSI setup time before the rising edge of SCK, min: 20, unit: ns, ref: spi_ec2}
+  - {id: tdh, symbol: tDH, label: MOSI hold time after the rising edge of SCK, min: 20, unit: ns, ref: spi_ec2}
+  - {id: tdo, symbol: tDO, label: MISO valid after the falling edge of SCK, typ: 21, max: 40, unit: ns, ref: spi_ec2}
+  - {id: fsck, symbol: fSCK, label: SCK frequency, max: 10, unit: MHz, ref: spi_ec2}
+marks:
+  - {param: tcss, signal: cs, from: 1, to: 2}
+  - {param: tcc, signal: cs, from: 8.5, to: 10}
+  - {param: tcsh, signal: cs, from: 10, to: 12}
+  - {param: tcl, signal: sck, from: 3, to: 3.5}
+  - {param: tch, signal: sck, from: 3.5, to: 4}
+  - {param: tdu, signal: mosi, from: 2, to: 2.5}
+  - {param: tdh, signal: mosi, from: 2.5, to: 3}
+notes:
+  - {text: "The SPI timings hold for VCC_IO from 3 V to 5.5 V.", ref: spi_ec}
+  - {text: "Parameter mode uses the same timing with 64-bit datagrams.", ref: pm_spi}
+  - {text: "Register mode uses the same timing with 48-bit datagrams.", ref: rm_spi}

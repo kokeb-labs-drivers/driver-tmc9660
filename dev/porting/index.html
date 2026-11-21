@@ -102,72 +102,6 @@
   <meta property="og:description" content="C++20 driver for the TMC9660 servo controller and gate driver (bootloader, parameter mode and register mode over SPI or UART)">
   <meta property="og:url" content="https://kokeb-labs-drivers.github.io/driver-tmc9660/latest/porting/">
   <meta name="twitter:card" content="summary">
-  <script>
-(function () {
-  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
-  var SRC = "https://unpkg.com/mermaid@11.17.2/dist/mermaid.min.js",
-      SRI = "sha384-EOXBFmc3gx5mb+vn0vPvvGqACToJD24hhacX5Yx+8NUUQrHIle/Qi5Bg9o3zKwW2", config = {}, real, loading;
-  var waiting = [], io = null, ahead = false, ENGAGE = ["scroll", "keydown", "pointerdown", "touchstart"];
-  var stub = {
-    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
-    render: function (id, text) {
-      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-kb-mermaid])");
-      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
-      if (el) el.setAttribute("data-kb-mermaid", "");
-      return near(el).then(load).then(function (m) { return m.render(id, text); });
-    }
-  };
-  function load() {
-    return loading || (loading = new Promise(function (resolve, reject) {
-      var s = document.createElement("script");
-      s.src = SRC;
-      s.integrity = SRI;
-      s.crossOrigin = "anonymous";
-      s.onload = function () {
-        real = window.mermaid;
-        window.mermaid = stub;
-        real.initialize(config);
-        resolve(real);
-      };
-      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
-      document.head.appendChild(s);
-    }));
-  }
-  // One observer for the diagrams still waiting: on the screen only until the reader engages, then a screen ahead.
-  function watch() {
-    if (io) io.disconnect();
-    io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) release(function (w) { return w.el === e.target; });
-      });
-    }, { rootMargin: ahead ? "100% 0px" : "0px" });
-    waiting.forEach(function (w) { io.observe(w.el); });
-  }
-  function release(which) {
-    waiting = waiting.filter(function (w) {
-      if (!which(w)) return true;
-      io.unobserve(w.el);
-      w.go();
-      return false;
-    });
-  }
-  function near(el) {
-    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
-    return new Promise(function (resolve) {
-      waiting.push({ el: el, go: resolve });
-      if (io) io.observe(el); else watch();
-    });
-  }
-  function engaged() {
-    ENGAGE.forEach(function (t) { window.removeEventListener(t, engaged, true); });
-    ahead = true;
-    if (io) watch();
-  }
-  ENGAGE.forEach(function (t) { window.addEventListener(t, engaged, { capture: true, passive: true }); });
-  window.addEventListener("beforeprint", function () { if (io) release(function () { return true; }); });
-  window.mermaid = stub;
-})();
-</script>
 
   </head>
   
@@ -505,6 +439,8 @@
   
     
     
+      
+        
       
         
       
@@ -1332,14 +1268,15 @@
 <p>From Analog Devices (Trinamic) 19-101926 1:</p>
 <ul>
 <li>Pin functions at power-up and the UART and SPI of the bootloader: General-Purpose Input/Output Description, p. 19</li>
+<li>UART character, automatic baud rate detection: UART, p. 24</li>
 </ul>
 <p>All of them, with the driver API for each: <a href="../datasheet/">Datasheet map</a>.</p>
 </details>
 <!-- /generated -->
 
 <p>The driver never calls your SDK. It calls hooks on a class you derive from <code>tmc9660::SpiInterface&lt;Self&gt;</code> (in
-<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>) or from <code>tmc9660::UartInterface&lt;Self&gt;</code> (in
-<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>), not both. The base uses CRTP and declares no
+<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_spi_interface.hpp"><code>inc/tmc9660_spi_interface.hpp</code></a>) or from <code>tmc9660::UartInterface&lt;Self&gt;</code> (in
+<a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/inc/tmc9660_uart_interface.hpp"><code>inc/tmc9660_uart_interface.hpp</code></a>), not both. The base uses CRTP and declares no
 hook itself; the driver template is constrained by the concept <code>AnyPort</code>, so calls are resolved at compile time (no
 virtual functions, nothing to allocate) and a missing or misdeclared hook is a compile error at the point of use.</p>
 <h2 id="what-you-implement">What you implement<a class="headerlink" href="#what-you-implement" title="Permanent link">&para;</a></h2>
@@ -1645,14 +1582,14 @@ assumes it. A hardware reset at start is <code>Config::hardware_reset</code>:</p
 <p>Every port lives with its example, in <code>examples/&lt;platform&gt;/</code>; the driver has none. <a href="../platforms/">Platforms</a> lists
 them and how to add one.</p>
 <ul>
-<li><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/examples/host/host_tmc9660_port.hpp"><code>examples/host/host_tmc9660_port.hpp</code></a>: any PC, against a simulated
+<li><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/examples/host/host_tmc9660_port.hpp"><code>examples/host/host_tmc9660_port.hpp</code></a>: any PC, against a simulated
   chip. Start from it for a host build or a test bench; it is also the smallest complete port.</li>
-<li><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/examples/esp32/main/esp32_tmc9660_port.hpp"><code>examples/esp32/main/esp32_tmc9660_port.hpp</code></a>: ESP-IDF, with
+<li><a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/examples/esp32/main/esp32_tmc9660_port.hpp"><code>examples/esp32/main/esp32_tmc9660_port.hpp</code></a>: ESP-IDF, with
   every hook. Start from it for any ESP-IDF target.</li>
 </ul>
 <h2 id="check-your-port">Check your port<a class="headerlink" href="#check-your-port" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Build it: the ports on this page are compiled by the host CI from <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/7615ee53127f9165eb647108f2f7dc86a66901ac/tests/docs/my_port.hpp"><code>tests/docs/</code></a>,
+<li>Build it: the ports on this page are compiled by the host CI from <a href="https://github.com/kokeb-labs-drivers/driver-tmc9660/blob/f674ba6d438c66986fe3616534e2845eed9865a6/tests/docs/my_port.hpp"><code>tests/docs/</code></a>,
    with the driver instantiated over them.</li>
 <li>Call <code>EnsureInitialized()</code> with <code>Mode::Bootloader</code> on a freshly powered chip: <code>Ok</code> proves that the frames are
    moved correctly and that the chip identity read <code>0x544D0001</code>.</li>

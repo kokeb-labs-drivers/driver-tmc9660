@@ -1,0 +1,39 @@
+---
+kind: timing
+id: uart-timing
+title: UART character and transceiver enable
+kicker: On the bus
+alt: >-
+  One UART character sent by the TMC9660: a start bit, eight data bits least significant first and a stop bit, with
+  UART_TXEN raised before the start bit and dropped after the stop bit for an RS-485 transceiver.
+reads: >-
+  The two lanes are TX and TXEN (the pins UART_TX and UART_TXEN), left to right in time. TX idles high, the start bit
+  pulls it low, the data bits D0 to D7 follow and the stop bit returns it high. TXEN goes high the pre-delay before the
+  start bit and low the post-delay after the stop bit; the table gives the bit rates and both delays.
+bus: uart
+refs:
+  uart: {doc: ds, section: "UART", page: 24}
+  bauds: {doc: ds, section: "Table 5. UART Baud Rates", page: 23}
+  txen: {doc: ds, section: "UART", page: 25}
+  rs485_cfg: {doc: ds, section: "Bootloader, RS485 Configuration", page: 86}
+signals:
+  - {id: tx, label: TX, wave: "1..0=.......1...", data: [D0 … D7]}
+  - {id: txen, label: TXEN, wave: "0.1...........0.", tone: teal}
+groups:
+  - {from: 3, to: 4, label: start}
+  - {from: 4, to: 12, label: "8 data bits, LSB first", ref: uart}
+  - {from: 12, to: 13, label: stop}
+params:
+  - {id: baud-auto, symbol: baud, label: Bit rate with automatic baud rate detection at the 40 MHz system clock,
+     min: 9600, max: 250000, unit: bit/s, ref: uart}
+  - {id: baud-max, symbol: baud, label: Highest fixed bit rate (x8 oversampling), max: 5000000, unit: bit/s, ref: bauds}
+  - {id: tpre, symbol: tPRE, label: "UART_TXEN high before the start bit: UART_TXEN_PRE_DELAY, default 0",
+     typ: configurable, unit: "", ref: rs485_cfg}
+  - {id: tpost, symbol: tPOST, label: "UART_TXEN high after the stop bit: UART_TXEN_POST_DELAY, default 0",
+     typ: configurable, unit: "", ref: rs485_cfg}
+marks:
+  - {param: tpre, signal: txen, from: 2, to: 3}
+  - {param: tpost, signal: txen, from: 13, to: 14}
+notes:
+  - {text: "The line idles high. A TMCL datagram is nine such characters; bit 0 of the first is the sync bit, always 1,
+      which the chip uses for automatic baud rate detection.", ref: pm_uart}
